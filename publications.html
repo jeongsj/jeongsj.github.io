@@ -196,9 +196,10 @@
             color: #000;
         }
 
-        /* [수정] 뱃지 스타일 보완 */
+        /* Badge Style (Year / Status) */
         .pub-badge {
-            background-color: var(--primary-color);
+            /* 1단계: 기본 연도 배지는 가장 연한 색상 */
+            background-color: #8bc34a; 
             color: white;
             font-weight: 700;
             font-size: 0.8rem;
@@ -206,23 +207,21 @@
             border-radius: 4px;
             letter-spacing: 0.5px;
             text-transform: uppercase;
-            white-space: nowrap; /* [중요] 화면이 좁아져도 뱃지 텍스트가 줄바꿈되지 않도록 고정 */
-            flex-shrink: 0; /* [중요] 공간이 부족해도 뱃지 크기가 찌그러지지 않음 */
+            white-space: nowrap; 
+            flex-shrink: 0;
         }
 
-        /* [Status Colors: Green Gradient] */
-        /* 1. Revise and Resubmit: 가장 진한 초록 */
-        .badge-rnr { background-color: #487a2a; } 
+        /* [Status Colors: Green Gradient (Light -> Dark)] */
+        
+        /* 2단계: Revise and Resubmit */
+        .badge-rnr { background-color: #75ab3f; } 
 
-        /* 2. Under Review: 메인 테마와 유사한 중간 초록 */
-        .badge-review { background-color: #6aa84f; } 
+        /* 3단계: Under Review */
+        .badge-review { background-color: #5e9235; } 
 
-        /* 3. Draft Available: 조금 더 밝은 연두색 */
-        .badge-draft { background-color: #8bc34a; } 
-
-        /* 4. In Progress: 가장 연한 파스텔톤 초록 */
-        .badge-prep { background-color: #a9d18e; }
-
+        /* 4단계: Draft Available & In Progress (가장 진함) */
+        .badge-draft, .badge-prep { background-color: #487a2a; }
+        
         .pub-title {
             font-size: 1.15rem;
             font-weight: 700;
