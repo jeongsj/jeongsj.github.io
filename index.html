@@ -6,13 +6,15 @@
     <title>Seong-Jo Jeong</title>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
     <style>
-        /* [Style Settings: Clean & Bright] */
+        /* [Style Settings] */
         :root {
-            --primary-color: #48cae4; /* Mint/Sky Blue */
-            --secondary-color: #0077b6; /* Darker Blue */
-            --bg-color: #fdfdfd;      /* Off-white background */
-            --text-color: #333;       /* Dark gray text */
-            --light-gray: #f0f4f8;    /* Section background */
+            --primary-color: #48cae4; 
+            --secondary-color: #0077b6;
+            --bg-color: #fdfdfd;
+            --text-color: #333;
+            --light-gray: #f8f9fa;
+            --hover-bg: #eef9fb; /* 논문 마우스 오버 시 배경색 */
+            --award-color: #6aa84f; /* 수상 내역 강조 색상 (자주색) */
         }
 
         body {
@@ -24,7 +26,7 @@
             line-height: 1.6;
         }
 
-        /* 1. Navigation Bar */
+        /* Navigation */
         nav {
             background-color: white;
             border-bottom: 1px solid #eee;
@@ -32,14 +34,13 @@
             top: 0;
             z-index: 1000;
             padding: 0 20px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
         }
 
         .nav-container {
             max-width: 1000px;
             margin: 0 auto;
             display: flex;
-            justify-content: space-between; /* Logo left, Menu right */
+            justify-content: space-between;
             align-items: center;
             height: 60px;
         }
@@ -63,7 +64,6 @@
             text-decoration: none;
             color: #555;
             font-weight: 500;
-            font-size: 0.95rem;
             transition: color 0.3s;
         }
 
@@ -71,34 +71,34 @@
             color: var(--primary-color);
         }
 
-        /* 2. Main Layout (Sidebar + Content) */
+        /* Layout */
         .container {
             max-width: 1000px;
             margin: 50px auto;
             display: grid;
-            grid-template-columns: 280px 1fr; /* 280px Sidebar */
+            grid-template-columns: 260px 1fr; /* 사이드바 너비 약간 축소 */
             gap: 60px;
             padding: 0 20px;
         }
 
-        /* [Left Sidebar: Profile] */
+        /* Sidebar */
         .profile-sidebar {
             text-align: center;
         }
 
         .profile-img {
-            width: 200px;
-            height: 200px;
+            width: 180px; /* 사진 크기 약간 축소 */
+            height: 180px;
             border-radius: 50%;
             object-fit: cover;
             border: 4px solid white;
             box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            margin-bottom: 25px;
+            margin-bottom: 20px;
             background-color: #eee;
         }
 
         .profile-name {
-            font-size: 1.6rem;
+            font-size: 1.5rem;
             font-weight: 700;
             margin: 10px 0 5px 0;
             color: #222;
@@ -107,7 +107,7 @@
         
         .profile-name span {
             display: block;
-            font-size: 1.1rem;
+            font-size: 1.0rem;
             font-weight: 500;
             color: #666;
             margin-top: 5px;
@@ -115,36 +115,36 @@
 
         .profile-role {
             color: #555;
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             margin-top: 15px;
             font-weight: 500;
         }
 
         .profile-univ {
             color: #777;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             margin-bottom: 25px;
         }
 
-        /* Profile Buttons */
+        /* Buttons (Size Reduced) */
         .social-links {
             display: flex;
-            flex-direction: column; /* Stacked buttons */
-            gap: 10px;
+            flex-direction: column;
+            gap: 8px; /* 간격 축소 */
             margin-bottom: 30px;
             align-items: center;
         }
 
         .social-btn {
             display: block;
-            width: 160px;
-            padding: 8px 0;
+            width: 130px; /* 너비 축소 (160 -> 130) */
+            padding: 6px 0; /* 패딩 축소 */
             background-color: white;
             border: 1px solid #ddd;
             color: #555;
             text-decoration: none;
-            border-radius: 25px;
-            font-size: 0.9rem;
+            border-radius: 20px;
+            font-size: 0.85rem; /* 폰트 축소 */
             transition: all 0.2s;
         }
 
@@ -154,33 +154,32 @@
             border-color: var(--primary-color);
         }
 
-        /* Research Interests Tags */
+        /* Interests Tags */
         .interests-section {
             text-align: left;
             padding: 0 10px;
         }
         
         .interests-title {
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             font-weight: 700;
             color: var(--secondary-color);
             margin-bottom: 10px;
             text-transform: uppercase;
-            letter-spacing: 0.5px;
         }
 
         .tag {
             display: inline-block;
             background-color: var(--light-gray);
             color: #555;
-            padding: 4px 10px;
+            padding: 3px 8px;
             border-radius: 4px;
-            font-size: 0.85rem;
-            margin-bottom: 6px;
-            margin-right: 4px;
+            font-size: 0.8rem;
+            margin-bottom: 5px;
+            margin-right: 3px;
         }
 
-        /* [Right Main Content] */
+        /* Main Content */
         .main-content {
             display: flex;
             flex-direction: column;
@@ -192,7 +191,7 @@
         }
 
         .section-title {
-            font-size: 1.5rem;
+            font-size: 1.4rem;
             color: var(--secondary-color);
             border-bottom: 2px solid var(--light-gray);
             padding-bottom: 10px;
@@ -201,51 +200,81 @@
         }
 
         .about-text {
-            font-size: 1.05rem;
+            font-size: 1rem;
             color: #444;
             line-height: 1.8;
             text-align: justify;
         }
 
-        /* Publications List */
+        /* [Publications Block Style] */
         .pub-item {
-            margin-bottom: 25px;
+            display: block;
+            background-color: white;
+            border: 1px solid #eee;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        /* Hover Effect */
+        .pub-item:hover {
+            background-color: var(--hover-bg);
+            border-color: var(--primary-color);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            transform: translateY(-2px);
+        }
+
+        .pub-author {
+            font-size: 0.95rem;
+            color: #555;
+            margin-bottom: 4px;
         }
 
         .pub-title {
+            font-size: 1.05rem;
             font-weight: 700;
-            font-size: 1.1rem;
-            color: #222;
-            margin-bottom: 5px;
+            color: #111;
+            margin-bottom: 4px;
+            line-height: 1.4;
         }
 
-        .pub-info {
+        .pub-journal {
             font-size: 0.95rem;
-            color: #666;
+            color: #444;
             font-style: italic;
+            margin-bottom: 6px;
         }
 
-        /* Mobile Responsive */
+        .pub-award {
+            font-size: 0.9rem;
+            color: var(--award-color);
+            font-weight: 500;
+            margin-top: 6px;
+            margin-bottom: 6px;
+        }
+
+        .pub-doi a {
+            font-size: 0.85rem;
+            color: var(--secondary-color);
+            text-decoration: underline;
+            font-weight: 500;
+        }
+        
+        .pub-doi a:hover {
+            color: var(--primary-color);
+        }
+
+        /* Mobile */
         @media (max-width: 768px) {
             .container {
                 grid-template-columns: 1fr;
                 gap: 40px;
             }
-            .profile-sidebar {
-                border-bottom: 1px solid #eee;
-                padding-bottom: 30px;
-            }
-            .nav-links {
-                display: none;
-            }
-            .nav-container {
-                justify-content: center;
-            }
-            .social-links {
-                flex-direction: row;
-                justify-content: center;
-                flex-wrap: wrap;
-            }
+            .nav-links { display: none; }
+            .nav-container { justify-content: center; }
+            .social-links { flex-direction: row; flex-wrap: wrap; justify-content: center; }
         }
     </style>
 </head>
@@ -265,9 +294,7 @@
         
         <aside class="profile-sidebar">
             <img src="photo.jpg" alt="Seong-Jo Jeong" class="profile-img" onerror="this.style.display='none'">
-            <div style="width:200px; height:200px; background:#e0e0e0; border-radius:50%; margin: 0 auto 25px; display:flex; align-items:center; justify-content:center; color:#888;" id="placeholder-img">
-                Photo
-            </div>
+            <div style="width:180px; height:180px; background:#e0e0e0; border-radius:50%; margin: 0 auto 20px; display:flex; align-items:center; justify-content:center; color:#888;" id="placeholder-img">Photo</div>
             
             <h1 class="profile-name">
                 Seong-Jo Jeong
@@ -279,8 +306,8 @@
 
             <div class="social-links">
                 <a href="#" class="social-btn" target="_blank">CV</a>
-                <a href="https://scholar.google.com/citations?user=gSLyCiEAAAAJ&hl=ko&oi=ao" class="social-btn" target="_blank">Google Scholar</a>
-                <a href="https://x.com/seongjo_jeong_" class="social-btn" target="_blank">Twitter (X)</a>
+                <a href="#" class="social-btn" target="_blank">Google Scholar</a>
+                <a href="#" class="social-btn" target="_blank">Twitter (X)</a>
             </div>
 
             <div class="interests-section">
@@ -301,7 +328,7 @@
                         Welcome. I am a Ph.D. Candidate in the Department of Sociology at Chung-Ang University, South Korea.
                     </p>
                     <p>
-                        My research interests lie at the intersection of <strong>social movements, gender, and sexuality</strong>. currently, I am conducting research on the history of the South Korean LGBTQ movement. I am also involved in quantitative research projects examining health disparities among sexual and gender minorities in Korea.
+                        My research interests lie at the intersection of <strong>social movements, gender, and sexuality</strong>. Currently, I am conducting research on the history of the South Korean LGBTQ rights movement and the dynamics of anti-discrimination politics. I am also involved in quantitative research projects examining health disparities among sexual minorities in Korea.
                     </p>
                     <p>
                         I aim to contribute to a better sociological understanding of how marginalized groups mobilize for their rights and how social institutions affect their well-being.
@@ -313,17 +340,45 @@
                 <h2 class="section-title">Recent Publications</h2>
                 
                 <div class="pub-item">
-                    <div class="pub-title">Anti-Discrimination as a Political Project: The South Korean LGBTQ Movement and Intersectional Solidarity</div>
-                    <div class="pub-info">Under Review, 2026.</div>
+                    <div class="pub-author">송민수, 이승렬, 정성조*. forthcoming.</div>
+                    <div class="pub-title">직장에서 커밍아웃할 수 있는 조건은 무엇인가: 한국 성소수자 노동자의 경험 분석</div>
+                    <div class="pub-journal">『산업관계연구』</div>
+                    <div class="pub-doi"><a href="#" target="_blank">[Link to Article]</a></div>
                 </div>
 
                 <div class="pub-item">
-                    <div class="pub-title">The Intersection of Feminist and Queer Movements in South Korea: A 10-Year Retrospective</div>
-                    <div class="pub-info">Journal of Korean Sociology (Expected), 2025.</div>
+                    <div class="pub-author">Heeyoung Lee and Seong-Jo Jeong. 2025.</div>
+                    <div class="pub-title">Gender Differences in the Relationship between Coming Out as LGB to Family and Depression in South Korea</div>
+                    <div class="pub-journal">Society and Mental Health</div>
+                    <div class="pub-award">
+                        - 2024 Paul Meadows, Excellence in Research Award Winner, Sociology Department, University at Albany, SUNY<br>
+                        - 2023 제20회 청년사회학도상 우수상, 중앙대학교 사회학과
+                    </div>
+                    <div class="pub-doi"><a href="#" target="_blank">https://doi.org/10.1177/ExampleDOI</a></div>
                 </div>
 
-                </section>
+                <div class="pub-item">
+                    <div class="pub-author">Seong-Jo Jeong, Heeyoung Lee, and Chan S. Suh. 2025.</div>
+                    <div class="pub-title">Moving Apart, Coming Together: The Formation of an LGBTQ Movement Community in South Korea</div>
+                    <div class="pub-journal">Journal of Homosexuality</div>
+                    <div class="pub-doi"><a href="#" target="_blank">https://doi.org/10.1080/ExampleDOI</a></div>
+                </div>
 
+                <div class="pub-item">
+                    <div class="pub-author">정성조, 조소연, 이나영. 2025.</div>
+                    <div class="pub-title">12·3 탄핵 광장과 퀴어 가시성</div>
+                    <div class="pub-journal">『한국사회학』</div>
+                    <div class="pub-doi"><a href="#" target="_blank">[Link to Article]</a></div>
+                </div>
+
+                <div class="pub-item">
+                    <div class="pub-author">조소연, 정성조, 이나영. 2025.</div>
+                    <div class="pub-title">팬덤과 광장의 조우: 2030 여성들의 윤석열 탄핵 광장 참여 경험을 통해 본 젠더화된 문화정치</div>
+                    <div class="pub-journal">『미디어, 젠더 & 문화』</div>
+                    <div class="pub-doi"><a href="#" target="_blank">[Link to Article]</a></div>
+                </div>
+
+            </section>
         </main>
     </div>
 
@@ -335,5 +390,3 @@
     </script>
 </body>
 </html>
-
-```
