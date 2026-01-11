@@ -130,7 +130,15 @@
         .profile-univ {
             color: #777;
             font-size: 0.85rem;
+            margin-bottom: 10px; /* 기존 25px에서 10px로 줄임 (이메일과의 간격) */
+        }
+
+        /* [추가] 이메일 스타일 */
+        .profile-email {
+            font-size: 0.9rem;
+            color: var(--secondary-color); /* 포인트 컬러 사용 */
             margin-bottom: 25px;
+            font-weight: 500;
         }
 
         /* Sidebar Buttons */
@@ -356,6 +364,8 @@
             
             <div class="profile-role">Ph.D. Candidate in Sociology</div>
             <div class="profile-univ">Chung-Ang University</div>
+            
+            <div class="profile-email">demonicsj@gmail.com</div>
 
             <div class="social-links">
                 <a href="cv.html" class="social-btn" target="_blank">CV</a>
