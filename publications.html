@@ -6,7 +6,7 @@
     <title>Publications - Seong-Jo Jeong</title>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
     <style>
-        /* [Style Settings: index.html과 동일한 테마] */
+        /* [Style Settings] */
         :root {
             --primary-color: #6aa84f; 
             --secondary-color: #38761d;
@@ -80,15 +80,15 @@
             max-width: 1000px;
             margin: 50px auto;
             display: grid;
-            grid-template-columns: 200px 1fr; /* 사이드바 너비 조정 */
+            grid-template-columns: 200px 1fr;
             gap: 60px;
             padding: 0 20px;
         }
 
-        /* [Left Sidebar: Sticky Menu] */
+        /* Sidebar Menu */
         .sidebar-menu {
             position: sticky;
-            top: 100px; /* 스크롤 시 상단 여백 */
+            top: 100px;
         }
 
         .sidebar-title {
@@ -134,7 +134,7 @@
         }
 
         section {
-            scroll-margin-top: 80px; /* 메뉴 클릭 시 가림 방지 */
+            scroll-margin-top: 80px;
         }
 
         .section-header {
@@ -146,13 +146,13 @@
             font-weight: 700;
         }
 
-        /* Publication Block Style */
+        /* Publication Item */
         .pub-item {
             display: block;
             background-color: white;
             border: 1px solid #eee;
             border-radius: 8px;
-            padding: 25px; /* 내부 여백 약간 늘림 */
+            padding: 25px;
             margin-bottom: 25px;
             transition: all 0.3s ease;
         }
@@ -183,7 +183,8 @@
             color: #000;
         }
 
-        .pub-year {
+        /* Badge Style (Year / Status) */
+        .pub-badge {
             background-color: var(--primary-color);
             color: white;
             font-weight: 700;
@@ -193,6 +194,11 @@
             letter-spacing: 0.5px;
             text-transform: uppercase;
         }
+
+        /* Different colors for status */
+        .badge-rnr { background-color: #d97706; } /* Amber for R&R */
+        .badge-review { background-color: #0284c7; } /* Blue for Under Review */
+        .badge-prep { background-color: #64748b; } /* Grey for In Prep */
 
         .pub-title {
             font-size: 1.15rem;
@@ -223,7 +229,6 @@
             margin-bottom: 8px;
         }
 
-        /* [DOI Style] */
         .pub-doi {
             margin-top: 10px;
             font-size: 0.85rem;
@@ -233,7 +238,7 @@
             color: var(--secondary-color);
             text-decoration: none;
             border-bottom: 1px solid transparent;
-            font-family: monospace; /* URL 느낌을 주기 위해 */
+            font-family: monospace;
         }
 
         .pub-doi a:hover {
@@ -246,7 +251,7 @@
             .container { grid-template-columns: 1fr; gap: 40px; }
             .nav-links { display: none; }
             .nav-container { justify-content: center; }
-            .sidebar-menu { display: none; /* 모바일에서는 사이드 목차 숨김 (선택사항) */ }
+            .sidebar-menu { display: none; }
         }
     </style>
 </head>
@@ -256,8 +261,8 @@
         <div class="nav-container">
             <a href="index.html" class="nav-logo">Seong-Jo Jeong</a>
             <ul class="nav-links">
-                <li><a href="index.html">About</a></li>
-                <li><a href="publications.html" class="active">Publications</a></li> 
+                <li><a href="index.html#about">About</a></li>
+                <li><a href="publications.html" class="active">Publications</a></li>
                 <li><a href="research.html">Research & Data</a></li>
                 <li><a href="cv.pdf" target="_blank">CV</a></li>
                 <li><a href="contact.html">Contact</a></li>
@@ -283,47 +288,44 @@
                 
                 <div class="pub-item">
                     <div class="pub-meta">
-                        <span class="pub-author">Minsu Song, Seung-Yeol Yee, and <b>Seong-Jo Jeong</b></span>
-                        <span class="pub-year">Forthcoming</span>
+                        <span class="pub-author">Min-Soo Song, Seung-Ryeol Lee, and <b>Seong-Jo Jeong</b>*.</span>
+                        <span class="pub-badge">Forthcoming</span>
                     </div>
                     <div class="pub-title">
                         What Enables Coming Out at Work? An Analysis of Sexual and Gender Minority Workers’ Experiences in Korea
                         <span class="lang-tag">(in Korean)</span>
                     </div>
                     <div class="pub-journal">Korean Journal of Industrial Relations</div>
-                    <div class="pub-doi"><a href="#" target="_blank">https://doi.org/10.xxxx/example.doi</a></div>
                 </div>
 
                 <div class="pub-item">
                     <div class="pub-meta">
-                        <span class="pub-author"><b>Seong-Jo Jeong</b>, So-Yeon Cho, and Na-Young Lee</span>
-                        <span class="pub-year">2025</span>
+                        <span class="pub-author"><b>Seong-Jo Jeong</b>, So-Yeon Cho, and Na-Young Lee.</span>
+                        <span class="pub-badge">2025</span>
                     </div>
                     <div class="pub-title">
                         The December 3 Impeachment Square and Queer Visibility
                         <span class="lang-tag">(in Korean)</span>
                     </div>
                     <div class="pub-journal">Korean Journal of Sociology</div>
-                    <div class="pub-doi"><a href="#" target="_blank">https://doi.org/10.xxxx/example.doi</a></div>
                 </div>
 
                 <div class="pub-item">
                     <div class="pub-meta">
-                        <span class="pub-author">So-Yeon Cho, <b>Seong-Jo Jeong</b>, and Na-Young Lee</span>
-                        <span class="pub-year">2025</span>
+                        <span class="pub-author">So-Yeon Cho, <b>Seong-Jo Jeong</b>, and Na-Young Lee.</span>
+                        <span class="pub-badge">2025</span>
                     </div>
                     <div class="pub-title">
                         Encountering Between Fandom and Impeachment Square: Experiences of 2030 Women and Gendered Cultural Politics
                         <span class="lang-tag">(in Korean)</span>
                     </div>
                     <div class="pub-journal">Media, Gender & Culture</div>
-                    <div class="pub-doi"><a href="#" target="_blank">https://doi.org/10.xxxx/example.doi</a></div>
                 </div>
 
                 <div class="pub-item">
                     <div class="pub-meta">
-                        <span class="pub-author">Heeyoung Lee and <b>Seong-Jo Jeong</b></span>
-                        <span class="pub-year">2025</span>
+                        <span class="pub-author">Heeyoung Lee and <b>Seong-Jo Jeong</b>.</span>
+                        <span class="pub-badge">2025</span>
                     </div>
                     <div class="pub-title">Gender Differences in the Relationship between Coming Out as LGB to Family and Depression in South Korea</div>
                     <div class="pub-journal">Society and Mental Health</div>
@@ -331,18 +333,126 @@
                         - 2024 Paul Meadows, Excellence in Research Award Winner, Sociology Department, University at Albany, SUNY<br>
                         - 2023 Excellence Award, The 20th Young Sociologist Award, Chung-Ang University
                     </div>
-                    <div class="pub-doi"><a href="#" target="_blank">https://doi.org/10.xxxx/example.doi</a></div>
                 </div>
 
                 <div class="pub-item">
                     <div class="pub-meta">
-                        <span class="pub-author"><b>Seong-Jo Jeong</b>, Heeyoung Lee, and Chan S. Suh</span>
-                        <span class="pub-year">2025</span>
+                        <span class="pub-author"><b>Seong-Jo Jeong</b>, Heeyoung Lee, and Chan S. Suh.</span>
+                        <span class="pub-badge">2025</span>
                     </div>
                     <div class="pub-title">Moving Apart, Coming Together: The Formation of an LGBTQ Movement Community in South Korea</div>
                     <div class="pub-journal">Journal of Homosexuality</div>
-                    <div class="pub-doi"><a href="#" target="_blank">https://doi.org/10.xxxx/example.doi</a></div>
                 </div>
+
+                <div class="pub-item">
+                    <div class="pub-meta">
+                        <span class="pub-author">Hyemin Lee, Jeongeun Park, Won-Geun Jeon, Jong-Bin Kim, Horim Yi, and <b>Seong-Jo Jeong</b>*.</span>
+                        <span class="pub-badge">2024</span>
+                    </div>
+                    <div class="pub-title">
+                        Trends and Tasks in Korean LGBTQ Studies: Systematic Literature Review and Text Analysis
+                        <span class="lang-tag">(in Korean)</span>
+                    </div>
+                    <div class="pub-journal">Economy and Society</div>
+                </div>
+
+                <div class="pub-item">
+                    <div class="pub-meta">
+                        <span class="pub-author"><b>Seong-Jo Jeong</b>, Bomi Kim, and Kiyong Sim.</span>
+                        <span class="pub-badge">2024</span>
+                    </div>
+                    <div class="pub-title">
+                        Discrimination Experiences and Social Needs of Young LGBTQ People and Legal/Policy Implications
+                        <span class="lang-tag">(in Korean)</span>
+                    </div>
+                    <div class="pub-journal">Gender Law</div>
+                </div>
+
+                <div class="pub-item">
+                    <div class="pub-meta">
+                        <span class="pub-author"><b>Seong-Jo Jeong</b> and Heeyoung Lee.</span>
+                        <span class="pub-badge">2023</span>
+                    </div>
+                    <div class="pub-title">
+                        Open, Hidden, and Oppressive Closets: Latent Class Analysis of Coming Out Patterns among LGBTQ Youth
+                        <span class="lang-tag">(in Korean)</span>
+                    </div>
+                    <div class="pub-journal">Korean Journal of Sociology</div>
+                </div>
+
+                <div class="pub-item">
+                    <div class="pub-meta">
+                        <span class="pub-author">Soobin Kwon, Seon-Ki Kim, <b>Seong-Jo Jeong</b>, Hyun-Jae Cha, and Sang-Gil Lee.</span>
+                        <span class="pub-badge">2023</span>
+                    </div>
+                    <div class="pub-title">
+                        Researchers' Conflict Experiences and Perceptions regarding IRBs in Humanities and Social Sciences
+                        <span class="lang-tag">(in Korean)</span>
+                    </div>
+                    <div class="pub-journal">Journal of Social Sciences</div>
+                </div>
+
+                <div class="pub-item">
+                    <div class="pub-meta">
+                        <span class="pub-author">Soobin Kwon, Seon-Ki Kim, <b>Seong-Jo Jeong</b>, Hyun-Jae Cha, and Sang-Gil Lee.</span>
+                        <span class="pub-badge">2023</span>
+                    </div>
+                    <div class="pub-title">
+                        Institutionalization of 'Vulnerability'?: Conflicts and Issues in IRB Review of Research on 'Vulnerable Subjects' in Humanities and Social Sciences
+                        <span class="lang-tag">(in Korean)</span>
+                    </div>
+                    <div class="pub-journal">Social Science Research</div>
+                </div>
+
+                <div class="pub-item">
+                    <div class="pub-meta">
+                        <span class="pub-author"><b>Seong-Jo Jeong</b> and Yong-Lim Jeong.</span>
+                        <span class="pub-badge">2022</span>
+                    </div>
+                    <div class="pub-title">
+                        LGBTQ Youth and Safe Spaces: Alternative Spaces Created by 'The Excluded'
+                        <span class="lang-tag">(in Korean)</span>
+                    </div>
+                    <div class="pub-journal">Space and Society</div>
+                </div>
+
+                <div class="pub-item">
+                    <div class="pub-meta">
+                        <span class="pub-author">Heeyoung Lee, Daul Jeong, and <b>Seong-Jo Jeong</b>*.</span>
+                        <span class="pub-badge">2021</span>
+                    </div>
+                    <div class="pub-title">
+                        Democratic Quarantine, or Governance with 'Those Without Rights': Focusing on the Itaewon Club Cluster Infection Case
+                        <span class="lang-tag">(in Korean)</span>
+                    </div>
+                    <div class="pub-journal">Memory and Vision</div>
+                    <div class="pub-award">- 2022 Twinkle Twinkle Paper Award, People's Solidarity for Participatory Democracy</div>
+                </div>
+
+                <div class="pub-item">
+                    <div class="pub-meta">
+                        <span class="pub-author"><b>Seong-Jo Jeong</b>.</span>
+                        <span class="pub-badge">2019</span>
+                    </div>
+                    <div class="pub-title">
+                        Critical Reconstruction of 'Youth Generation' Discourse: Focusing on Gender and Sexuality
+                        <span class="lang-tag">(in Korean)</span>
+                    </div>
+                    <div class="pub-journal">Economy and Society</div>
+                </div>
+
+                <div class="pub-item">
+                    <div class="pub-meta">
+                        <span class="pub-author"><b>Seong-Jo Jeong</b> and Na-Young Lee.</span>
+                        <span class="pub-badge">2018</span>
+                    </div>
+                    <div class="pub-title">
+                        Invisible Soldiers: Institutional Homophobia and LGBTQ Identity in the South Korean Military
+                        <span class="lang-tag">(in Korean)</span>
+                    </div>
+                    <div class="pub-journal">Culture and Society</div>
+                </div>
+
             </section>
 
             <section id="review">
@@ -350,26 +460,44 @@
                 
                 <div class="pub-item">
                     <div class="pub-meta">
-                        <span class="pub-author"><b>Seong-Jo Jeong</b> and Co-Author Name</span>
-                        <span class="pub-year">2026</span>
+                        <span class="pub-author"><b>Seong-Jo Jeong</b>.</span>
+                        <span class="pub-badge badge-rnr">Revise and Resubmit</span>
                     </div>
-                    <div class="pub-title">Anti-Discrimination as a Political Project: The South Korean LGBTQ Movement and Intersectional Solidarity</div>
-                    <div class="pub-journal">Under Review</div>
+                    <div class="pub-title">When Intimacy Becomes Politics: The Rise and Dissolution of the South Korean LGBTQ Student Coalition, 2013-2021</div>
+                    <div class="pub-journal">Journal of Asian Sociology</div>
                 </div>
 
-                </section>
+                <div class="pub-item">
+                    <div class="pub-meta">
+                        <span class="pub-author">Dayoung Jeong, Bomi Kim, Chan S. Suh, and <b>Seong-Jo Jeong</b>*.</span>
+                        <span class="pub-badge badge-review">Under Review</span>
+                    </div>
+                    <div class="pub-title">Between Silence and Voice: Reaction to Discrimination and Mental Health among LGBTQ Youths in South Korea</div>
+                    <div class="pub-journal">Journal of Asian Sociology</div>
+                </div>
+
+            </section>
 
             <section id="prep">
                 <h2 class="section-header">In Preparation</h2>
                 
                 <div class="pub-item">
                     <div class="pub-meta">
-                        <span class="pub-author"><b>Seong-Jo Jeong</b></span>
-                        <span class="pub-year">Working Paper</span>
+                        <span class="pub-author"><b>Seong-Jo Jeong</b>, Bomi Kim, Heeyoung Lee, and Hyemin Lee*.</span>
+                        <span class="pub-badge badge-prep">In Progress</span>
                     </div>
-                    <div class="pub-title">The History of South Korean LGBTQ Rights Movement (Tentative Title)</div>
-                    <div class="pub-journal">Doctoral Dissertation Project</div>
+                    <div class="pub-title">Substance Use and Mental Health Outcomes among Gay and Bisexual Men in South Korea: A Cross-Sectional Study</div>
+                    <div class="pub-journal">Target: LGBT Health</div>
                 </div>
+
+                <div class="pub-item">
+                    <div class="pub-meta">
+                        <span class="pub-author"><b>Seong-Jo Jeong</b> and Na-Young Lee.</span>
+                        <span class="pub-badge badge-prep">In Progress</span>
+                    </div>
+                    <div class="pub-title">Mobilizing Intersectional Solidarity against the Far-Right Backlash in South Korea</div>
+                </div>
+
             </section>
 
         </main>
