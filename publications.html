@@ -195,6 +195,7 @@
 
         /* Badge Style (Year / Status) */
         .pub-badge {
+            /* 기본값 (연도 표기 등): 메인 테마색 */
             background-color: var(--primary-color);
             color: white;
             font-weight: 700;
@@ -205,10 +206,18 @@
             text-transform: uppercase;
         }
 
-        /* Different colors for status */
-        .badge-rnr { background-color: #d97706; } /* Amber */
-        .badge-review { background-color: #0284c7; } /* Blue */
-        .badge-prep { background-color: #64748b; } /* Grey */
+        /* [Status Colors: Green Gradient] */
+        /* 1. Revise and Resubmit: 가장 진한 초록 */
+        .badge-rnr { background-color: #487a2a; } 
+
+        /* 2. Under Review: 메인 테마와 유사한 중간 초록 */
+        .badge-review { background-color: #6aa84f; } 
+
+        /* 3. Draft Available: 조금 더 밝은 연두색 */
+        .badge-draft { background-color: #8bc34a; } 
+
+        /* 4. In Progress: 가장 연한 파스텔톤 초록 */
+        .badge-prep { background-color: #a9d18e; }
 
         .pub-title {
             font-size: 1.15rem;
@@ -516,11 +525,13 @@
                 <div class="pub-item">
                     <div class="pub-meta">
                         <span class="pub-author"><b>Seong-Jo Jeong</b>, Bomi Kim, Heeyoung Lee, and Hyemin Lee*</span>
-                        <span class="pub-badge badge-prep">Draft Available</span>
+                        <span class="pub-badge badge-draft">Draft Available</span>
                     </div>
                     <div class="pub-title">Substance Use and Mental Health Outcomes among Gay and Bisexual Men in South Korea: A Cross-Sectional Study</div>
                     <div class="pub-journal">LGBT Health</div>
                 </div>
+
+                </section>
 
             </section>
 
