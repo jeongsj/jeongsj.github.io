@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Public Sociology - Seong-Jo Jeong</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        /* [Style Settings] */
+        :root {
+            --primary-color: #6aa84f; 
+            --secondary-color: #38761d;
+            --bg-color: #fdfdfd;
+            --text-color: #333;
+            --light-gray: #f8f9fa;
+            --hover-bg: #f1f8e9;
+            --award-color: #0a7e8c; 
+            --tag-color: #888;
+        }
+
+        body {
+            font-family: 'Noto Sans', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        /* Navigation */
+        nav {
+            background-color: white;
+            border-bottom: 1px solid #eee;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            padding: 0 20px;
+        }
+
+        .nav-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 60px;
+        }
+
+        .nav-logo {
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: var(--secondary-color);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 25px;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #555;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.3s;
+            text-transform: capitalize;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--primary-color);
+            font-weight: 700;
+        }
+
+        /* Layout (No Sidebar) */
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 0 20px;
+        }
+
+        /* Main Content */
+        .main-content {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+        }
+
+        .section-header {
+            font-size: 1.5rem;
+            color: var(--secondary-color);
+            border-bottom: 1px solid #eee;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        /* Writing Item Style */
+        .writing-item {
+            display: block;
+            background-color: white;
+            border: 1px solid #eee;
+            border-radius: 8px;
+            padding: 25px;
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .writing-item:hover {
+            background-color: var(--hover-bg);
+            border-color: var(--primary-color);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            transform: translateY(-2px);
+        }
+
+        .item-meta {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            margin-bottom: 8px;
+            gap: 15px;
+        }
+
+        .item-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #111;
+            line-height: 1.4;
+            flex: 1;
+        }
+
+        .year-badge {
+            background-color: #8bc34a; 
+            color: white;
+            font-weight: 700;
+            font-size: 0.8rem;
+            padding: 4px 10px;
+            border-radius: 4px;
+            letter-spacing: 0.5px;
+            white-space: nowrap;
+            flex-shrink: 0;
+        }
+
+        .item-source {
+            font-size: 0.95rem;
+            color: #555;
+            font-style: italic;
+            margin-bottom: 10px;
+        }
+
+        .item-link a {
+            display: inline-block;
+            color: var(--secondary-color);
+            font-size: 0.9rem;
+            font-weight: 500;
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+        }
+
+        .item-link a:hover {
+            border-bottom: 1px solid var(--secondary-color);
+            color: var(--primary-color);
+        }
+
+        /* Mobile */
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .nav-container { justify-content: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">Seong-Jo Jeong</a>
+            <ul class="nav-links">
+                <li><a href="index.html#about">About</a></li>
+                <li><a href="publications.html">Publications</a></li>
+                <li><a href="research.html">Data & Research</a></li>
+                <li><a href="writings.html" class="active">Public Sociology</a></li> <li><a href="cv.pdf" target="_blank">CV</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        
+        <main class="main-content">
+            
+            <section>
+                <h2 class="section-header">Essays, Reports & Interviews</h2>
+
+                <div class="writing-item">
+                    <div class="item-meta">
+                        <div class="item-title">"기타, 구체적으로 서술하시오": 데이터의 빈틈에서 삶을 짓기</div>
+                        <span class="year-badge">2025</span>
+                    </div>
+                    <div class="item-source">KOSSDA (Korea Social Science Data Archive) Webzine [cite: 127]</div>
+                    <div class="item-link"><a href="#" target="_blank">Read Article →</a></div>
+                </div>
+
+                <div class="writing-item">
+                    <div class="item-meta">
+                        <div class="item-title">성소수자/퀴어 연구라는 ‘궂은일’ 학회 전환의 도전</div>
+                        <span class="year-badge">2025</span>
+                    </div>
+                    <div class="item-source">Webzine DOCHAK, Korean Association for LGBTQ+ and Queer Studies [cite: 128]</div>
+                    <div class="item-link"><a href="#" target="_blank">Read Article →</a></div>
+                </div>
+
+                <div class="writing-item">
+                    <div class="item-meta">
+                        <div class="item-title">극우리포트: 성소수자 혐오부터 내란 옹호까지</div>
+                        <span class="year-badge">2025</span>
+                    </div>
+                    <div class="item-source">Rainbow Action & Korean Coalition for Anti-discrimination Legislation [cite: 129]</div>
+                    <div class="item-link"><a href="#" target="_blank">Read Report →</a></div>
+                </div>
+
+                <div class="writing-item">
+                    <div class="item-meta">
+                        <div class="item-title">광장의 성소수자들: 젠더노소 여러분, 안녕하십니까?</div>
+                        <span class="year-badge">2025</span>
+                    </div>
+                    <div class="item-source">Webzine of Lee Nae-chang Memorial Foundation [cite: 130]</div>
+                    <div class="item-link"><a href="#" target="_blank">Read Article →</a></div>
+                </div>
+
+                <div class="writing-item">
+                    <div class="item-meta">
+                        <div class="item-title">함께, 평등하게, 당연하게: ‘2023년 한국 영화 산업 성희롱·성폭력 실태조사’ 결과로 살펴보는 과제</div>
+                        <span class="year-badge">2024</span>
+                    </div>
+                    <div class="item-source">KOFIC Magazine [cite: 131]</div>
+                    <div class="item-link"><a href="#" target="_blank">Read Article →</a></div>
+                </div>
+
+                <div class="writing-item">
+                    <div class="item-meta">
+                        <div class="item-title">대한민국은 성소수자를 처벌합니다: 성소수자 차별 조항, 군형법상 추행죄의 위헌성을 파헤치다</div>
+                        <span class="year-badge">2023</span>
+                    </div>
+                    <div class="item-source">Seoul National University Journal [cite: 132]</div>
+                    <div class="item-link"><a href="#" target="_blank">Read Article →</a></div>
+                </div>
+
+                <div class="writing-item">
+                    <div class="item-meta">
+                        <div class="item-title">점멸하는 자긍심과 퀴어 공동체</div>
+                        <span class="year-badge">2022</span>
+                    </div>
+                    <div class="item-source">Webzine of Community Culture Research Center, Andong National University [cite: 133]</div>
+                    <div class="item-link"><a href="#" target="_blank">Read Article →</a></div>
+                </div>
+
+                <div class="writing-item">
+                    <div class="item-meta">
+                        <div class="item-title">How COVID-19 Became an Issue of LGBTQ?: Homophobia and LGBTQ Movements in South Korea</div>
+                        <span class="year-badge">2020</span>
+                    </div>
+                    <div class="item-source">APCOM Report: #CopingWithCOVID [cite: 134, 135]</div>
+                    <div class="item-link"><a href="#" target="_blank">Read Report →</a></div>
+                </div>
+
+                <div class="writing-item">
+                    <div class="item-meta">
+                        <div class="item-title">‘비정상적인’ 성, 혹은 지식의 정치</div>
+                        <span class="year-badge">2020</span>
+                    </div>
+                    <div class="item-source">Chung-Ang University Graduate School Newspaper [cite: 136]</div>
+                    <div class="item-link"><a href="#" target="_blank">Read Article →</a></div>
+                </div>
+
+                <div class="writing-item">
+                    <div class="item-meta">
+                        <div class="item-title">현장에서 찾는 연대와 교차의 길</div>
+                        <span class="year-badge">2019</span>
+                    </div>
+                    <div class="item-source">Sungkyun Times (Sungkyunkwan Univ. Newspaper) [cite: 137]</div>
+                    <div class="item-link"><a href="#" target="_blank">Read Article →</a></div>
+                </div>
+
+            </section>
+
+        </main>
+    </div>
+
+</body>
+</html>
