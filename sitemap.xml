@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <url>
+        <loc>https://jeongsj.github.io/</loc>
+        <lastmod>2026-01-12</lastmod>
+        <priority>1.00</priority>
+    </url>
+    <url>
+        <loc>https://jeongsj.github.io/index.html</loc>
+        <lastmod>2026-01-12</lastmod>
+        <priority>0.80</priority>
+    </url>
+
+    <url>
+        <loc>https://jeongsj.github.io/publications.html</loc>
+        <lastmod>2026-01-12</lastmod>
+        <priority>0.80</priority>
+    </url>
+
+    <url>
+        <loc>https://jeongsj.github.io/research.html</loc>
+        <lastmod>2026-01-12</lastmod>
+        <priority>0.80</priority>
+    </url>
+
+    <url>
+        <loc>https://jeongsj.github.io/writings.html</loc>
+        <lastmod>2026-01-12</lastmod>
+        <priority>0.80</priority>
+    </url>
+
+    <url>
+        <loc>https://jeongsj.github.io/cv.html</loc>
+        <lastmod>2026-01-12</lastmod>
+        <priority>0.60</priority>
+    </url>
+
+    <url>
+        <loc>https://jeongsj.github.io/cv.pdf</loc>
+        <lastmod>2026-01-12</lastmod>
+        <priority>0.60</priority>
+    </url>
+</urlset>
