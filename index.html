@@ -10,14 +10,14 @@
         :root {
             /* 메인 테마: 녹색 */
             --primary-color: #6aa84f; 
-            /* 보조 색상: 가독성을 위해 조금 더 진한 녹색 */
+            /* 보조 색상: 진한 녹색 */
             --secondary-color: #38761d;
             --bg-color: #fdfdfd;
             --text-color: #333;
             --light-gray: #f8f9fa;
-            --hover-bg: #f1f8e9; /* 마우스 오버 시 연한 녹색 배경 */
-            /* 수상 색상: 이전 메인 테마색 (하늘색) */
-            --award-color: #48cae4; 
+            --hover-bg: #f1f8e9;
+            /* 수상 색상: 톤다운된 짙은 청록색으로 변경 */
+            --award-color: #0a7e8c; 
             --tag-color: #888;
         }
 
@@ -244,18 +244,18 @@
             margin-right: 10px;
         }
 
-        /* 본인 이름 볼드체 처리를 위한 스타일 */
         .pub-author b {
             font-weight: 700;
             color: #000;
         }
 
+        /* 연도 스타일: 배경 초록색, 글자 흰색으로 변경 */
         .pub-year {
-            background-color: var(--light-gray);
-            color: var(--secondary-color);
+            background-color: var(--primary-color); /* 메인 초록색 */
+            color: white; /* 흰색 텍스트 */
             font-weight: 700;
             font-size: 0.8rem;
-            padding: 2px 8px;
+            padding: 3px 9px;
             border-radius: 4px;
             letter-spacing: 0.5px;
             text-transform: uppercase;
@@ -285,7 +285,7 @@
 
         .pub-award {
             font-size: 0.9rem;
-            color: var(--award-color); /* 하늘색 */
+            color: var(--award-color);
             font-weight: 600;
             margin-top: 8px;
         }
