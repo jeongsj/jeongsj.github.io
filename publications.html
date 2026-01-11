@@ -27,7 +27,7 @@
             line-height: 1.6;
         }
 
-        /* Navigation */
+        /* Navigation (Fixed Layout) */
         nav {
             background-color: white;
             border-bottom: 1px solid #eee;
@@ -39,9 +39,10 @@
 
         .nav-container {
             max-width: 1000px;
+            width: 100%; /* [중요] 이 속성이 있어야 양 끝으로 벌어집니다 */
             margin: 0 auto;
             display: flex;
-            justify-content: space-between;
+            justify-content: space-between; /* 양 끝 정렬 */
             align-items: center;
             height: 60px;
         }
@@ -51,6 +52,22 @@
             font-size: 1.2rem;
             color: var(--secondary-color);
             text-decoration: none;
+        }
+
+        /* 햄버거 버튼 */
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.8rem;
+            color: var(--secondary-color);
+            cursor: pointer;
+            padding: 5px;
+            transition: color 0.3s;
+        }
+        
+        .menu-toggle:hover {
+            color: var(--primary-color);
         }
 
         .nav-links {
@@ -73,6 +90,50 @@
         .nav-links a:hover, .nav-links a.active {
             color: var(--primary-color);
             font-weight: 700;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .container { grid-template-columns: 1fr; gap: 40px; }
+            .sidebar-menu { display: none; }
+            
+            .menu-toggle { display: block; }
+
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 61px;
+                left: 0;
+                width: 100%;
+                background-color: white;
+                border-top: 2px solid var(--primary-color);
+                box-shadow: 0 10px 15px rgba(0,0,0,0.1);
+                padding: 0;
+                gap: 0;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .nav-links li {
+                width: 100%;
+                text-align: center;
+                border-bottom: 1px solid #f5f5f5;
+            }
+
+            .nav-links a {
+                display: block;
+                padding: 15px 0;
+                font-size: 1rem;
+                color: #444;
+            }
+
+            .nav-links a:hover {
+                background-color: var(--hover-bg);
+                color: var(--secondary-color);
+            }
         }
 
         /* Layout */
@@ -538,6 +599,11 @@
 
         </main>
     </div>
-
+<script>
+        /* 모바일 메뉴 열기/닫기 기능만 남김 */
+        function toggleMenu() {
+            document.getElementById("navLinks").classList.toggle("active");
+        }
+    </script>
 </body>
 </html>
