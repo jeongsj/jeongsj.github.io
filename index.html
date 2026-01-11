@@ -518,6 +518,10 @@
         const placeholder = document.getElementById('placeholder-img');
         img.onload = () => { placeholder.style.display = 'none'; img.style.display = 'block'; };
         img.onerror = () => { placeholder.style.display = 'flex'; img.style.display = 'none'; };
+        
+        function toggleMenu() {
+            document.getElementById("navLinks").classList.toggle("active");
+        }
     </script>
 </body>
 </html>
