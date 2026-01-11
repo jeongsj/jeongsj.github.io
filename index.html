@@ -30,7 +30,7 @@
             line-height: 1.6;
         }
 
-        /* Navigation (Updated) */
+        /* Navigation (Fixed Layout) */
         nav {
             background-color: white;
             border-bottom: 1px solid #eee;
@@ -42,9 +42,10 @@
 
         .nav-container {
             max-width: 1000px;
+            width: 100%; /* [중요] 이 속성이 있어야 양 끝으로 벌어집니다 */
             margin: 0 auto;
             display: flex;
-            justify-content: space-between; /* 양 끝 정렬 (중요) */
+            justify-content: space-between; /* 양 끝 정렬 */
             align-items: center;
             height: 60px;
         }
@@ -56,13 +57,13 @@
             text-decoration: none;
         }
 
-        /* 햄버거 버튼 스타일 개선 */
+        /* 햄버거 버튼 */
         .menu-toggle {
-            display: none; /* PC에선 숨김 */
+            display: none;
             background: none;
             border: none;
-            font-size: 1.8rem; /* 크기 키움 */
-            color: var(--secondary-color); /* 테마색 적용 */
+            font-size: 1.8rem;
+            color: var(--secondary-color);
             cursor: pointer;
             padding: 5px;
             transition: color 0.3s;
@@ -94,25 +95,23 @@
             font-weight: 700;
         }
 
-        /* Mobile Responsive Design */
+        /* Mobile Responsive */
         @media (max-width: 768px) {
             .container { grid-template-columns: 1fr; gap: 40px; }
             .sidebar-menu { display: none; }
             
-            /* 버튼 보이기 */
             .menu-toggle { display: block; }
 
-            /* 모바일 메뉴 드롭다운 디자인 개선 */
             .nav-links {
                 display: none;
                 flex-direction: column;
                 position: absolute;
-                top: 61px; /* 네비게이션 바 바로 아래 */
+                top: 61px;
                 left: 0;
                 width: 100%;
                 background-color: white;
-                border-top: 2px solid var(--primary-color); /* 상단 포인트 컬러 */
-                box-shadow: 0 10px 15px rgba(0,0,0,0.1); /* 부드러운 그림자 */
+                border-top: 2px solid var(--primary-color);
+                box-shadow: 0 10px 15px rgba(0,0,0,0.1);
                 padding: 0;
                 gap: 0;
             }
@@ -124,7 +123,7 @@
             .nav-links li {
                 width: 100%;
                 text-align: center;
-                border-bottom: 1px solid #f5f5f5; /* 메뉴 사이 구분선 */
+                border-bottom: 1px solid #f5f5f5;
             }
 
             .nav-links a {
@@ -135,7 +134,7 @@
             }
 
             .nav-links a:hover {
-                background-color: var(--hover-bg); /* 배경색 변경 효과 */
+                background-color: var(--hover-bg);
                 color: var(--secondary-color);
             }
         }
