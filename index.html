@@ -1,10 +1,355 @@
 <!DOCTYPE html>
-<html>
+<html lang="ko">
 <head>
-    <title>내 홈페이지</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>연구자 홈페이지</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        /* [스타일 설정: 화사하고 심플한 디자인] */
+        :root {
+            --primary-color: #48cae4; /* 포인트 색상: 화사한 하늘색 */
+            --secondary-color: #0077b6; /* 짙은 파란색 (강조용) */
+            --bg-color: #fdfdfd;      /* 전체 배경: 아주 연한 미색 */
+            --text-color: #333;       /* 기본 글자색 */
+            --light-gray: #f0f4f8;    /* 섹션 배경색 */
+        }
+
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        /* 1. 상단 메뉴바 (Navigation) */
+        nav {
+            background-color: white;
+            border-bottom: 1px solid #eee;
+            position: sticky; /* 스크롤 내려도 상단 고정 */
+            top: 0;
+            z-index: 1000;
+            padding: 0 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .nav-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 60px;
+        }
+
+        .nav-logo {
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: var(--secondary-color);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 25px;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #555;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.3s;
+            text-transform: capitalize; /* 첫 글자 대문자 */
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        /* 2. 메인 레이아웃 (좌측 프로필 + 우측 본문) */
+        .container {
+            max-width: 1100px;
+            margin: 40px auto;
+            display: grid;
+            grid-template-columns: 280px 1fr; /* 좌측 280px, 우측 나머지 */
+            gap: 50px;
+            padding: 0 20px;
+        }
+
+        /* [좌측 사이드바: 프로필 영역] */
+        .profile-sidebar {
+            text-align: center;
+        }
+
+        .profile-img {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%; /* 원형 이미지 */
+            object-fit: cover;
+            border: 4px solid white;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+            background-color: #eee; /* 이미지가 없을 때 회색 배경 */
+        }
+
+        .profile-name {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin: 10px 0 5px 0;
+            color: #222;
+        }
+
+        .profile-role {
+            color: #666;
+            font-size: 0.95rem;
+            margin-bottom: 5px;
+            font-weight: 500;
+        }
+
+        .profile-univ {
+            color: #888;
+            font-size: 0.9rem;
+            margin-bottom: 20px;
+        }
+
+        .contact-info {
+            font-size: 0.9rem;
+            color: #555;
+            margin-top: 20px;
+            text-align: left;
+            padding: 0 10px;
+        }
+        
+        .contact-info p {
+            margin: 5px 0;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .social-links {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .social-btn {
+            display: inline-block;
+            padding: 8px 15px;
+            background-color: var(--light-gray);
+            color: #555;
+            text-decoration: none;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            transition: all 0.2s;
+        }
+
+        .social-btn:hover {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        /* [우측 메인 콘텐츠 영역] */
+        .main-content {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+        }
+
+        section {
+            scroll-margin-top: 80px; /* 메뉴 클릭 시 가림 방지 */
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            color: var(--secondary-color);
+            border-bottom: 2px solid var(--light-gray);
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        /* 소개글 스타일 */
+        .about-text {
+            font-size: 1.05rem;
+            color: #444;
+            line-height: 1.8;
+        }
+
+        /* 논문 목록 스타일 */
+        .pub-item {
+            margin-bottom: 20px;
+            padding-left: 15px;
+            border-left: 3px solid var(--primary-color);
+        }
+
+        .pub-title {
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: #222;
+        }
+
+        .pub-info {
+            font-size: 0.95rem;
+            color: #666;
+            margin-top: 4px;
+        }
+
+        /* 경력 목록 스타일 */
+        .cv-item {
+            display: flex;
+            margin-bottom: 15px;
+        }
+        .cv-year {
+            width: 60px;
+            font-weight: 700;
+            color: var(--primary-color);
+            flex-shrink: 0;
+        }
+        .cv-desc {
+            color: #444;
+        }
+
+        /* 모바일 반응형 (화면이 좁을 때) */
+        @media (max-width: 768px) {
+            .container {
+                grid-template-columns: 1fr; /* 1단으로 변경 */
+                gap: 30px;
+            }
+            .profile-sidebar {
+                border-bottom: 1px solid #eee;
+                padding-bottom: 30px;
+            }
+            .nav-links {
+                display: none; /* 모바일에선 메뉴 일단 숨김 (복잡도 방지) */
+            }
+            .nav-container {
+                justify-content: center;
+            }
+        }
+    </style>
 </head>
 <body>
-    <h1>환영합니다!</h1>
-    <p>깃허브로 만든 첫 번째 홈페이지입니다.</p>
+
+    <nav>
+        <div class="nav-container">
+            <a href="#" class="nav-logo">My Research</a>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#publications">Publications</a></li>
+                <li><a href="#research">Research</a></li>
+                <li><a href="#cv">CV</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        
+        <aside class="profile-sidebar">
+            <img src="photo.jpg" alt="Profile Photo" class="profile-img" onerror="this.style.display='none'">
+            <div style="width:200px; height:200px; background:#ddd; border-radius:50%; margin: 0 auto 20px; display:flex; align-items:center; justify-content:center; color:#888;" id="placeholder-img">
+                사진
+            </div>
+            
+            <h1 class="profile-name">홍길동 (Name)</h1>
+            <div class="profile-role">Ph.D. Candidate in Sociology</div>
+            <div class="profile-univ">Seoul National University</div> <div class="social-links">
+                <a href="#" class="social-btn">CV (PDF)</a>
+                <a href="#" class="social-btn">Google Scholar</a>
+            </div>
+
+            <div class="contact-info">
+                <h3>Research Interests</h3>
+                <p>#Social Movement</p>
+                <p>#Gender & Sexuality</p>
+                <p>#Political Sociology</p>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            
+            <section id="about">
+                <h2 class="section-title">About Me</h2>
+                <div class="about-text">
+                    <p>
+                        안녕하세요, 사회학 연구자 <strong>[이름]</strong>의 홈페이지에 오신 것을 환영합니다.<br>
+                        저는 현재 <strong>[학교명]</strong>에서 박사 과정을 밟고 있으며, 주로 한국 사회의 <strong>사회 운동(Social Movements)</strong>과 <strong>젠더/퀴어 정치(Queer Politics)</strong>의 상호작용에 관심을 두고 연구하고 있습니다.
+                    </p>
+                    <p>
+                        최근에는 성소수자 인권 운동의 역사적 흐름과 반차별 담론의 형성에 관한 질적 연구를 수행 중입니다.
+                    </p>
+                </div>
+            </section>
+
+            <section id="publications">
+                <h2 class="section-title">Recent Publications</h2>
+                
+                <div class="pub-item">
+                    <div class="pub-title">Anti-Discrimination as a Political Project: The South Korean LGBTQ Movement</div>
+                    <div class="pub-info">Under Review, 2026. (with Co-author name)</div>
+                </div>
+
+                <div class="pub-item">
+                    <div class="pub-title">한국 페미니즘 리부트와 퀴어 정치의 교차점 (10-Year Retrospective)</div>
+                    <div class="pub-info">한국사회학회지, 2025.</div>
+                </div>
+            </section>
+
+            <section id="research">
+                <h2 class="section-title">Research Experience</h2>
+                <div class="about-text">
+                    <p>
+                        <strong>[Doctoral Dissertation]</strong><br>
+                        "The History of South Korean LGBTQ Rights Movement" (In progress, expected 2026)
+                    </p>
+                    <p>
+                        <strong>[Ongoing Projects]</strong><br>
+                        - Quantitative Research on Health Disparities among Sexual Minorities<br>
+                        - Comparative Survey in Korea, Taiwan, and Japan
+                    </p>
+                </div>
+            </section>
+            
+            <section id="cv">
+                <h2 class="section-title">Education</h2>
+                <div class="cv-item">
+                    <div class="cv-year">2023-</div>
+                    <div class="cv-desc">Ph.D. Student in Sociology, [University Name]</div>
+                </div>
+                <div class="cv-item">
+                    <div class="cv-year">2021</div>
+                    <div class="cv-desc">M.A. in Sociology, [University Name]</div>
+                </div>
+                <div class="cv-item">
+                    <div class="cv-year">2019</div>
+                    <div class="cv-desc">B.A. in Sociology, Chung-Ang University</div>
+                </div>
+            </section>
+
+            <section id="contact">
+                <h2 class="section-title">Contact</h2>
+                <p>
+                    <strong>Email:</strong> your_email@example.com<br>
+                    <strong>Office:</strong> Building 101, Room 204
+                </p>
+            </section>
+
+        </main>
+    </div>
+
+    <script>
+        const img = document.querySelector('.profile-img');
+        const placeholder = document.getElementById('placeholder-img');
+        img.onload = () => { placeholder.style.display = 'none'; img.style.display = 'block'; };
+        img.onerror = () => { placeholder.style.display = 'flex'; img.style.display = 'none'; };
+    </script>
 </body>
 </html>
