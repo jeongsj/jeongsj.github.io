@@ -1,1 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data & Research - Seong-Jo Jeong</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        /* [Style Settings] */
+        :root {
+            --primary-color: #6aa84f; 
+            --secondary-color: #38761d;
+            --bg-color: #fdfdfd;
+            --text-color: #333;
+            --light-gray: #f8f9fa;
+            --hover-bg: #f1f8e9;
+            --award-color: #0a7e8c; 
+            --tag-color: #888;
+        }
 
+        body {
+            font-family: 'Noto Sans', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        /* Navigation */
+        nav {
+            background-color: white;
+            border-bottom: 1px solid #eee;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            padding: 0 20px;
+        }
+
+        .nav-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 60px;
+        }
+
+        .nav-logo {
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: var(--secondary-color);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 25px;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #555;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.3s;
+            text-transform: capitalize;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--primary-color);
+            font-weight: 700;
+        }
+
+        /* Layout */
+        .container {
+            max-width: 1000px;
+            margin: 50px auto;
+            display: grid;
+            grid-template-columns: 200px 1fr;
+            gap: 60px;
+            padding: 0 20px;
+        }
+
+        /* Sidebar Menu */
+        .sidebar-menu {
+            position: sticky;
+            top: 100px;
+        }
+
+        .sidebar-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--secondary-color);
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--primary-color);
+        }
+
+        .menu-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .menu-list li {
+            margin-bottom: 15px;
+        }
+
+        .menu-list a {
+            text-decoration: none;
+            color: #555;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: all 0.2s;
+            display: block;
+            border-left: 3px solid transparent;
+            padding-left: 10px;
+        }
+
+        .menu-list a:hover {
+            color: var(--primary-color);
+            border-left: 3px solid var(--primary-color);
+        }
+
+        /* Main Content */
+        .main-content {
+            display: flex;
+            flex-direction: column;
+            gap: 60px;
+        }
+
+        section {
+            scroll-margin-top: 80px;
+        }
+
+        .section-header {
+            font-size: 1.5rem;
+            color: var(--secondary-color);
+            border-bottom: 1px solid #eee;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        /* Item Style */
+        .item-box {
+            display: block;
+            background-color: white;
+            border: 1px solid #eee;
+            border-radius: 8px;
+            padding: 25px;
+            margin-bottom: 25px;
+            transition: all 0.3s ease;
+        }
+
+        .item-box:hover {
+            background-color: var(--hover-bg);
+            border-color: var(--primary-color);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            transform: translateY(-2px);
+        }
+
+        /* Data & Project Meta */
+        .item-meta {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            flex-wrap: wrap; 
+        }
+
+        .item-title {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: #111;
+            line-height: 1.4;
+            flex: 1;
+            margin-right: 15px;
+        }
+
+        .year-badge {
+            background-color: var(--primary-color);
+            color: white;
+            font-weight: 700;
+            font-size: 0.8rem;
+            padding: 4px 10px;
+            border-radius: 4px;
+            letter-spacing: 0.5px;
+            white-space: nowrap;
+        }
+
+        .item-info {
+            font-size: 0.95rem;
+            color: #555;
+            margin-bottom: 6px;
+        }
+
+        .item-role {
+            font-size: 0.95rem;
+            color: #333;
+            font-weight: 500;
+            margin-bottom: 10px;
+        }
+
+        .item-link a {
+            display: inline-block;
+            color: var(--secondary-color);
+            font-size: 0.9rem;
+            font-weight: 500;
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+        }
+
+        .item-link a:hover {
+            border-bottom: 1px solid var(--secondary-color);
+            color: var(--primary-color);
+        }
+        
+        .agency {
+            color: #777;
+            font-style: italic;
+        }
+
+        /* Mobile */
+        @media (max-width: 768px) {
+            .container { grid-template-columns: 1fr; gap: 40px; }
+            .nav-links { display: none; }
+            .nav-container { justify-content: center; }
+            .sidebar-menu { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">Seong-Jo Jeong</a>
+            <ul class="nav-links">
+                <li><a href="index.html#about">About</a></li>
+                <li><a href="publications.html">Publications</a></li>
+                <li><a href="research.html" class="active">Data & Research</a></li>
+                <li><a href="cv.pdf" target="_blank">CV</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        
+        <aside class="sidebar-menu">
+            <div class="sidebar-title">Data & Research</div>
+            <ul class="menu-list">
+                <li><a href="#data">Data</a></li>
+                <li><a href="#ongoing">Ongoing Projects</a></li>
+                <li><a href="#completed">Completed Projects</a></li>
+            </ul>
+        </aside>
+
+        <main class="main-content">
+            
+            <section id="data">
+                <h2 class="section-header">Data</h2>
+
+                <div class="item-box">
+                    <div class="item-meta">
+                        <div class="item-title">Archive of Korean LGBTQ Studies, 1964-2021</div>
+                        <span class="year-badge">2024</span>
+                    </div>
+                    <div class="item-info">Database, 1,979 articles</div>
+                    <div class="item-role">Co-principal Investigator (Collective project of Junior Scholars Network of LGBTIQ Research)</div>
+                    <div class="item-link"><a href="https://queerstudies.kr/archive" target="_blank">https://queerstudies.kr/archive →</a></div>
+                </div>
+
+                <div class="item-box">
+                    <div class="item-meta">
+                        <div class="item-title">Survey on Academic Environment of LGBTQ/Queer Studies</div>
+                        <span class="year-badge">2025</span>
+                    </div>
+                    <div class="item-info">Survey data, n=192</div>
+                    <div class="item-role">Principal Investigator (Korean Association for LGBTQ+ and Queer Studies)</div>
+                    <div class="item-link"><a href="#">Data Brief →</a></div>
+                </div>
+
+                <div class="item-box">
+                    <div class="item-meta">
+                        <div class="item-title">Survey on Discrimination based on Sexual Orientation and Gender Identity</div>
+                        <span class="year-badge">2025</span>
+                    </div>
+                    <div class="item-info">Survey & Interview Data</div>
+                    <div class="item-role">Co-Researcher (National Human Rights Commission of Korea)</div>
+                    <div class="item-link"><a href="#">Link to Report →</a></div>
+                </div>
+
+                <div class="item-box">
+                    <div class="item-meta">
+                        <div class="item-title">Study on LGBTQ Labor Rights and Discrimination</div>
+                        <span class="year-badge">2025</span>
+                    </div>
+                    <div class="item-info">Qualitative & Quantitative Data</div>
+                    <div class="item-role">Principal Investigator (Seoul National University School of Law)</div>
+                    <div class="item-link"><a href="#">Link to Report →</a></div>
+                </div>
+
+                <div class="item-box">
+                    <div class="item-meta">
+                        <div class="item-title">2021 Survey on Social Needs and Living Conditions of LGBTQ Youth</div>
+                        <span class="year-badge">2021</span>
+                    </div>
+                    <div class="item-info">Survey data (n=3,911)</div>
+                    <div class="item-role">Principal Investigator (Seoul Youth Hub)</div>
+                    <div class="item-link"><a href="#">Link to Report →</a></div>
+                </div>
+
+            </section>
+
+            <section id="ongoing">
+                <h2 class="section-header">Ongoing Projects</h2>
+
+                <div class="item-box">
+                    <div class="item-meta">
+                        <div class="item-title">Comparative Study of Three East Asian Countries (Japan, South Korea, Taiwan): LGBTQ+ Legal Systems, Public Attitudes, and Experiences</div>
+                        <span class="year-badge">2024-2025</span>
+                    </div>
+                    <div class="item-role">Principal Investigator</div>
+                    [cite_start]<div class="item-info agency">Funded by The East Asian Alliance on Equality and Anti-Discrimination Advocacy [cite: 77, 78]</div>
+                </div>
+
+            </section>
+
+            <section id="completed">
+                <h2 class="section-header">Completed Projects</h2>
+
+                <div class="item-box">
+                    <div class="item-meta">
+                        <div class="item-title">2023 Survey on Sexual Harassment and Sexual Violence in the Korean Film Industry</div>
+                        <span class="year-badge">2023-2024</span>
+                    </div>
+                    <div class="item-role">Co-Researcher</div>
+                    [cite_start]<div class="item-info agency">Funded by Korean Film Council (KOFIC) [cite: 79]</div>
+                </div>
+
+                <div class="item-box">
+                    <div class="item-meta">
+                        <div class="item-title">The Formation and Diffusion of University LGBTQ Movements: Focusing on QUV Activities</div>
+                        <span class="year-badge">2022-2023</span>
+                    </div>
+                    <div class="item-role">Principal Investigator</div>
+                    [cite_start]<div class="item-info agency">Funded by National Research Foundation of Korea (NRF) [cite: 81]</div>
+                </div>
+
+                <div class="item-box">
+                    <div class="item-meta">
+                        <div class="item-title">Politics of Solidarity in the Anti-Discrimination Law Movement</div>
+                        <span class="year-badge">2022-2024</span>
+                    </div>
+                    <div class="item-role">Research Assistant</div>
+                    [cite_start]<div class="item-info agency">Funded by National Research Foundation of Korea (NRF) [cite: 82]</div>
+                </div>
+
+                <div class="item-box">
+                    <div class="item-meta">
+                        <div class="item-title">Researchers' Conflict Experiences regarding IRBs in Humanities and Social Sciences</div>
+                        <span class="year-badge">2022</span>
+                    </div>
+                    <div class="item-role">Co-Researcher</div>
+                    [cite_start]<div class="item-info agency">Funded by National Research Council for Economics, Humanities and Social Sciences [cite: 80]</div>
+                </div>
+
+                <div class="item-box">
+                    <div class="item-meta">
+                        <div class="item-title">Mid-to-Long Term Development Plan for the Center for Gender Equality in Korean Film (Dundun)</div>
+                        <span class="year-badge">2021</span>
+                    </div>
+                    <div class="item-role">Co-Researcher</div>
+                    [cite_start]<div class="item-info agency">Funded by Women in Film Korea [cite: 83]</div>
+                </div>
+
+            </section>
+
+        </main>
+    </div>
+
+</body>
+</html>
