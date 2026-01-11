@@ -167,10 +167,10 @@
         /* Data & Project Meta */
         .item-meta {
             display: flex;
-            align-items: center;
-            justify-content: space-between;
+            align-items: flex-start; /* 상단 정렬 */
+            justify-content: space-between; /* 양쪽 끝 배치 */
             margin-bottom: 10px;
-            flex-wrap: wrap; 
+            gap: 15px;
         }
 
         .item-title {
@@ -178,19 +178,20 @@
             font-weight: 700;
             color: #111;
             line-height: 1.4;
-            flex: 1;
-            margin-right: 15px;
+            flex: 1; /* 남은 공간 모두 차지 */
         }
 
+        /* [수정] 1단계 색상(#8bc34a)으로 통일 */
         .year-badge {
-            background-color: var(--primary-color);
+            background-color: #8bc34a; 
             color: white;
             font-weight: 700;
             font-size: 0.8rem;
             padding: 4px 10px;
             border-radius: 4px;
             letter-spacing: 0.5px;
-            white-space: nowrap;
+            white-space: nowrap; /* 줄바꿈 방지 */
+            flex-shrink: 0; /* 크기 축소 방지 */
         }
 
         .item-info {
@@ -267,22 +268,12 @@
 
                 <div class="item-box">
                     <div class="item-meta">
-                        <div class="item-title">Archive of Korean LGBTQ Studies, 1964-2021</div>
-                        <span class="year-badge">2024</span>
-                    </div>
-                    <div class="item-info">Database, 1,979 articles</div>
-                    <div class="item-role">Co-principal Investigator (Collective project of Junior Scholars Network of LGBTIQ Research)</div>
-                    <div class="item-link"><a href="https://queerstudies.kr/archive" target="_blank">https://queerstudies.kr/archive →</a></div>
-                </div>
-
-                <div class="item-box">
-                    <div class="item-meta">
                         <div class="item-title">Survey on Academic Environment of LGBTQ/Queer Studies</div>
                         <span class="year-badge">2025</span>
                     </div>
                     <div class="item-info">Survey data, n=192</div>
                     <div class="item-role">Principal Investigator (Korean Association for LGBTQ+ and Queer Studies)</div>
-                    <div class="item-link"><a href="#">Data Brief →</a></div>
+                    <div class="item-link"><a href="#">Data Overview & Access →</a></div>
                 </div>
 
                 <div class="item-box">
@@ -292,7 +283,7 @@
                     </div>
                     <div class="item-info">Survey & Interview Data</div>
                     <div class="item-role">Co-Researcher (National Human Rights Commission of Korea)</div>
-                    <div class="item-link"><a href="#">Link to Report →</a></div>
+                    <div class="item-link"><a href="#">Data Overview & Access →</a></div>
                 </div>
 
                 <div class="item-box">
@@ -302,7 +293,17 @@
                     </div>
                     <div class="item-info">Qualitative & Quantitative Data</div>
                     <div class="item-role">Principal Investigator (Seoul National University School of Law)</div>
-                    <div class="item-link"><a href="#">Link to Report →</a></div>
+                    <div class="item-link"><a href="#">Data Overview & Access →</a></div>
+                </div>
+
+                <div class="item-box">
+                    <div class="item-meta">
+                        <div class="item-title">Archive of Korean LGBTQ Studies, 1964-2021</div>
+                        <span class="year-badge">2024</span>
+                    </div>
+                    <div class="item-info">Bibliographic Metadata, 1,979 articles</div>
+                    <div class="item-role">Co-principal Investigator (Collective project of Junior Scholars Network of LGBTIQ Research)</div>
+                    <div class="item-link"><a href="https://queerstudies.kr/archive" target="_blank">Data Overview & Access →</a></div>
                 </div>
 
                 <div class="item-box">
@@ -312,7 +313,7 @@
                     </div>
                     <div class="item-info">Survey data (n=3,911)</div>
                     <div class="item-role">Principal Investigator (Seoul Youth Hub)</div>
-                    <div class="item-link"><a href="#">Link to Report →</a></div>
+                    <div class="item-link"><a href="#">Data Overview & Access →</a></div>
                 </div>
 
             </section>
