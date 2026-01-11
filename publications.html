@@ -1,1 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Publications - Seong-Jo Jeong</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        /* [Style Settings: index.html과 동일한 테마] */
+        :root {
+            --primary-color: #6aa84f; 
+            --secondary-color: #38761d;
+            --bg-color: #fdfdfd;
+            --text-color: #333;
+            --light-gray: #f8f9fa;
+            --hover-bg: #f1f8e9;
+            --award-color: #0a7e8c; 
+            --tag-color: #888;
+        }
 
+        body {
+            font-family: 'Noto Sans', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        /* Navigation */
+        nav {
+            background-color: white;
+            border-bottom: 1px solid #eee;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            padding: 0 20px;
+        }
+
+        .nav-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 60px;
+        }
+
+        .nav-logo {
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: var(--secondary-color);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 25px;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #555;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.3s;
+            text-transform: capitalize;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--primary-color);
+            font-weight: 700;
+        }
+
+        /* Layout */
+        .container {
+            max-width: 1000px;
+            margin: 50px auto;
+            display: grid;
+            grid-template-columns: 200px 1fr; /* 사이드바 너비 조정 */
+            gap: 60px;
+            padding: 0 20px;
+        }
+
+        /* [Left Sidebar: Sticky Menu] */
+        .sidebar-menu {
+            position: sticky;
+            top: 100px; /* 스크롤 시 상단 여백 */
+        }
+
+        .sidebar-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--secondary-color);
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--primary-color);
+        }
+
+        .menu-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .menu-list li {
+            margin-bottom: 15px;
+        }
+
+        .menu-list a {
+            text-decoration: none;
+            color: #555;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: all 0.2s;
+            display: block;
+            border-left: 3px solid transparent;
+            padding-left: 10px;
+        }
+
+        .menu-list a:hover {
+            color: var(--primary-color);
+            border-left: 3px solid var(--primary-color);
+        }
+
+        /* Main Content */
+        .main-content {
+            display: flex;
+            flex-direction: column;
+            gap: 60px;
+        }
+
+        section {
+            scroll-margin-top: 80px; /* 메뉴 클릭 시 가림 방지 */
+        }
+
+        .section-header {
+            font-size: 1.5rem;
+            color: var(--secondary-color);
+            border-bottom: 1px solid #eee;
+            padding-bottom: 10px;
+            margin-bottom: 30px;
+            font-weight: 700;
+        }
+
+        /* Publication Block Style */
+        .pub-item {
+            display: block;
+            background-color: white;
+            border: 1px solid #eee;
+            border-radius: 8px;
+            padding: 25px; /* 내부 여백 약간 늘림 */
+            margin-bottom: 25px;
+            transition: all 0.3s ease;
+        }
+
+        .pub-item:hover {
+            background-color: var(--hover-bg);
+            border-color: var(--primary-color);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            transform: translateY(-2px);
+        }
+
+        .pub-meta {
+            display: flex;
+            align-items: center;
+            margin-bottom: 8px;
+            flex-wrap: wrap; 
+        }
+
+        .pub-author {
+            font-size: 0.95rem;
+            color: #333;
+            font-weight: 400;
+            margin-right: 10px;
+        }
+
+        .pub-author b {
+            font-weight: 700;
+            color: #000;
+        }
+
+        .pub-year {
+            background-color: var(--primary-color);
+            color: white;
+            font-weight: 700;
+            font-size: 0.8rem;
+            padding: 3px 9px;
+            border-radius: 4px;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+
+        .pub-title {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: #111;
+            margin-bottom: 8px;
+            line-height: 1.4;
+        }
+
+        .lang-tag {
+            font-size: 0.85rem;
+            color: var(--tag-color);
+            font-weight: 400;
+            margin-left: 5px;
+        }
+
+        .pub-journal {
+            font-size: 0.95rem;
+            color: #777; 
+            margin-bottom: 8px;
+        }
+
+        .pub-award {
+            font-size: 0.9rem;
+            color: var(--award-color);
+            font-weight: 600;
+            margin-top: 8px;
+            margin-bottom: 8px;
+        }
+
+        /* [DOI Style] */
+        .pub-doi {
+            margin-top: 10px;
+            font-size: 0.85rem;
+        }
+
+        .pub-doi a {
+            color: var(--secondary-color);
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            font-family: monospace; /* URL 느낌을 주기 위해 */
+        }
+
+        .pub-doi a:hover {
+            border-bottom: 1px solid var(--secondary-color);
+            color: var(--primary-color);
+        }
+
+        /* Mobile */
+        @media (max-width: 768px) {
+            .container { grid-template-columns: 1fr; gap: 40px; }
+            .nav-links { display: none; }
+            .nav-container { justify-content: center; }
+            .sidebar-menu { display: none; /* 모바일에서는 사이드 목차 숨김 (선택사항) */ }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">Seong-Jo Jeong</a>
+            <ul class="nav-links">
+                <li><a href="index.html#about">About</a></li>
+                <li><a href="publications.html" class="active">Publications</a></li> <li><a href="research.html">Research & Data</a></li>
+                <li><a href="cv.pdf" target="_blank">CV</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        
+        <aside class="sidebar-menu">
+            <div class="sidebar-title">Publications</div>
+            <ul class="menu-list">
+                <li><a href="#published">Published Papers</a></li>
+                <li><a href="#review">Under Review</a></li>
+                <li><a href="#prep">In Preparation</a></li>
+            </ul>
+        </aside>
+
+        <main class="main-content">
+            
+            <section id="published">
+                <h2 class="section-header">Published Papers</h2>
+                
+                <div class="pub-item">
+                    <div class="pub-meta">
+                        <span class="pub-author">Minsu Song, Seung-Yeol Yee, and <b>Seong-Jo Jeong</b></span>
+                        <span class="pub-year">Forthcoming</span>
+                    </div>
+                    <div class="pub-title">
+                        What Enables Coming Out at Work? An Analysis of Sexual and Gender Minority Workers’ Experiences in Korea
+                        <span class="lang-tag">(in Korean)</span>
+                    </div>
+                    <div class="pub-journal">Korean Journal of Industrial Relations</div>
+                    <div class="pub-doi"><a href="#" target="_blank">https://doi.org/10.xxxx/example.doi</a></div>
+                </div>
+
+                <div class="pub-item">
+                    <div class="pub-meta">
+                        <span class="pub-author"><b>Seong-Jo Jeong</b>, So-Yeon Cho, and Na-Young Lee</span>
+                        <span class="pub-year">2025</span>
+                    </div>
+                    <div class="pub-title">
+                        The December 3 Impeachment Square and Queer Visibility
+                        <span class="lang-tag">(in Korean)</span>
+                    </div>
+                    <div class="pub-journal">Korean Journal of Sociology</div>
+                    <div class="pub-doi"><a href="#" target="_blank">https://doi.org/10.xxxx/example.doi</a></div>
+                </div>
+
+                <div class="pub-item">
+                    <div class="pub-meta">
+                        <span class="pub-author">So-Yeon Cho, <b>Seong-Jo Jeong</b>, and Na-Young Lee</span>
+                        <span class="pub-year">2025</span>
+                    </div>
+                    <div class="pub-title">
+                        Encountering Between Fandom and Impeachment Square: Experiences of 2030 Women and Gendered Cultural Politics
+                        <span class="lang-tag">(in Korean)</span>
+                    </div>
+                    <div class="pub-journal">Media, Gender & Culture</div>
+                    <div class="pub-doi"><a href="#" target="_blank">https://doi.org/10.xxxx/example.doi</a></div>
+                </div>
+
+                <div class="pub-item">
+                    <div class="pub-meta">
+                        <span class="pub-author">Heeyoung Lee and <b>Seong-Jo Jeong</b></span>
+                        <span class="pub-year">2025</span>
+                    </div>
+                    <div class="pub-title">Gender Differences in the Relationship between Coming Out as LGB to Family and Depression in South Korea</div>
+                    <div class="pub-journal">Society and Mental Health</div>
+                    <div class="pub-award">
+                        - 2024 Paul Meadows, Excellence in Research Award Winner, Sociology Department, University at Albany, SUNY<br>
+                        - 2023 Excellence Award, The 20th Young Sociologist Award, Chung-Ang University
+                    </div>
+                    <div class="pub-doi"><a href="#" target="_blank">https://doi.org/10.xxxx/example.doi</a></div>
+                </div>
+
+                <div class="pub-item">
+                    <div class="pub-meta">
+                        <span class="pub-author"><b>Seong-Jo Jeong</b>, Heeyoung Lee, and Chan S. Suh</span>
+                        <span class="pub-year">2025</span>
+                    </div>
+                    <div class="pub-title">Moving Apart, Coming Together: The Formation of an LGBTQ Movement Community in South Korea</div>
+                    <div class="pub-journal">Journal of Homosexuality</div>
+                    <div class="pub-doi"><a href="#" target="_blank">https://doi.org/10.xxxx/example.doi</a></div>
+                </div>
+            </section>
+
+            <section id="review">
+                <h2 class="section-header">Under Review</h2>
+                
+                <div class="pub-item">
+                    <div class="pub-meta">
+                        <span class="pub-author"><b>Seong-Jo Jeong</b> and Co-Author Name</span>
+                        <span class="pub-year">2026</span>
+                    </div>
+                    <div class="pub-title">Anti-Discrimination as a Political Project: The South Korean LGBTQ Movement and Intersectional Solidarity</div>
+                    <div class="pub-journal">Under Review</div>
+                </div>
+
+                </section>
+
+            <section id="prep">
+                <h2 class="section-header">In Preparation</h2>
+                
+                <div class="pub-item">
+                    <div class="pub-meta">
+                        <span class="pub-author"><b>Seong-Jo Jeong</b></span>
+                        <span class="pub-year">Working Paper</span>
+                    </div>
+                    <div class="pub-title">The History of South Korean LGBTQ Rights Movement (Tentative Title)</div>
+                    <div class="pub-journal">Doctoral Dissertation Project</div>
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+</body>
+</html>
