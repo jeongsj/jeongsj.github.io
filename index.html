@@ -14,7 +14,8 @@
             --text-color: #333;
             --light-gray: #f8f9fa;
             --hover-bg: #eef9fb;
-            --award-color: #6aa84f; /* 수상 색상 (녹색) 변경 */
+            --award-color: #6aa84f; /* 수상 색상 (녹색) */
+            --tag-color: #888; /* (in Korean) 표기 색상 */
         }
 
         body {
@@ -226,15 +227,22 @@
             transform: translateY(-2px);
         }
 
-        /* 메타 정보(연도 + 저자) 묶음 */
+        /* 메타 정보(저자 + 연도) 묶음 */
         .pub-meta {
             display: flex;
             align-items: center;
             margin-bottom: 8px;
-            gap: 10px;
+            flex-wrap: wrap; /* 모바일 대응 */
         }
 
-        /* 연도 스타일 (뱃지 형태) */
+        .pub-author {
+            font-size: 0.95rem;
+            color: #333;
+            font-weight: 500;
+            margin-right: 10px;
+        }
+
+        /* 연도 스타일 (뱃지 형태) - 저자 뒤로 이동 */
         .pub-year {
             background-color: var(--light-gray);
             color: var(--secondary-color);
@@ -246,11 +254,6 @@
             text-transform: uppercase;
         }
 
-        .pub-author {
-            font-size: 0.95rem;
-            color: #555;
-        }
-
         .pub-title {
             font-size: 1.1rem;
             font-weight: 700;
@@ -259,16 +262,24 @@
             line-height: 1.4;
         }
 
+        /* (in Korean) 표기 스타일 */
+        .lang-tag {
+            font-size: 0.85rem;
+            color: var(--tag-color);
+            font-weight: 400;
+            margin-left: 5px;
+        }
+
         .pub-journal {
             font-size: 0.95rem;
-            color: #777; /* 회색으로 변경 */
-            font-style: normal; /* 기울임꼴 제거 */
+            color: #777; 
+            font-style: normal; 
             margin-bottom: 6px;
         }
 
         .pub-award {
             font-size: 0.9rem;
-            color: var(--award-color); /* 녹색 적용 */
+            color: var(--award-color);
             font-weight: 600;
             margin-top: 8px;
         }
@@ -371,30 +382,33 @@
                 
                 <div class="pub-item">
                     <div class="pub-meta">
+                        <span class="pub-author">Min-Soo Song, Seung-Ryeol Lee, and Seong-Jo Jeong*.</span>
                         <span class="pub-year">Forthcoming</span>
-                        <span class="pub-author">송민수, 이승렬, 정성조*.</span>
                     </div>
-                    <div class="pub-title">직장에서 커밍아웃할 수 있는 조건은 무엇인가: 한국 성소수자 노동자의 경험 분석</div>
-                    <div class="pub-journal">『산업관계연구』</div>
+                    <div class="pub-title">
+                        What are the Conditions for Coming Out at Work: An Analysis of the Experiences of South Korean LGBTQ Workers
+                        <span class="lang-tag">(in Korean)</span>
+                    </div>
+                    <div class="pub-journal">Journal of Industrial Relations</div>
                 </div>
 
                 <div class="pub-item">
                     <div class="pub-meta">
-                        <span class="pub-year">2025</span>
                         <span class="pub-author">Heeyoung Lee and Seong-Jo Jeong.</span>
+                        <span class="pub-year">2025</span>
                     </div>
                     <div class="pub-title">Gender Differences in the Relationship between Coming Out as LGB to Family and Depression in South Korea</div>
                     <div class="pub-journal">Society and Mental Health</div>
                     <div class="pub-award">
                         - 2024 Paul Meadows, Excellence in Research Award Winner, Sociology Department, University at Albany, SUNY<br>
-                        - 2023 제20회 청년사회학도상 우수상, 중앙대학교 사회학과
+                        - 2023 Excellence Award, The 20th Young Sociologist Award, Chung-Ang University
                     </div>
                 </div>
 
                 <div class="pub-item">
                     <div class="pub-meta">
-                        <span class="pub-year">2025</span>
                         <span class="pub-author">Seong-Jo Jeong, Heeyoung Lee, and Chan S. Suh.</span>
+                        <span class="pub-year">2025</span>
                     </div>
                     <div class="pub-title">Moving Apart, Coming Together: The Formation of an LGBTQ Movement Community in South Korea</div>
                     <div class="pub-journal">Journal of Homosexuality</div>
@@ -402,20 +416,26 @@
 
                 <div class="pub-item">
                     <div class="pub-meta">
+                        <span class="pub-author">Seong-Jo Jeong, So-Yeon Jo, and Na-Young Lee.</span>
                         <span class="pub-year">2025</span>
-                        <span class="pub-author">정성조, 조소연, 이나영.</span>
                     </div>
-                    <div class="pub-title">12·3 탄핵 광장과 퀴어 가시성</div>
-                    <div class="pub-journal">『한국사회학』</div>
+                    <div class="pub-title">
+                        The 12·3 Impeachment Square and Queer Visibility
+                        <span class="lang-tag">(in Korean)</span>
+                    </div>
+                    <div class="pub-journal">Korean Journal of Sociology</div>
                 </div>
 
                 <div class="pub-item">
                     <div class="pub-meta">
+                        <span class="pub-author">So-Yeon Jo, Seong-Jo Jeong, and Na-Young Lee.</span>
                         <span class="pub-year">2025</span>
-                        <span class="pub-author">조소연, 정성조, 이나영.</span>
                     </div>
-                    <div class="pub-title">팬덤과 광장의 조우: 2030 여성들의 윤석열 탄핵 광장 참여 경험을 통해 본 젠더화된 문화정치</div>
-                    <div class="pub-journal">『미디어, 젠더 & 문화』</div>
+                    <div class="pub-title">
+                        Encounter between Fandom and the Square: Gendered Cultural Politics through 2030 Women's Experience in Yoon Suk-yeol Impeachment Protests
+                        <span class="lang-tag">(in Korean)</span>
+                    </div>
+                    <div class="pub-journal">Media, Gender & Culture</div>
                 </div>
 
                 <div class="view-all-container">
