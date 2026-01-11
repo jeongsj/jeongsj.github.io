@@ -390,7 +390,6 @@
                 <li><a href="research.html">Data & Research</a></li>
                 <li><a href="writings.html">Public Sociology</a></li>
                 <li><a href="cv.html">CV</a></li>
-                <li><a href="contact.html">Contact</a></li>
             </ul>
         </div>
     </nav>
@@ -514,11 +513,7 @@
     </div>
 
     <script>
-        const img = document.querySelector('.profile-img');
-        const placeholder = document.getElementById('placeholder-img');
-        img.onload = () => { placeholder.style.display = 'none'; img.style.display = 'block'; };
-        img.onerror = () => { placeholder.style.display = 'flex'; img.style.display = 'none'; };
-        
+
         function toggleMenu() {
             document.getElementById("navLinks").classList.toggle("active");
         }
