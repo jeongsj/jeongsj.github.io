@@ -174,18 +174,21 @@
             transform: translateY(-2px);
         }
 
+        /* [수정] 메타 정보(저자 + 연도) 레이아웃: 양쪽 정렬 적용 */
         .pub-meta {
             display: flex;
-            align-items: center;
+            align-items: flex-start; /* 텍스트가 길어질 경우 상단 기준 정렬 */
+            justify-content: space-between; /* 핵심: 저자는 왼쪽, 뱃지는 오른쪽 끝으로 배치 */
             margin-bottom: 8px;
-            flex-wrap: wrap; 
+            gap: 15px; /* 저자명과 뱃지 사이 최소 간격 */
         }
 
         .pub-author {
             font-size: 0.95rem;
             color: #333;
             font-weight: 400;
-            margin-right: 10px;
+            /* margin-right: 10px;  <-- 이 줄은 삭제하거나 주석 처리 (space-between으로 자동 조절됨) */
+            line-height: 1.4; /* 저자명이 길어서 줄바꿈 될 때 간격 */
         }
 
         .pub-author b {
@@ -193,9 +196,8 @@
             color: #000;
         }
 
-        /* Badge Style (Year / Status) */
+        /* [수정] 뱃지 스타일 보완 */
         .pub-badge {
-            /* 기본값 (연도 표기 등): 메인 테마색 */
             background-color: var(--primary-color);
             color: white;
             font-weight: 700;
@@ -204,6 +206,8 @@
             border-radius: 4px;
             letter-spacing: 0.5px;
             text-transform: uppercase;
+            white-space: nowrap; /* [중요] 화면이 좁아져도 뱃지 텍스트가 줄바꿈되지 않도록 고정 */
+            flex-shrink: 0; /* [중요] 공간이 부족해도 뱃지 크기가 찌그러지지 않음 */
         }
 
         /* [Status Colors: Green Gradient] */
