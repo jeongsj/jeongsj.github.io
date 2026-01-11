@@ -1,22 +1,22 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>연구자 홈페이지</title>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <title>Seong-Jo Jeong</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
     <style>
-        /* [스타일 설정: 화사하고 심플한 디자인] */
+        /* [Style Settings: Clean & Bright] */
         :root {
-            --primary-color: #48cae4; /* 포인트 색상: 화사한 하늘색 */
-            --secondary-color: #0077b6; /* 짙은 파란색 (강조용) */
-            --bg-color: #fdfdfd;      /* 전체 배경: 아주 연한 미색 */
-            --text-color: #333;       /* 기본 글자색 */
-            --light-gray: #f0f4f8;    /* 섹션 배경색 */
+            --primary-color: #48cae4; /* Mint/Sky Blue */
+            --secondary-color: #0077b6; /* Darker Blue */
+            --bg-color: #fdfdfd;      /* Off-white background */
+            --text-color: #333;       /* Dark gray text */
+            --light-gray: #f0f4f8;    /* Section background */
         }
 
         body {
-            font-family: 'Noto Sans KR', sans-serif;
+            font-family: 'Noto Sans', sans-serif;
             margin: 0;
             padding: 0;
             background-color: var(--bg-color);
@@ -24,11 +24,11 @@
             line-height: 1.6;
         }
 
-        /* 1. 상단 메뉴바 (Navigation) */
+        /* 1. Navigation Bar */
         nav {
             background-color: white;
             border-bottom: 1px solid #eee;
-            position: sticky; /* 스크롤 내려도 상단 고정 */
+            position: sticky;
             top: 0;
             z-index: 1000;
             padding: 0 20px;
@@ -36,10 +36,10 @@
         }
 
         .nav-container {
-            max-width: 1100px;
+            max-width: 1000px;
             margin: 0 auto;
             display: flex;
-            justify-content: space-between;
+            justify-content: space-between; /* Logo left, Menu right */
             align-items: center;
             height: 60px;
         }
@@ -54,7 +54,7 @@
         .nav-links {
             list-style: none;
             display: flex;
-            gap: 25px;
+            gap: 30px;
             margin: 0;
             padding: 0;
         }
@@ -65,24 +65,23 @@
             font-weight: 500;
             font-size: 0.95rem;
             transition: color 0.3s;
-            text-transform: capitalize; /* 첫 글자 대문자 */
         }
 
         .nav-links a:hover {
             color: var(--primary-color);
         }
 
-        /* 2. 메인 레이아웃 (좌측 프로필 + 우측 본문) */
+        /* 2. Main Layout (Sidebar + Content) */
         .container {
-            max-width: 1100px;
-            margin: 40px auto;
+            max-width: 1000px;
+            margin: 50px auto;
             display: grid;
-            grid-template-columns: 280px 1fr; /* 좌측 280px, 우측 나머지 */
-            gap: 50px;
+            grid-template-columns: 280px 1fr; /* 280px Sidebar */
+            gap: 60px;
             padding: 0 20px;
         }
 
-        /* [좌측 사이드바: 프로필 영역] */
+        /* [Left Sidebar: Profile] */
         .profile-sidebar {
             text-align: center;
         }
@@ -90,81 +89,106 @@
         .profile-img {
             width: 200px;
             height: 200px;
-            border-radius: 50%; /* 원형 이미지 */
+            border-radius: 50%;
             object-fit: cover;
             border: 4px solid white;
             box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            margin-bottom: 20px;
-            background-color: #eee; /* 이미지가 없을 때 회색 배경 */
+            margin-bottom: 25px;
+            background-color: #eee;
         }
 
         .profile-name {
-            font-size: 1.8rem;
+            font-size: 1.6rem;
             font-weight: 700;
             margin: 10px 0 5px 0;
             color: #222;
+            line-height: 1.2;
+        }
+        
+        .profile-name span {
+            display: block;
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: #666;
+            margin-top: 5px;
         }
 
         .profile-role {
-            color: #666;
+            color: #555;
             font-size: 0.95rem;
-            margin-bottom: 5px;
+            margin-top: 15px;
             font-weight: 500;
         }
 
         .profile-univ {
-            color: #888;
+            color: #777;
             font-size: 0.9rem;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
         }
 
-        .contact-info {
-            font-size: 0.9rem;
-            color: #555;
-            margin-top: 20px;
-            text-align: left;
-            padding: 0 10px;
-        }
-        
-        .contact-info p {
-            margin: 5px 0;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
+        /* Profile Buttons */
         .social-links {
-            margin-top: 20px;
             display: flex;
-            justify-content: center;
-            gap: 15px;
+            flex-direction: column; /* Stacked buttons */
+            gap: 10px;
+            margin-bottom: 30px;
+            align-items: center;
         }
 
         .social-btn {
-            display: inline-block;
-            padding: 8px 15px;
-            background-color: var(--light-gray);
+            display: block;
+            width: 160px;
+            padding: 8px 0;
+            background-color: white;
+            border: 1px solid #ddd;
             color: #555;
             text-decoration: none;
-            border-radius: 20px;
-            font-size: 0.85rem;
+            border-radius: 25px;
+            font-size: 0.9rem;
             transition: all 0.2s;
         }
 
         .social-btn:hover {
             background-color: var(--primary-color);
             color: white;
+            border-color: var(--primary-color);
         }
 
-        /* [우측 메인 콘텐츠 영역] */
+        /* Research Interests Tags */
+        .interests-section {
+            text-align: left;
+            padding: 0 10px;
+        }
+        
+        .interests-title {
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: var(--secondary-color);
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .tag {
+            display: inline-block;
+            background-color: var(--light-gray);
+            color: #555;
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            margin-bottom: 6px;
+            margin-right: 4px;
+        }
+
+        /* [Right Main Content] */
         .main-content {
             display: flex;
             flex-direction: column;
-            gap: 40px;
+            gap: 50px;
         }
 
         section {
-            scroll-margin-top: 80px; /* 메뉴 클릭 시 가림 방지 */
+            scroll-margin-top: 80px;
         }
 
         .section-title {
@@ -176,62 +200,51 @@
             font-weight: 700;
         }
 
-        /* 소개글 스타일 */
         .about-text {
             font-size: 1.05rem;
             color: #444;
             line-height: 1.8;
+            text-align: justify;
         }
 
-        /* 논문 목록 스타일 */
+        /* Publications List */
         .pub-item {
-            margin-bottom: 20px;
-            padding-left: 15px;
-            border-left: 3px solid var(--primary-color);
+            margin-bottom: 25px;
         }
 
         .pub-title {
             font-weight: 700;
             font-size: 1.1rem;
             color: #222;
+            margin-bottom: 5px;
         }
 
         .pub-info {
             font-size: 0.95rem;
             color: #666;
-            margin-top: 4px;
+            font-style: italic;
         }
 
-        /* 경력 목록 스타일 */
-        .cv-item {
-            display: flex;
-            margin-bottom: 15px;
-        }
-        .cv-year {
-            width: 60px;
-            font-weight: 700;
-            color: var(--primary-color);
-            flex-shrink: 0;
-        }
-        .cv-desc {
-            color: #444;
-        }
-
-        /* 모바일 반응형 (화면이 좁을 때) */
+        /* Mobile Responsive */
         @media (max-width: 768px) {
             .container {
-                grid-template-columns: 1fr; /* 1단으로 변경 */
-                gap: 30px;
+                grid-template-columns: 1fr;
+                gap: 40px;
             }
             .profile-sidebar {
                 border-bottom: 1px solid #eee;
                 padding-bottom: 30px;
             }
             .nav-links {
-                display: none; /* 모바일에선 메뉴 일단 숨김 (복잡도 방지) */
+                display: none;
             }
             .nav-container {
                 justify-content: center;
+            }
+            .social-links {
+                flex-direction: row;
+                justify-content: center;
+                flex-wrap: wrap;
             }
         }
     </style>
@@ -240,13 +253,10 @@
 
     <nav>
         <div class="nav-container">
-            <a href="#" class="nav-logo">My Research</a>
+            <a href="#" class="nav-logo">Seong-Jo Jeong</a>
             <ul class="nav-links">
                 <li><a href="#about">About</a></li>
                 <li><a href="#publications">Publications</a></li>
-                <li><a href="#research">Research</a></li>
-                <li><a href="#cv">CV</a></li>
-                <li><a href="#contact">Contact</a></li>
             </ul>
         </div>
     </nav>
@@ -254,23 +264,31 @@
     <div class="container">
         
         <aside class="profile-sidebar">
-            <img src="photo.jpg" alt="Profile Photo" class="profile-img" onerror="this.style.display='none'">
-            <div style="width:200px; height:200px; background:#ddd; border-radius:50%; margin: 0 auto 20px; display:flex; align-items:center; justify-content:center; color:#888;" id="placeholder-img">
-                사진
+            <img src="photo.jpg" alt="Seong-Jo Jeong" class="profile-img" onerror="this.style.display='none'">
+            <div style="width:200px; height:200px; background:#e0e0e0; border-radius:50%; margin: 0 auto 25px; display:flex; align-items:center; justify-content:center; color:#888;" id="placeholder-img">
+                Photo
             </div>
             
-            <h1 class="profile-name">홍길동 (Name)</h1>
+            <h1 class="profile-name">
+                Seong-Jo Jeong
+                <span>(정성조)</span>
+            </h1>
+            
             <div class="profile-role">Ph.D. Candidate in Sociology</div>
-            <div class="profile-univ">Seoul National University</div> <div class="social-links">
-                <a href="#" class="social-btn">CV (PDF)</a>
-                <a href="#" class="social-btn">Google Scholar</a>
+            <div class="profile-univ">Chung-Ang University</div>
+
+            <div class="social-links">
+                <a href="#" class="social-btn" target="_blank">CV</a>
+                <a href="#" class="social-btn" target="_blank">Google Scholar</a>
+                <a href="#" class="social-btn" target="_blank">Twitter (X)</a>
             </div>
 
-            <div class="contact-info">
-                <h3>Research Interests</h3>
-                <p>#Social Movement</p>
-                <p>#Gender & Sexuality</p>
-                <p>#Political Sociology</p>
+            <div class="interests-section">
+                <div class="interests-title">Research Interests</div>
+                <span class="tag">#Social Movements</span>
+                <span class="tag">#Gender & Sexuality</span>
+                <span class="tag">#Sociology of Human Rights</span>
+                <span class="tag">#LGBTQ Health</span>
             </div>
         </aside>
 
@@ -280,11 +298,13 @@
                 <h2 class="section-title">About Me</h2>
                 <div class="about-text">
                     <p>
-                        안녕하세요, 사회학 연구자 <strong>[이름]</strong>의 홈페이지에 오신 것을 환영합니다.<br>
-                        저는 현재 <strong>[학교명]</strong>에서 박사 과정을 밟고 있으며, 주로 한국 사회의 <strong>사회 운동(Social Movements)</strong>과 <strong>젠더/퀴어 정치(Queer Politics)</strong>의 상호작용에 관심을 두고 연구하고 있습니다.
+                        Welcome. I am a Ph.D. Candidate in the Department of Sociology at Chung-Ang University, South Korea.
                     </p>
                     <p>
-                        최근에는 성소수자 인권 운동의 역사적 흐름과 반차별 담론의 형성에 관한 질적 연구를 수행 중입니다.
+                        My research interests lie at the intersection of <strong>social movements, gender, and sexuality</strong>. currently, I am conducting research on the history of the South Korean LGBTQ rights movement and the dynamics of anti-discrimination politics. I am also involved in quantitative research projects examining health disparities among sexual minorities in Korea.
+                    </p>
+                    <p>
+                        I aim to contribute to a better sociological understanding of how marginalized groups mobilize for their rights and how social institutions affect their well-being.
                     </p>
                 </div>
             </section>
@@ -293,54 +313,16 @@
                 <h2 class="section-title">Recent Publications</h2>
                 
                 <div class="pub-item">
-                    <div class="pub-title">Anti-Discrimination as a Political Project: The South Korean LGBTQ Movement</div>
-                    <div class="pub-info">Under Review, 2026. (with Co-author name)</div>
+                    <div class="pub-title">Anti-Discrimination as a Political Project: The South Korean LGBTQ Movement and Intersectional Solidarity</div>
+                    <div class="pub-info">Under Review, 2026.</div>
                 </div>
 
                 <div class="pub-item">
-                    <div class="pub-title">한국 페미니즘 리부트와 퀴어 정치의 교차점 (10-Year Retrospective)</div>
-                    <div class="pub-info">한국사회학회지, 2025.</div>
+                    <div class="pub-title">The Intersection of Feminist and Queer Movements in South Korea: A 10-Year Retrospective</div>
+                    <div class="pub-info">Journal of Korean Sociology (Expected), 2025.</div>
                 </div>
-            </section>
 
-            <section id="research">
-                <h2 class="section-title">Research Experience</h2>
-                <div class="about-text">
-                    <p>
-                        <strong>[Doctoral Dissertation]</strong><br>
-                        "The History of South Korean LGBTQ Rights Movement" (In progress, expected 2026)
-                    </p>
-                    <p>
-                        <strong>[Ongoing Projects]</strong><br>
-                        - Quantitative Research on Health Disparities among Sexual Minorities<br>
-                        - Comparative Survey in Korea, Taiwan, and Japan
-                    </p>
-                </div>
-            </section>
-            
-            <section id="cv">
-                <h2 class="section-title">Education</h2>
-                <div class="cv-item">
-                    <div class="cv-year">2023-</div>
-                    <div class="cv-desc">Ph.D. Student in Sociology, [University Name]</div>
-                </div>
-                <div class="cv-item">
-                    <div class="cv-year">2021</div>
-                    <div class="cv-desc">M.A. in Sociology, [University Name]</div>
-                </div>
-                <div class="cv-item">
-                    <div class="cv-year">2019</div>
-                    <div class="cv-desc">B.A. in Sociology, Chung-Ang University</div>
-                </div>
-            </section>
-
-            <section id="contact">
-                <h2 class="section-title">Contact</h2>
-                <p>
-                    <strong>Email:</strong> your_email@example.com<br>
-                    <strong>Office:</strong> Building 101, Room 204
-                </p>
-            </section>
+                </section>
 
         </main>
     </div>
@@ -353,3 +335,5 @@
     </script>
 </body>
 </html>
+
+```
