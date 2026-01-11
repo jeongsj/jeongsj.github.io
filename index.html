@@ -8,14 +8,17 @@
     <style>
         /* [Style Settings] */
         :root {
-            --primary-color: #48cae4; 
-            --secondary-color: #0077b6;
+            /* 메인 테마: 녹색 */
+            --primary-color: #6aa84f; 
+            /* 보조 색상: 가독성을 위해 조금 더 진한 녹색 */
+            --secondary-color: #38761d;
             --bg-color: #fdfdfd;
             --text-color: #333;
             --light-gray: #f8f9fa;
-            --hover-bg: #eef9fb;
-            --award-color: #6aa84f; /* 수상 색상 (녹색) */
-            --tag-color: #888; /* (in Korean) 표기 색상 */
+            --hover-bg: #f1f8e9; /* 마우스 오버 시 연한 녹색 배경 */
+            /* 수상 색상: 이전 메인 테마색 (하늘색) */
+            --award-color: #48cae4; 
+            --tag-color: #888;
         }
 
         body {
@@ -227,22 +230,26 @@
             transform: translateY(-2px);
         }
 
-        /* 메타 정보(저자 + 연도) 묶음 */
         .pub-meta {
             display: flex;
             align-items: center;
             margin-bottom: 8px;
-            flex-wrap: wrap; /* 모바일 대응 */
+            flex-wrap: wrap; 
         }
 
         .pub-author {
             font-size: 0.95rem;
             color: #333;
-            font-weight: 500;
+            font-weight: 400;
             margin-right: 10px;
         }
 
-        /* 연도 스타일 (뱃지 형태) - 저자 뒤로 이동 */
+        /* 본인 이름 볼드체 처리를 위한 스타일 */
+        .pub-author b {
+            font-weight: 700;
+            color: #000;
+        }
+
         .pub-year {
             background-color: var(--light-gray);
             color: var(--secondary-color);
@@ -262,7 +269,6 @@
             line-height: 1.4;
         }
 
-        /* (in Korean) 표기 스타일 */
         .lang-tag {
             font-size: 0.85rem;
             color: var(--tag-color);
@@ -279,7 +285,7 @@
 
         .pub-award {
             font-size: 0.9rem;
-            color: var(--award-color);
+            color: var(--award-color); /* 하늘색 */
             font-weight: 600;
             margin-top: 8px;
         }
@@ -382,19 +388,43 @@
                 
                 <div class="pub-item">
                     <div class="pub-meta">
-                        <span class="pub-author">Min-Soo Song, Seung-Ryeol Lee, and Seong-Jo Jeong*.</span>
+                        <span class="pub-author">Minsu Song, Seung-Yeol Yee, and <b>Seong-Jo Jeong</b></span>
                         <span class="pub-year">Forthcoming</span>
                     </div>
                     <div class="pub-title">
-                        What are the Conditions for Coming Out at Work: An Analysis of the Experiences of South Korean LGBTQ Workers
+                        What Enables Coming Out at Work? An Analysis of Sexual and Gender Minority Workers’ Experiences in Korea
                         <span class="lang-tag">(in Korean)</span>
                     </div>
-                    <div class="pub-journal">Journal of Industrial Relations</div>
+                    <div class="pub-journal">Korean Journal of Industrial Relations</div>
                 </div>
 
                 <div class="pub-item">
                     <div class="pub-meta">
-                        <span class="pub-author">Heeyoung Lee and Seong-Jo Jeong.</span>
+                        <span class="pub-author"><b>Seong-Jo Jeong</b>, So-Yeon Cho, and Na-Young Lee</span>
+                        <span class="pub-year">2025</span>
+                    </div>
+                    <div class="pub-title">
+                        The December 3 Impeachment Square and Queer Visibility
+                        <span class="lang-tag">(in Korean)</span>
+                    </div>
+                    <div class="pub-journal">Korean Journal of Sociology</div>
+                </div>
+
+                <div class="pub-item">
+                    <div class="pub-meta">
+                        <span class="pub-author">So-Yeon Cho, <b>Seong-Jo Jeong</b>, and Na-Young Lee</span>
+                        <span class="pub-year">2025</span>
+                    </div>
+                    <div class="pub-title">
+                        Encountering Between Fandom and Impeachment Square: Experiences of 2030 Women and Gendered Cultural Politics
+                        <span class="lang-tag">(in Korean)</span>
+                    </div>
+                    <div class="pub-journal">Media, Gender & Culture</div>
+                </div>
+
+                <div class="pub-item">
+                    <div class="pub-meta">
+                        <span class="pub-author">Heeyoung Lee and <b>Seong-Jo Jeong</b></span>
                         <span class="pub-year">2025</span>
                     </div>
                     <div class="pub-title">Gender Differences in the Relationship between Coming Out as LGB to Family and Depression in South Korea</div>
@@ -407,35 +437,11 @@
 
                 <div class="pub-item">
                     <div class="pub-meta">
-                        <span class="pub-author">Seong-Jo Jeong, Heeyoung Lee, and Chan S. Suh.</span>
+                        <span class="pub-author"><b>Seong-Jo Jeong</b>, Heeyoung Lee, and Chan S. Suh</span>
                         <span class="pub-year">2025</span>
                     </div>
                     <div class="pub-title">Moving Apart, Coming Together: The Formation of an LGBTQ Movement Community in South Korea</div>
                     <div class="pub-journal">Journal of Homosexuality</div>
-                </div>
-
-                <div class="pub-item">
-                    <div class="pub-meta">
-                        <span class="pub-author">Seong-Jo Jeong, So-Yeon Jo, and Na-Young Lee.</span>
-                        <span class="pub-year">2025</span>
-                    </div>
-                    <div class="pub-title">
-                        The 12·3 Impeachment Square and Queer Visibility
-                        <span class="lang-tag">(in Korean)</span>
-                    </div>
-                    <div class="pub-journal">Korean Journal of Sociology</div>
-                </div>
-
-                <div class="pub-item">
-                    <div class="pub-meta">
-                        <span class="pub-author">So-Yeon Jo, Seong-Jo Jeong, and Na-Young Lee.</span>
-                        <span class="pub-year">2025</span>
-                    </div>
-                    <div class="pub-title">
-                        Encounter between Fandom and the Square: Gendered Cultural Politics through 2030 Women's Experience in Yoon Suk-yeol Impeachment Protests
-                        <span class="lang-tag">(in Korean)</span>
-                    </div>
-                    <div class="pub-journal">Media, Gender & Culture</div>
                 </div>
 
                 <div class="view-all-container">
