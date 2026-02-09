@@ -300,7 +300,7 @@
         
         <div class="cv-header">
             <h2 class="cv-title">Curriculum Vitae</h2>
-            <a href="cv_en.pdf" class="download-btn" id="downloadBtn" download>
+            <a href="cv_eng.pdf" class="download-btn" id="downloadBtn" download>
                 Download CV (PDF)
             </a>
         </div>
@@ -311,12 +311,12 @@
         </div>
 
         <div class="pdf-wrapper">
-            <embed src="cv_en.pdf" type="application/pdf" class="pdf-embed" id="pdfViewer">
+            <embed src="cv_eng.pdf" type="application/pdf" class="pdf-embed" id="pdfViewer">
         </div>
 
         <div class="mobile-message">
             <p>PDF preview might not be available on this device.</p>
-            <a href="cv_en.pdf" id="mobileLink" target="_blank" style="color: var(--primary-color); font-weight: bold;">
+            <a href="cv_eng.pdf" id="mobileLink" target="_blank" style="color: var(--primary-color); font-weight: bold;">
                 Click here to view or download the CV.
             </a>
         </div>
@@ -339,8 +339,8 @@
             btnElement.classList.add('active');
 
             // 3. 파일 경로 설정 (★파일명을 여기에 맞게 수정하세요★)
-            // 영어: cv_en.pdf, 한국어: cv_kr.pdf 라고 가정
-            const filePath = (lang === 'en') ? 'cv_en.pdf' : 'cv_kr.pdf';
+            // 영어: cv_eng.pdf, 한국어: cv_kr.pdf 라고 가정
+            const filePath = (lang === 'en') ? 'cv_eng.pdf' : 'cv_kr.pdf';
 
             // 4. PDF 뷰어 소스 변경
             const pdfViewer = document.getElementById('pdfViewer');
