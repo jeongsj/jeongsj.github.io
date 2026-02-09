@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CV | Seong-Jo Jeong</title>
@@ -14,7 +13,7 @@
     <meta property="og:description" content="Full academic CV including education, awards, and teaching experience.">
     <meta property="og:url" content="https://jeongsj.github.io/cv.html">
     <meta property="og:type" content="profile"> <link rel="canonical" href="https://jeongsj.github.io/cv.html">
-</head>
+
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
     <style>
         /* [Style Settings] */
@@ -40,13 +39,12 @@
 
         /* Navigation (Green Theme #8bc34a) */
         nav {
-            background-color: #8bc34a; /* [변경] 배경색: 1단계 연두색 */
-            /* border-bottom: 1px solid #eee; -> 삭제 (배경색이 있어서 테두리 제거) */
+            background-color: #8bc34a;
             position: sticky;
             top: 0;
             z-index: 1000;
             padding: 0 20px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* 부드러운 그림자 추가 */
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         }
 
         .nav-container {
@@ -61,11 +59,11 @@
         .nav-logo {
             font-weight: 700;
             font-size: 1.2rem;
-            color: white; /* [변경] 로고 색상: 흰색 */
+            color: white;
             text-decoration: none;
             flex-shrink: 0;
             margin-right: 10px;
-            text-shadow: 0 1px 2px rgba(0,0,0,0.1); /* 가독성을 위한 텍스트 그림자 */
+            text-shadow: 0 1px 2px rgba(0,0,0,0.1);
         }
 
         /* 햄버거 버튼 */
@@ -74,15 +72,15 @@
             background: none;
             border: none;
             font-size: 1.8rem;
-            color: white; /* [변경] 버튼 색상: 흰색 */
+            color: white;
             cursor: pointer;
             padding: 5px;
             transition: color 0.3s;
-            margin-left: auto; /* 우측 끝 정렬 */
+            margin-left: auto;
         }
         
         .menu-toggle:hover {
-            color: #f1f8e9; /* 호버 시 아주 연한 연두색 */
+            color: #f1f8e9;
         }
 
         .nav-links {
@@ -96,17 +94,17 @@
 
         .nav-links a {
             text-decoration: none;
-            color: white; /* [변경] 메뉴 글자색: 흰색 */
+            color: white;
             font-weight: 500;
             font-size: 0.95rem;
             transition: all 0.3s;
             text-transform: capitalize;
-            opacity: 0.9; /* 약간 투명하게 해서 로고와 구분 */
+            opacity: 0.9;
         }
 
         /* PC 화면 호버/활성화 상태 */
         .nav-links a:hover, .nav-links a.active {
-            color: #2e5e1b; /* [변경] 진한 녹색으로 포인트 */
+            color: #2e5e1b;
             font-weight: 700;
             opacity: 1;
         }
@@ -118,7 +116,6 @@
             
             .menu-toggle { display: block; }
 
-            /* 모바일 드롭다운 메뉴 스타일 */
             .nav-links {
                 display: none;
                 flex-direction: column;
@@ -126,8 +123,6 @@
                 top: 60px;
                 left: 0;
                 width: 100%;
-                
-                /* [중요] 모바일 메뉴 배경은 흰색으로 유지 (가독성 확보) */
                 background-color: white; 
                 border-top: none;
                 box-shadow: 0 10px 15px rgba(0,0,0,0.15);
@@ -150,31 +145,29 @@
                 display: block;
                 padding: 15px 0;
                 font-size: 1rem;
-                
-                /* [중요] 모바일 메뉴 글자색은 다시 검은색 계열로 변경 */
                 color: #444; 
                 opacity: 1;
             }
 
             .nav-links a:hover, .nav-links a.active {
                 background-color: #f1f8e9;
-                color: var(--secondary-color); /* 모바일 호버 시 초록색 */
+                color: var(--secondary-color);
             }
         }
         
         /* Layout */
         .container {
-            max-width: 900px; /* PDF 보기에 적당한 너비 */
+            max-width: 900px;
             margin: 50px auto;
             padding: 0 20px;
         }
 
-        /* CV Header (Title + Download Button) */
+        /* CV Header */
         .cv-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 30px;
+            margin-bottom: 20px; /* 탭과의 간격을 위해 줄임 */
             border-bottom: 2px solid var(--secondary-color);
             padding-bottom: 15px;
         }
@@ -203,10 +196,40 @@
             background-color: var(--secondary-color);
         }
 
+        /* [새로 추가된 부분] Tab Container */
+        .tab-container {
+            display: flex;
+            justify-content: flex-start;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .tab-btn {
+            padding: 10px 20px;
+            font-size: 1rem;
+            font-weight: 600;
+            border: 1px solid var(--primary-color);
+            background-color: white;
+            color: var(--primary-color);
+            cursor: pointer;
+            border-radius: 5px;
+            transition: all 0.3s;
+            font-family: 'Noto Sans', sans-serif;
+        }
+
+        .tab-btn:hover {
+            background-color: var(--hover-bg);
+        }
+
+        .tab-btn.active {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
         /* PDF Viewer Container */
         .pdf-wrapper {
             width: 100%;
-            height: 1000px; /* 미리보기 창 높이 설정 */
+            height: 1000px;
             border: 1px solid #ddd;
             box-shadow: 0 4px 10px rgba(0,0,0,0.05);
             background-color: #fff;
@@ -240,12 +263,15 @@
                 gap: 15px;
                 text-align: center;
             }
+
+            .tab-container {
+                justify-content: center; /* 모바일에서는 탭 가운데 정렬 */
+            }
             
             .pdf-wrapper {
-                height: 500px; /* 모바일에서는 높이 축소 */
+                height: 500px;
             }
 
-            /* 모바일 브라우저 호환성을 위한 메시지 표시 */
             .mobile-message {
                 display: block; 
             }
@@ -265,7 +291,7 @@
                 <li><a href="publications.html">Publications</a></li>
                 <li><a href="research.html">Data & Research</a></li>
                 <li><a href="writings.html">Public Sociology</a></li>
-                <li><a href="cv.html">CV</a></li>
+                <li><a href="cv.html" class="active">CV</a></li>
             </ul>
         </div>
     </nav>
@@ -274,24 +300,59 @@
         
         <div class="cv-header">
             <h2 class="cv-title">Curriculum Vitae</h2>
-            <a href="cv.pdf" class="download-btn" download>
+            <a href="cv_en.pdf" class="download-btn" id="downloadBtn" download>
                 Download CV (PDF)
             </a>
         </div>
 
+        <div class="tab-container">
+            <button class="tab-btn active" onclick="switchTab('en', this)">English</button>
+            <button class="tab-btn" onclick="switchTab('kr', this)">한국어</button>
+        </div>
+
         <div class="pdf-wrapper">
-            <embed src="cv.pdf" type="application/pdf" class="pdf-embed">
+            <embed src="cv_en.pdf" type="application/pdf" class="pdf-embed" id="pdfViewer">
         </div>
 
         <div class="mobile-message">
             <p>PDF preview might not be available on this device.</p>
-            <a href="cv.pdf" target="_blank" style="color: var(--primary-color); font-weight: bold;">Click here to view or download the CV.</a>
+            <a href="cv_en.pdf" id="mobileLink" target="_blank" style="color: var(--primary-color); font-weight: bold;">
+                Click here to view or download the CV.
+            </a>
         </div>
 
     </div>
-<script>
+
+    <script>
+        // 햄버거 메뉴 토글
         function toggleMenu() {
             document.getElementById("navLinks").classList.toggle("active");
+        }
+
+        // [새로 추가된 부분] 탭 전환 스크립트
+        function switchTab(lang, btnElement) {
+            // 1. 모든 탭 버튼에서 active 클래스 제거
+            const buttons = document.querySelectorAll('.tab-btn');
+            buttons.forEach(btn => btn.classList.remove('active'));
+
+            // 2. 클릭된 버튼에 active 클래스 추가
+            btnElement.classList.add('active');
+
+            // 3. 파일 경로 설정 (★파일명을 여기에 맞게 수정하세요★)
+            // 영어: cv_en.pdf, 한국어: cv_kr.pdf 라고 가정
+            const filePath = (lang === 'en') ? 'cv_en.pdf' : 'cv_kr.pdf';
+
+            // 4. PDF 뷰어 소스 변경
+            const pdfViewer = document.getElementById('pdfViewer');
+            pdfViewer.src = filePath;
+
+            // 5. 다운로드 버튼 링크 변경
+            const downloadBtn = document.getElementById('downloadBtn');
+            downloadBtn.href = filePath;
+
+            // 6. 모바일용 링크 변경
+            const mobileLink = document.getElementById('mobileLink');
+            mobileLink.href = filePath;
         }
     </script>
 </body>
