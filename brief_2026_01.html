@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>면접장 이전에 시작되는 차별 | Brief 2026-01 | 다움</title>
+<meta name="description" content="한국 성소수자 노동자 2,639명 조사 결과, 69%가 구직 과정에서 부정적 경험을 보고했다.">
+<link rel="preconnect" href="https://cdn.jsdelivr.net">
+<style>
+  :root {
+    --text: #1a1a1a;
+    --text-muted: #5a5a5a;
+    --text-faint: #8a8a8a;
+    --border: #e5e5e0;
+    --border-strong: #cfcfc8;
+    --bg: #ffffff;
+    --bg-subtle: #f7f6f1;
+    --bg-accent: #eef3f9;
+    --accent: #185FA5;
+    --accent-dark: #0c447c;
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Apple SD Gothic Neo', 'Noto Sans KR', sans-serif;
+    font-size: 16px;
+    line-height: 1.7;
+    color: var(--text);
+    background: var(--bg);
+    word-break: keep-all;
+    -webkit-font-smoothing: antialiased;
+  }
+  .brief {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 3rem 1.5rem 4rem;
+  }
+  .meta {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    color: var(--text-faint);
+    letter-spacing: 0.04em;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .brief-id { font-weight: 500; color: var(--text-muted); }
+  h1 {
+    font-size: 32px;
+    line-height: 1.25;
+    font-weight: 600;
+    margin: 0 0 0.75rem;
+    letter-spacing: -0.01em;
+  }
+  .subtitle {
+    font-size: 18px;
+    color: var(--text-muted);
+    margin: 0 0 1.5rem;
+    line-height: 1.45;
+    font-weight: 400;
+  }
+  .author {
+    font-size: 14px;
+    color: var(--text-muted);
+    margin: 0 0 2.5rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .key-findings {
+    background: var(--bg-subtle);
+    border-left: 3px solid var(--accent);
+    padding: 1.25rem 1.5rem;
+    margin: 0 0 2.5rem;
+    border-radius: 0 4px 4px 0;
+  }
+  .key-findings h2 {
+    font-size: 13px;
+    font-weight: 600;
+    margin: 0 0 0.75rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--accent-dark);
+  }
+  .key-findings ul {
+    margin: 0;
+    padding-left: 1.1rem;
+    font-size: 15px;
+  }
+  .key-findings li {
+    margin-bottom: 0.5rem;
+    line-height: 1.6;
+  }
+  .key-findings li:last-child { margin-bottom: 0; }
+  h2 {
+    font-size: 22px;
+    font-weight: 600;
+    margin: 2.5rem 0 1rem;
+    line-height: 1.35;
+    letter-spacing: -0.005em;
+  }
+  h3 {
+    font-size: 17px;
+    font-weight: 600;
+    margin: 1.75rem 0 0.75rem;
+  }
+  p { margin: 0 0 1.1rem; }
+  strong { font-weight: 600; }
+  hr {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 2.5rem 0;
+  }
+  blockquote {
+    margin: 1.25rem 0;
+    padding: 0.5rem 0 0.5rem 1.25rem;
+    border-left: 2px solid var(--border-strong);
+    color: var(--text-muted);
+    font-style: normal;
+    font-size: 15px;
+    line-height: 1.6;
+  }
+  blockquote cite {
+    display: block;
+    margin-top: 0.4rem;
+    font-size: 13px;
+    color: var(--text-faint);
+    font-style: normal;
+  }
+  figure {
+    margin: 2rem 0 2.25rem;
+    padding: 1.25rem 1.25rem 1rem;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    background: var(--bg);
+  }
+  figcaption {
+    font-size: 13px;
+    color: var(--text-muted);
+    margin-top: 0.75rem;
+    padding-top: 0.75rem;
+    border-top: 1px solid var(--border);
+    line-height: 1.5;
+  }
+  figcaption strong {
+    color: var(--text);
+    font-weight: 600;
+  }
+  .source-note {
+    font-size: 11px;
+    color: var(--text-faint);
+    margin-top: 0.5rem;
+    letter-spacing: 0.02em;
+  }
+  .hero-stat {
+    display: flex;
+    align-items: baseline;
+    gap: 16px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 18px;
+    flex-wrap: wrap;
+  }
+  .hero-stat .num {
+    font-size: 44px;
+    font-weight: 500;
+    line-height: 1;
+    letter-spacing: -0.02em;
+    color: var(--text);
+  }
+  .hero-stat .num-unit { font-size: 26px; }
+  .hero-stat .desc {
+    font-size: 14px;
+    color: var(--text);
+    line-height: 1.45;
+  }
+  .hero-stat .desc .n { color: var(--text-faint); }
+  .chart-title {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text);
+    margin-bottom: 4px;
+  }
+  .chart-title .unit {
+    font-weight: 400;
+    color: var(--text-muted);
+    font-size: 12px;
+  }
+  .callout {
+    padding: 0.875rem 1rem;
+    background: var(--bg-accent);
+    border-radius: 6px;
+    margin: 0 0 1.25rem;
+  }
+  .callout .stat-line {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    margin-bottom: 4px;
+    flex-wrap: wrap;
+  }
+  .callout .num {
+    font-size: 22px;
+    font-weight: 500;
+    color: var(--accent-dark);
+    line-height: 1;
+  }
+  .callout .desc {
+    font-size: 14px;
+    color: var(--text);
+  }
+  .callout .sub {
+    font-size: 12px;
+    color: var(--text-muted);
+    line-height: 1.5;
+  }
+  .methodology {
+    background: var(--bg-subtle);
+    padding: 1.25rem 1.5rem;
+    border-radius: 6px;
+    margin: 2rem 0;
+    font-size: 14px;
+  }
+  .methodology h2 {
+    font-size: 13px;
+    font-weight: 600;
+    margin: 0 0 0.75rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+  }
+  .methodology ul {
+    margin: 0 0 0.75rem;
+    padding-left: 1.1rem;
+  }
+  .methodology li { margin-bottom: 0.3rem; }
+  .methodology .limit {
+    padding-top: 0.75rem;
+    border-top: 1px solid var(--border);
+    color: var(--text-muted);
+    line-height: 1.6;
+    font-size: 13px;
+  }
+  .faq h3 {
+    font-size: 15px;
+    margin: 1.25rem 0 0.5rem;
+  }
+  .faq h3::before { content: "Q. "; color: var(--text-faint); font-weight: 400; }
+  .faq p {
+    font-size: 14px;
+    color: var(--text-muted);
+    margin-bottom: 0.25rem;
+  }
+  .footer {
+    margin-top: 3rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border);
+    font-size: 13px;
+    color: var(--text-muted);
+  }
+  .footer .citation {
+    background: var(--bg-subtle);
+    padding: 0.875rem 1rem;
+    border-radius: 4px;
+    font-family: ui-monospace, 'SF Mono', Consolas, monospace;
+    font-size: 12px;
+    line-height: 1.6;
+    color: var(--text);
+    margin: 0.5rem 0 1rem;
+  }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  .chart-container {
+    position: relative;
+    width: 100%;
+  }
+  @media (max-width: 540px) {
+    h1 { font-size: 26px; }
+    .subtitle { font-size: 16px; }
+    h2 { font-size: 19px; }
+    .brief { padding: 2rem 1.25rem 3rem; }
+    .hero-stat .num { font-size: 36px; }
+  }
+</style>
+</head>
+<body>
+<article class="brief">
+
+<div class="meta">
+  <span class="brief-id">BRIEF 2026-01 · 다움(다양성을향한지속가능한움직임)</span>
+  <span>2026년 4월 28일 발행</span>
+</div>
+
+<h1>면접장 이전에 시작되는 차별</h1>
+<p class="subtitle">한국 성소수자 노동자의 구직 경험, 2,639명 조사 결과</p>
+<p class="author">정성조 (중앙대학교 사회학과 박사수료, 연구책임자)</p>
+
+<section class="key-findings" aria-labelledby="kf-heading">
+  <h2 id="kf-heading">핵심 발견</h2>
+  <ul>
+    <li>한국 성소수자 노동자의 <strong>69%가 구직 과정에서 하나 이상의 부정적 경험</strong>을 보고했다.</li>
+    <li><strong>66%는 성소수자 정체성을 고려해 직업·직장을 선택</strong>했다고 답했다. 차별은 면접장 이전, 직업 선택지가 좁혀지는 시점부터 작동한다.</li>
+    <li>응답자의 <strong>58%는 면접에서 정체성을 숨기기 위해 거짓 답변</strong>을 한 경험이 있다.</li>
+    <li>트랜스젠더 응답자는 <strong>주민등록번호와 외모·성별표현 불일치</strong>로 인한 구조적 장벽에 추가로 노출된다.</li>
+    <li>현행 법·제도는 이러한 차별을 규제하지 못하며, 채용 절차·증빙 요구·법적 성별 체계 전반에 개입이 필요하다.</li>
+  </ul>
+</section>
+
+<h2>들어가며</h2>
+<p>노동은 생존과 자아실현의 기본권이지만, 한국 성소수자에게 일터는 여전히 차별의 사각지대다. 국가승인통계에 성적지향·성별정체성 항목이 포함되어 있지 않고, 노동 영역에 초점을 둔 실태조사는 극소수에 불과하다.</p>
+<p>2025년 다움이 수행한 성소수자 노동실태조사는 만 19세 이상 최근 5년 내 임금노동 경험이 있는 한국 거주 성소수자 <strong>2,639명</strong>을 대상으로 구직과 직장 내 경험을 파악했다. 본 브리프는 이 중 <strong>구직 단계</strong>의 결과를 정리한다.</p>
+<p>결과는 한국의 성소수자가 면접장에 앉기도 전, 직업을 선택하는 시점부터 이미 차별의 작동 범위 안에 놓여 있음을 보여준다.</p>
+
+<hr>
+
+<h2>직업 선택지가 좁혀진다</h2>
+<p>응답자의 <strong>66%가 성소수자 정체성을 고려해 직업이나 직장을 선택</strong>한 경험이 있다고 답했다.</p>
+
+<figure aria-labelledby="fig1-cap">
+  <div class="callout">
+    <div class="stat-line">
+      <span class="num">66%</span>
+      <span class="desc">성소수자 정체성을 고려해 직업·직장을 선택한 경험</span>
+    </div>
+    <div class="sub">차별은 면접장이 아니라 직업 선택지가 좁혀지는 시점부터 작동한다.</div>
+  </div>
+
+  <div class="chart-title">가장 많이 고려한 요소 <span class="unit">· 중복응답, %</span></div>
+  <div class="chart-container" style="height: 440px; margin-top: 12px;">
+    <canvas id="fig1" role="img" aria-label="직업·직장 선택 시 고려한 요소. 외모 표현 자유로운 직장 47%, 여성이 많은 직장 26%, 객관적 자격 중시 직업 26%, 혼자서 일하는 직업 26%, 성소수자 친화적 환경 24%, 지지해주는 지인이 있는 직장 15%, 외국계 회사 10%, 인권·시민단체 9%, 남성이 많은 직장 4%.">외모 표현 자유로운 직장 47%, 여성 많은 직장 26%, 객관적 자격 중시 직업 26%, 혼자서 일하는 직업 26%, 성소수자 친화적 환경 24%, 지지해주는 지인 있는 직장 15%, 외국계 회사 10%, 인권·시민단체 9%, 남성 많은 직장 4%.</canvas>
+  </div>
+
+  <figcaption id="fig1-cap">
+    <strong>그림 1.</strong> 직업·직장 선택 시 고려한 요소 (n=2,639, 중복응답).
+    <div class="source-note">출처: 다움, 「2025 성소수자 노동실태조사」</div>
+  </figcaption>
+</figure>
+
+<p>가장 많이 고려된 요소는 "외모 표현이 자유로운 직장"(47%)이었다. 그 다음으로 "여성이 많은 직장", "객관적 자격이 중시되는 직업", "혼자서 일하는 직업"이 각각 26%로 동률이었다. 이는 성소수자 노동자가 <strong>차별 회피를 위해 직업 선택의 폭을 구조적으로 좁히고 있음</strong>을 보여준다. 직접적 차별의 증거 이전에, 차별의 예상 가능성만으로도 경력 경로가 굴절되는 간접적·누적적 불이익이다.</p>
+
+<blockquote>
+  "사람들하고 같이 일하다 보면 내가 걸리지 않을까 긴장하게 돼요. 그래서 차라리 혼자 일하는 게 편하다고 생각했어요."
+  <cite>연구참여자 13, 47세, 트랜스남성</cite>
+</blockquote>
+
+<hr>
+
+<h2>구직 과정의 부정적 경험: 69%</h2>
+<p>구직에 실제로 착수한 응답자의 <strong>69%가 하나 이상의 부정적 경험</strong>을 보고했다.</p>
+
+<figure aria-labelledby="fig2-cap">
+  <div class="hero-stat">
+    <span class="num">69<span class="num-unit">%</span></span>
+    <span class="desc">구직 과정에서 하나 이상의 부정적 경험 · <span class="n">n = 2,639</span></span>
+  </div>
+
+  <div class="chart-title">경험한 부정적 상황의 유형 <span class="unit">· 중복응답, %</span></div>
+  <div class="chart-container" style="height: 420px; margin-top: 14px;">
+    <canvas id="fig2" role="img" aria-label="구직 과정에서 경험한 부정적 상황. 면접 시 거짓 답변 58%, 성소수자 관련 활동 이력 미기입 46%, 성별 고정관념 위반으로 부정적 반응 27%, 특정 직장·직업 포기 14%, 미혼 상태로 부정적 반응 14%, 지원 서류 제출 어려움 9%, 주민등록번호와 외모·성별표현 불일치 7%, 채용 거부·취소 6%.">면접 시 거짓 답변 58%, 성소수자 관련 활동 이력 미기입 46%, 성별 고정관념 위반으로 부정적 반응 27%, 특정 직장·직업 포기 14%, 미혼 상태로 부정적 반응 14%, 지원 서류 제출 어려움 9%, 주민번호와 외모·성별표현 불일치 7%, 채용 거부·취소 6%.</canvas>
+  </div>
+
+  <figcaption id="fig2-cap">
+    <strong>그림 2.</strong> 구직 과정에서 경험한 부정적 상황 (n=2,639, 중복응답).
+    <div class="source-note">출처: 다움, 「2025 성소수자 노동실태조사」</div>
+  </figcaption>
+</figure>
+
+<p>가장 흔한 경험은 <strong>면접에서의 거짓 답변(58%)</strong>과 <strong>경력 이력의 선택적 은폐(46%)</strong>다. 이는 채용 과정이 성소수자에게 자신의 실제 경력과 정체성을 온전히 드러낼 수 없는 공간임을 의미한다. 성소수자 단체 활동이나 관련 직무 경험은 지원자의 강점이 될 수 있음에도 불구하고, 정체성 노출에 대한 위험 때문에 이력서에서 삭제된다.</p>
+<p>상대적으로 빈도가 낮은 <strong>채용 거부·취소(6%)</strong>와 <strong>주민등록번호 불일치(7%)</strong>는 절대적 수치는 작아 보이지만, 이는 "실제로 그 상황까지 간 응답자"의 비율이라는 점에 유의해야 한다. 구직자 다수가 이러한 상황을 예상하고 아예 지원을 포기하거나 선택지에서 배제하는 선행 단계가 있기 때문이다.</p>
+
+<hr>
+
+<h2>트랜스젠더의 이중 장벽</h2>
+<p>트랜스젠더 응답자의 경험은 구조적으로 더 무겁다. 한국의 <strong>주민등록번호 체계</strong>는 법적 성별을 신분증명의 필수 요소로 요구하며, 이로 인해 트랜스젠더 지원자는 법적 성별과 외모·성별표현의 불일치가 채용 단계에서 그대로 노출된다.</p>
+
+<blockquote>
+  "4학년 2학기 때 면접 보러 가서 다 붙어도 끝에 가서 주민번호를 보여줬을 때 '뭔가 좀 착오가 있었다'라고 하고 떨어뜨리는 게 한 일곱여덟 번이었는데 (...) '아 내가 정정이 안 되면 취업을 할 수 없겠구나.'"
+  <cite>연구참여자 14, 31세, 트랜스남성</cite>
+</blockquote>
+
+<p>선행 연구에서도 트랜스젠더의 57.1%가 정체성 때문에 구직 자체를 포기했고, 트랜스젠더 여성의 17.9%가 정체성 공개 이후 채용 거부·입사 취소를 경험했다는 보고가 있다. 본 조사 결과는 이러한 패턴이 2025년 현재에도 지속되고 있음을 확인한다.</p>
+
+<hr>
+
+<h2>정책 함의</h2>
+
+<h3>1. 채용 절차 자체의 개편</h3>
+<ul>
+  <li>입사지원서의 성별란 삭제 또는 선택 사항화</li>
+  <li>주민등록번호 대신 생년월일 기재</li>
+  <li>혼인 여부·가족 구성 등 불필요한 개인정보 수집 금지</li>
+</ul>
+
+<h3>2. 면접관 교육 의무화</h3>
+<ul>
+  <li>성별 고정관념 기반 질문, 외모·성별 편견에 근거한 판단 금지</li>
+  <li>트랜스젠더 지원자의 법적 성별·외모 불일치에 대한 이해 교육</li>
+</ul>
+
+<h3>3. 법 개정</h3>
+<ul>
+  <li>남녀고용평등법의 차별금지 사유에 성적지향·성별정체성을 명시적으로 포함</li>
+  <li>포괄적 차별금지법 제정을 통해 채용 단계 차별에 대한 실효적 구제 수단 마련</li>
+</ul>
+
+<h3>4. 국가통계 보완</h3>
+<ul>
+  <li>경제활동인구조사·근로환경조사 등 기존 국가승인통계에 관련 문항 시범 도입</li>
+  <li>정기 실태조사 예산 확보</li>
+</ul>
+
+<section class="methodology" aria-labelledby="method-heading">
+  <h2 id="method-heading">방법론</h2>
+  <ul>
+    <li><strong>대상:</strong> 만 19세 이상 최근 5년 내 한국에서 임금노동 경험이 있는 성소수자</li>
+    <li><strong>기간:</strong> 2025년 4월 10일 ~ 30일 (3주)</li>
+    <li><strong>표집:</strong> 소셜미디어·성소수자 단체·온라인 커뮤니티·데이팅 앱을 통한 편의표집</li>
+    <li><strong>응답:</strong> 5,199명 시도 → 2,840명 완료 → 스크리닝 후 최종 2,639명 분석</li>
+    <li><strong>IRB 승인:</strong> 중앙대학교 생명윤리위원회 (1041078-20250228-HR-055)</li>
+  </ul>
+  <div class="limit"><strong>한계:</strong> 본 조사는 비확률 표집이므로 한국 성소수자 노동자 전체 모집단을 통계적으로 대표하지 않는다. 다만 2,639명 규모는 국내 성소수자 노동자 조사 중 최대 규모이며, 편의표집은 성소수자 같은 숨겨진 인구집단(hidden population) 연구에서 국제적으로 표준화된 방법 중 하나다.</div>
+</section>
+
+<section class="faq">
+  <h2>자주 제기되는 의문</h2>
+
+  <h3>편의표집이라 의미 없지 않나?</h3>
+  <p>편의표집은 모집단 수치 추정에는 한계가 있으나, 경험의 양상·패턴·상대적 차이를 파악하는 데는 유효하다. 결과의 방향성은 국가인권위원회(2025)·한국노동연구원(2024) 등 독립적 조사와 일관된다.</p>
+
+  <h3>이런 차별은 과장된 것 아닌가?</h3>
+  <p>본 조사의 주요 지표는 선행 연구의 수치와 같은 방향을 가리키며, 심지어 국제 비교(영국 LGBT Action Plan 조사 등)에서도 유사한 패턴이 확인된다.</p>
+
+  <h3>정체성을 숨기면 되는 것 아닌가?</h3>
+  <p>본 조사의 다른 결과는 은폐가 차별을 완전히 막지 못하며, 오히려 독자적 심리적 비용(우울·직무 스트레스 상승)을 발생시킴을 보여준다. 이는 후속 브리프에서 상세히 다룬다.</p>
+</section>
+
+<footer class="footer">
+  <p><strong>권장 인용 양식</strong></p>
+  <div class="citation">정성조·다움. (2026). 면접장 이전에 시작되는 차별: 한국 성소수자 노동자의 구직 경험. Brief 2026-01. 다움.</div>
+
+  <p><strong>English citation</strong></p>
+  <div class="citation">Jung, S. &amp; Dawoom. (2026). Discrimination Before the Interview: Job-Seeking Experiences of LGBTQ+ Workers in South Korea. Brief 2026-01. Dawoom.</div>
+
+  <p style="margin-top: 1.5rem;"><strong>관련 자료</strong><br>
+  원 보고서: 정성조 외. (2026). 『2025 성소수자 노동실태조사』. 다움.<br>
+  국회 토론회 발표자료: 「차별의 사각지대에서 포용적 일터로」(2026.4.28)<br>
+  후속 브리프: Brief 2026-02 「숨겨도 피할 수 없는 차별: 직장 내 커밍아웃의 역설」 (예정)</p>
+
+  <p style="margin-top: 1.5rem; font-size: 12px; color: var(--text-faint);">발행 · 다움(다양성을향한지속가능한움직임) | 문의 · [이메일]</p>
+</footer>
+
+</article>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<script>
+(function(){
+  var textPrimary = '#1a1a1a';
+  var textMuted = '#8a8a8a';
+  var barColor = '#185FA5';
+  var gridColor = 'rgba(0, 0, 0, 0.07)';
+  var fontFamily = "'Pretendard', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Apple SD Gothic Neo', 'Noto Sans KR', sans-serif";
+
+  var valueLabels = {
+    id: 'valueLabels',
+    afterDatasetsDraw: function(chart) {
+      var ctx = chart.ctx;
+      var meta = chart.getDatasetMeta(0);
+      chart.data.datasets[0].data.forEach(function(val, i){
+        var bar = meta.data[i];
+        ctx.fillStyle = textPrimary;
+        ctx.font = "500 11px " + fontFamily;
+        ctx.textAlign = 'left';
+        ctx.textBaseline = 'middle';
+        ctx.fillText(val + '%', bar.x + 6, bar.y);
+      });
+    }
+  };
+
+  var commonOptions = {
+    indexAxis: 'y',
+    responsive: true,
+    maintainAspectRatio: false,
+    layout: { padding: { right: 44, left: 4 } },
+    plugins: {
+      legend: { display: false },
+      tooltip: {
+        backgroundColor: 'rgba(26,26,26,0.95)',
+        titleFont: { family: fontFamily, size: 12 },
+        bodyFont: { family: fontFamily, size: 13 },
+        padding: 10,
+        callbacks: { label: function(ctx){ return ctx.parsed.x + '%'; } }
+      }
+    },
+    scales: {
+      x: {
+        beginAtZero: true,
+        ticks: {
+          callback: function(v){ return v + '%'; },
+          font: { size: 11, family: fontFamily },
+          color: textMuted
+        },
+        grid: { color: gridColor, drawBorder: false, tickLength: 0 },
+        border: { display: false }
+      },
+      y: {
+        ticks: {
+          font: { size: 12, family: fontFamily },
+          color: textPrimary
+        },
+        grid: { display: false, drawBorder: false },
+        border: { display: false }
+      }
+    },
+    animation: { duration: 500 }
+  };
+
+  new Chart(document.getElementById('fig1'), {
+    type: 'bar',
+    data: {
+      labels: [
+        '외모 표현 자유로운 직장',
+        '여성이 많은 직장',
+        '객관적 자격 중시 직업',
+        '혼자서 일하는 직업',
+        '성소수자 친화적 환경',
+        '지지해주는 지인이 있는 직장',
+        '외국계 회사',
+        '인권·시민단체',
+        '남성이 많은 직장'
+      ],
+      datasets: [{
+        data: [47, 26, 26, 26, 24, 15, 10, 9, 4],
+        backgroundColor: barColor,
+        borderWidth: 0,
+        barThickness: 16,
+        borderRadius: 2
+      }]
+    },
+    options: Object.assign({}, commonOptions, {
+      scales: Object.assign({}, commonOptions.scales, {
+        x: Object.assign({}, commonOptions.scales.x, { max: 55 })
+      })
+    }),
+    plugins: [valueLabels]
+  });
+
+  new Chart(document.getElementById('fig2'), {
+    type: 'bar',
+    data: {
+      labels: [
+        '면접 시 거짓 답변',
+        '성소수자 관련 활동 이력 미기입',
+        '성별 고정관념 위반으로 부정적 반응',
+        '특정 직장·직업 포기',
+        '미혼 상태로 인한 부정적 반응',
+        '지원 서류 제출 어려움',
+        '주민번호와 외모·성별표현 불일치',
+        '채용 거부·취소'
+      ],
+      datasets: [{
+        data: [58, 46, 27, 14, 14, 9, 7, 6],
+        backgroundColor: barColor,
+        borderWidth: 0,
+        barThickness: 18,
+        borderRadius: 2
+      }]
+    },
+    options: Object.assign({}, commonOptions, {
+      scales: Object.assign({}, commonOptions.scales, {
+        x: Object.assign({}, commonOptions.scales.x, { max: 70 })
+      })
+    }),
+    plugins: [valueLabels]
+  });
+})();
+</script>
+</body>
+</html>
