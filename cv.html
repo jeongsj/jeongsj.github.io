@@ -3,278 +3,323 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CV | Seong-Jo Jeong</title>
-    
-    <meta name="description" content="Curriculum Vitae of Seong-Jo Jeong. Ph.D. Candidate in Sociology, Chung-Ang University. Education, Awards, and Experience.">
-    <meta name="keywords" content="CV, Curriculum Vitae, Resume, Sociologist, Academic Profile, 이력서, 정성조 CV">
+    <meta name="description" content="Curriculum Vitae of Seong-Jo Jeong (정성조). Ph.D. Candidate in Sociology at Chung-Ang University. Download English or Korean version.">
+    <meta name="keywords" content="Seong-Jo Jeong, 정성조, CV, Curriculum Vitae, Sociology, Chung-Ang University">
     <meta name="author" content="Seong-Jo Jeong">
 
-    <meta property="og:title" content="Curriculum Vitae - Seong-Jo Jeong">
-    <meta property="og:description" content="Full academic CV including education, awards, and teaching experience.">
+    <meta property="og:title" content="CV — Seong-Jo Jeong">
+    <meta property="og:description" content="Curriculum Vitae of Seong-Jo Jeong, Ph.D. Candidate in Sociology.">
     <meta property="og:url" content="https://jeongsj.github.io/cv.html">
-    <meta property="og:type" content="profile"> <link rel="canonical" href="https://jeongsj.github.io/cv.html">
+    <meta property="og:type" content="website">
 
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="canonical" href="https://jeongsj.github.io/cv.html">
+    <title>CV | Seong-Jo Jeong</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+
     <style>
-        /* [Style Settings] */
         :root {
-            --primary-color: #6aa84f; 
-            --secondary-color: #75ab3f;
-            --bg-color: #fdfdfd;
-            --text-color: #333;
-            --light-gray: #f8f9fa;
-            --hover-bg: #f1f8e9;
-            --award-color: #0a7e8c; 
-            --tag-color: #888;
+            --text-primary: #0f0f0f;
+            --text-body: #222;
+            --text-secondary: #555;
+            --text-muted: #888;
+            --text-subtle: #aaa;
+            --text-faint: #bbb;
+
+            --border: #e8e8e5;
+            --border-soft: #ececec;
+            --nav-bg: #fcfcfc;
+
+            --font-sans: 'Inter', 'Noto Sans KR', 'Helvetica Neue', system-ui, -apple-system, sans-serif;
+
+            --content-max: 880px;
+            --sidebar-w: 140px;
+            --gutter: 40px;
         }
+
+        * { box-sizing: border-box; }
+        html, body { margin: 0; padding: 0; }
 
         body {
-            font-family: 'Noto Sans', sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: var(--bg-color);
-            color: var(--text-color);
+            font-family: var(--font-sans);
+            color: var(--text-primary);
+            background: #ffffff;
             line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
 
-        /* Navigation (Green Theme #8bc34a) */
+        a { color: inherit; }
+
+        /* ========== NAV ========== */
         nav {
-            background-color: #8bc34a;
+            border-bottom: 1px solid var(--border-soft);
+            background: var(--nav-bg);
             position: sticky;
             top: 0;
-            z-index: 1000;
-            padding: 0 20px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            z-index: 100;
         }
-
         .nav-container {
-            max-width: 1000px;
-            width: 100%;
+            max-width: var(--content-max);
             margin: 0 auto;
+            padding: 14px 44px;
             display: flex;
+            justify-content: space-between;
             align-items: center;
-            height: 60px;
         }
-
         .nav-logo {
-            font-weight: 700;
-            font-size: 1.2rem;
-            color: white;
+            font-size: 11px;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            font-weight: 600;
+            color: #111;
             text-decoration: none;
-            flex-shrink: 0;
-            margin-right: 10px;
-            text-shadow: 0 1px 2px rgba(0,0,0,0.1);
         }
-
-        /* 햄버거 버튼 */
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 22px;
+            margin: 0;
+            padding: 0;
+        }
+        .nav-links a {
+            font-size: 12px;
+            color: #444;
+            font-weight: 500;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: #000;
+            border-bottom: 1px solid #000;
+            padding-bottom: 1px;
+        }
         .menu-toggle {
             display: none;
             background: none;
             border: none;
-            font-size: 1.8rem;
-            color: white;
+            font-size: 1.4rem;
+            color: #111;
             cursor: pointer;
-            padding: 5px;
-            transition: color 0.3s;
-            margin-left: auto;
-        }
-        
-        .menu-toggle:hover {
-            color: #f1f8e9;
-        }
-
-        .nav-links {
-            list-style: none;
-            display: flex;
-            gap: 25px;
-            margin: 0;
             padding: 0;
-            margin-left: auto;
+            line-height: 1;
         }
 
-        .nav-links a {
-            text-decoration: none;
-            color: white;
+        /* ========== CONTAINER ========== */
+        main {
+            max-width: var(--content-max);
+            margin: 0 auto;
+            padding: 52px 44px 72px 44px;
+        }
+
+        /* ========== SECTION GRID ========== */
+        .section {
+            display: grid;
+            grid-template-columns: var(--sidebar-w) 1fr;
+            gap: var(--gutter);
+        }
+        .section-label {
+            font-size: 11px;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: var(--text-secondary);
             font-weight: 500;
-            font-size: 0.95rem;
-            transition: all 0.3s;
-            text-transform: capitalize;
-            opacity: 0.9;
+            margin-bottom: 8px;
         }
 
-        /* PC 화면 호버/활성화 상태 */
-        .nav-links a:hover, .nav-links a.active {
-            color: #2e5e1b;
-            font-weight: 700;
-            opacity: 1;
+        /* ========== HERO ========== */
+        .page-title {
+            font-size: 28px;
+            font-weight: 400;
+            line-height: 1.2;
+            letter-spacing: -0.01em;
+            margin: 0 0 8px 0;
+            color: var(--text-primary);
+        }
+        .page-subtitle {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin: 0 0 28px 0;
         }
 
-        /* Mobile Responsive */
+        /* ========== DOWNLOAD CARDS ========== */
+        .cv-downloads {
+            display: flex;
+            gap: 14px;
+            margin-bottom: 36px;
+            flex-wrap: wrap;
+        }
+
+        .cv-download {
+            flex: 1;
+            min-width: 220px;
+            padding: 18px 22px;
+            border: 1px solid var(--border);
+            border-radius: 3px;
+            text-decoration: none;
+            color: inherit;
+            background: #fff;
+            transition: all 0.15s ease;
+        }
+
+        .cv-download:hover {
+            border-color: #333;
+            transform: translateY(-1px);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+        }
+
+        .cv-download-lang {
+            font-size: 10.5px;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            font-weight: 500;
+            margin-bottom: 6px;
+        }
+
+        .cv-download-label {
+            font-size: 16px;
+            font-weight: 500;
+            color: #111;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .cv-download-label .arrow {
+            color: var(--text-muted);
+            font-size: 16px;
+            transition: color 0.15s, transform 0.15s;
+        }
+
+        .cv-download:hover .arrow {
+            color: #111;
+            transform: translateY(2px);
+        }
+
+        /* ========== TOGGLE + VIEWER ========== */
+        .cv-viewer-wrap {
+            margin-top: 12px;
+        }
+
+        .cv-toggle {
+            display: flex;
+            gap: 6px;
+            margin-bottom: 14px;
+        }
+
+        .cv-toggle-btn {
+            font-size: 12px;
+            padding: 6px 16px;
+            border: 1px solid var(--border);
+            background: #fff;
+            color: var(--text-secondary);
+            cursor: pointer;
+            font-family: inherit;
+            border-radius: 3px;
+            transition: all 0.15s;
+            letter-spacing: 0.02em;
+        }
+
+        .cv-toggle-btn:hover {
+            border-color: #888;
+            color: #111;
+        }
+
+        .cv-toggle-btn.active {
+            background: #111;
+            border-color: #111;
+            color: #fff;
+        }
+
+        .cv-viewer-label {
+            font-size: 11px;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            font-weight: 500;
+            margin-bottom: 12px;
+        }
+
+        .cv-viewer {
+            width: 100%;
+            height: 900px;
+            border: 1px solid var(--border);
+            background: #f7f7f5;
+            display: block;
+        }
+
+        .cv-viewer-fallback {
+            padding: 40px 20px;
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 14px;
+        }
+
+        /* ========== FOOTER ========== */
+        footer {
+            max-width: var(--content-max);
+            margin: 0 auto;
+            padding: 32px 44px 48px 44px;
+            border-top: 1px solid var(--border);
+            font-size: 11px;
+            color: #999;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+        footer a { color: #999; text-decoration: none; }
+        footer a:hover { color: #333; }
+
+        /* ========== RESPONSIVE ========== */
         @media (max-width: 768px) {
-            .container { grid-template-columns: 1fr; gap: 40px; }
-            .sidebar-menu { display: none; }
-            
+            .nav-container { padding: 12px 20px; position: relative; }
             .menu-toggle { display: block; }
-
             .nav-links {
                 display: none;
                 flex-direction: column;
                 position: absolute;
-                top: 60px;
+                top: 100%;
                 left: 0;
-                width: 100%;
-                background-color: white; 
-                border-top: none;
-                box-shadow: 0 10px 15px rgba(0,0,0,0.15);
-                padding: 0;
+                right: 0;
+                background: white;
+                border-bottom: 1px solid var(--border-soft);
+                box-shadow: 0 4px 10px rgba(0,0,0,0.04);
+                padding: 8px 0;
                 gap: 0;
-                margin-left: 0;
+                z-index: 99;
             }
-
-            .nav-links.active {
-                display: flex;
-            }
-
-            .nav-links li {
-                width: 100%;
-                text-align: center;
-                border-bottom: 1px solid #f5f5f5;
-            }
-
+            .nav-links.active { display: flex; }
+            .nav-links li { width: 100%; text-align: center; }
             .nav-links a {
                 display: block;
-                padding: 15px 0;
-                font-size: 1rem;
-                color: #444; 
-                opacity: 1;
+                padding: 12px 0;
+                font-size: 13px;
+            }
+            .nav-links a:hover,
+            .nav-links a.active {
+                background: #f7f7f7;
+                border-bottom: none;
             }
 
-            .nav-links a:hover, .nav-links a.active {
-                background-color: #f1f8e9;
-                color: var(--secondary-color);
-            }
-        }
-        
-        /* Layout */
-        .container {
-            max-width: 900px;
-            margin: 50px auto;
-            padding: 0 20px;
-        }
+            main { padding: 32px 22px 56px 22px; }
+            .section { grid-template-columns: 1fr; gap: 18px; }
 
-        /* CV Header */
-        .cv-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 20px; /* 탭과의 간격을 위해 줄임 */
-            border-bottom: 2px solid var(--secondary-color);
-            padding-bottom: 15px;
-        }
+            .page-title { font-size: 24px; }
 
-        .cv-title {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--secondary-color);
-            margin: 0;
-        }
+            .cv-download { flex: 1 1 100%; }
 
-        .download-btn {
-            display: inline-flex;
-            align-items: center;
-            background-color: var(--primary-color);
-            color: white;
-            padding: 8px 16px;
-            border-radius: 5px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 0.9rem;
-            transition: background-color 0.2s;
-        }
-
-        .download-btn:hover {
-            background-color: var(--secondary-color);
-        }
-
-        /* [새로 추가된 부분] Tab Container */
-        .tab-container {
-            display: flex;
-            justify-content: flex-start;
-            gap: 10px;
-            margin-bottom: 20px;
-        }
-
-        .tab-btn {
-            padding: 10px 20px;
-            font-size: 1rem;
-            font-weight: 600;
-            border: 1px solid var(--primary-color);
-            background-color: white;
-            color: var(--primary-color);
-            cursor: pointer;
-            border-radius: 5px;
-            transition: all 0.3s;
-            font-family: 'Noto Sans', sans-serif;
-        }
-
-        .tab-btn:hover {
-            background-color: var(--hover-bg);
-        }
-
-        .tab-btn.active {
-            background-color: var(--primary-color);
-            color: white;
-        }
-
-        /* PDF Viewer Container */
-        .pdf-wrapper {
-            width: 100%;
-            height: 1000px;
-            border: 1px solid #ddd;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-            background-color: #fff;
-        }
-
-        .pdf-embed {
-            width: 100%;
-            height: 100%;
-            border: none;
-        }
-
-        /* Mobile Fallback Message */
-        .mobile-message {
-            display: none;
-            text-align: center;
-            padding: 20px;
-            background-color: var(--light-gray);
-            border-radius: 8px;
-            margin-top: 20px;
-            color: #555;
-            font-size: 0.9rem;
-        }
-
-        /* Mobile Responsive */
-        @media (max-width: 768px) {
-            .nav-links { display: none; }
-            .nav-container { justify-content: center; }
-            
-            .cv-header {
-                flex-direction: column;
-                gap: 15px;
-                text-align: center;
+            .cv-viewer {
+                height: 600px;
             }
 
-            .tab-container {
-                justify-content: center; /* 모바일에서는 탭 가운데 정렬 */
-            }
-            
-            .pdf-wrapper {
-                height: 500px;
-            }
-
-            .mobile-message {
-                display: block; 
-            }
+            footer { padding: 24px 22px 36px 22px; }
         }
     </style>
 </head>
@@ -283,77 +328,103 @@
     <nav>
         <div class="nav-container">
             <a href="index.html" class="nav-logo">Seong-Jo Jeong</a>
-            
-            <button class="menu-toggle" onclick="toggleMenu()">☰</button>
-            
+            <button class="menu-toggle" onclick="toggleMenu()" aria-label="Toggle menu">☰</button>
             <ul class="nav-links" id="navLinks">
                 <li><a href="index.html">About</a></li>
+                <li><a href="research.html">Research</a></li>
                 <li><a href="publications.html">Publications</a></li>
-                <li><a href="research.html">Data & Research</a></li>
-                <li><a href="writings.html">Public Sociology</a></li>
+                <li><a href="news.html">News</a></li>
                 <li><a href="cv.html" class="active">CV</a></li>
             </ul>
         </div>
     </nav>
 
-    <div class="container">
-        
-        <div class="cv-header">
-            <h2 class="cv-title">Curriculum Vitae</h2>
-            <a href="cv_eng.pdf" class="download-btn" id="downloadBtn" download>
-                Download CV (PDF)
-            </a>
-        </div>
+    <main>
 
-        <div class="tab-container">
-            <button class="tab-btn active" onclick="switchTab('en', this)">English</button>
-            <button class="tab-btn" onclick="switchTab('kr', this)">한국어</button>
-        </div>
+        <section class="section">
+            <div>
+                <div class="section-label">CV</div>
+            </div>
+            <div>
+                <h1 class="page-title">Curriculum Vitae</h1>
 
-        <div class="pdf-wrapper">
-            <embed src="cv_eng.pdf" type="application/pdf" class="pdf-embed" id="pdfViewer">
-        </div>
 
-        <div class="mobile-message">
-            <p>PDF preview might not be available on this device.</p>
-            <a href="cv_eng.pdf" id="mobileLink" target="_blank" style="color: var(--primary-color); font-weight: bold;">
-                Click here to view or download the CV.
-            </a>
-        </div>
+                <!-- ========== DOWNLOAD CARDS ========== -->
+                <div class="cv-downloads">
+                    <a href="cv_eng.pdf" download class="cv-download">
+                        <div class="cv-download-lang">English</div>
+                        <div class="cv-download-label">
+                            <span>Download CV (PDF)</span>
+                            <span class="arrow">↓</span>
+                        </div>
+                    </a>
+                    <a href="cv_kr.pdf" download class="cv-download">
+                        <div class="cv-download-lang">한국어</div>
+                        <div class="cv-download-label">
+                            <span>CV 다운로드 (PDF)</span>
+                            <span class="arrow">↓</span>
+                        </div>
+                    </a>
+                </div>
 
-    </div>
+                <!-- ========== TOGGLE + EMBEDDED VIEWER ========== -->
+                <div class="cv-viewer-wrap">
+                    <div class="cv-viewer-label">Preview · 미리보기</div>
+                    <div class="cv-toggle" role="tablist">
+                        <button type="button" class="cv-toggle-btn active" data-lang="eng" id="toggleEng" aria-pressed="true">English</button>
+                        <button type="button" class="cv-toggle-btn" data-lang="kr" id="toggleKr" aria-pressed="false">한국어</button>
+                    </div>
+                    <iframe id="cvViewer"
+                            class="cv-viewer"
+                            src="cv_eng.pdf"
+                            title="Seong-Jo Jeong CV"
+                            loading="lazy">
+                        <p class="cv-viewer-fallback">
+                            Your browser does not support embedded PDFs.
+                            Please use the download button above.
+                        </p>
+                    </iframe>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <div>© Seong-Jo Jeong · Last updated April 2026</div>
+        <div><a href="mailto:demonicsj@gmail.com">demonicsj@gmail.com</a></div>
+    </footer>
 
     <script>
-        // 햄버거 메뉴 토글
         function toggleMenu() {
             document.getElementById("navLinks").classList.toggle("active");
         }
 
-        // [새로 추가된 부분] 탭 전환 스크립트
-        function switchTab(lang, btnElement) {
-            // 1. 모든 탭 버튼에서 active 클래스 제거
-            const buttons = document.querySelectorAll('.tab-btn');
-            buttons.forEach(btn => btn.classList.remove('active'));
+        // CV language toggle
+        (function() {
+            const viewer = document.getElementById('cvViewer');
+            const buttons = document.querySelectorAll('.cv-toggle-btn');
+            const sources = {
+                eng: 'cv_eng.pdf',
+                kr: 'cv_kr.pdf'
+            };
 
-            // 2. 클릭된 버튼에 active 클래스 추가
-            btnElement.classList.add('active');
-
-            // 3. 파일 경로 설정 (★파일명을 여기에 맞게 수정하세요★)
-            // 영어: cv_eng.pdf, 한국어: cv_kr.pdf 라고 가정
-            const filePath = (lang === 'en') ? 'cv_eng.pdf' : 'cv_kr.pdf';
-
-            // 4. PDF 뷰어 소스 변경
-            const pdfViewer = document.getElementById('pdfViewer');
-            pdfViewer.src = filePath;
-
-            // 5. 다운로드 버튼 링크 변경
-            const downloadBtn = document.getElementById('downloadBtn');
-            downloadBtn.href = filePath;
-
-            // 6. 모바일용 링크 변경
-            const mobileLink = document.getElementById('mobileLink');
-            mobileLink.href = filePath;
-        }
+            buttons.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const lang = this.dataset.lang;
+                    // Update active state
+                    buttons.forEach(b => {
+                        b.classList.remove('active');
+                        b.setAttribute('aria-pressed', 'false');
+                    });
+                    this.classList.add('active');
+                    this.setAttribute('aria-pressed', 'true');
+                    // Swap PDF source
+                    viewer.src = sources[lang];
+                });
+            });
+        })();
     </script>
+
 </body>
 </html>
