@@ -382,6 +382,91 @@
             border-bottom-color: #333;
         }
 
+        .thread-link {
+            display: inline-block;
+            margin: 10px 0 0 30px;
+            font-size: 12px;
+            color: var(--text-secondary);
+            text-decoration: none;
+        }
+
+        .thread-link .label {
+            border-bottom: 1px solid #bbb;
+            padding-bottom: 1px;
+        }
+
+        .thread-link:hover .label {
+            border-bottom-color: #333;
+            color: #111;
+        }
+
+        .thread-link .arrow {
+            color: #999;
+            margin-left: 4px;
+        }
+
+        /* ========== DATASETS ========== */
+        .dataset-list {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            margin-bottom: 18px;
+        }
+
+        .dataset-item {
+            display: grid;
+            grid-template-columns: 80px 1fr;
+            gap: 18px;
+            align-items: start;
+        }
+
+        .dataset-year {
+            color: #999;
+            font-variant-numeric: tabular-nums;
+            font-size: 13px;
+            padding-top: 2px;
+        }
+
+        .dataset-body {
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        .dataset-name {
+            color: #222;
+        }
+
+        .dataset-name a {
+            color: inherit;
+            text-decoration: none;
+            border-bottom: 1px solid #ddd;
+            transition: border-color 0.15s;
+        }
+
+        .dataset-name a:hover {
+            border-bottom-color: #333;
+        }
+
+        .dataset-meta {
+            color: #888;
+            font-size: 12.5px;
+            margin-top: 2px;
+        }
+
+        .dataset-status {
+            font-size: 9.5px;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            padding: 2px 6px;
+            border-radius: 2px;
+            margin-left: 6px;
+            font-weight: 500;
+            vertical-align: 1px;
+        }
+
+        .dataset-status.public  { color: #0f6e56; background: #e1f5ee; }
+        .dataset-status.private { color: #777;   background: #ededed; }
+
         /* ========== FOOTER ========== */
         footer {
             max-width: var(--content-max);
@@ -491,6 +576,11 @@
                 gap: 10px;
             }
 
+            .dataset-item {
+                grid-template-columns: 60px 1fr;
+                gap: 12px;
+            }
+
             .now-date {
                 font-size: 12px;
             }
@@ -509,6 +599,10 @@
             }
 
             .thread-desc {
+                margin-left: 0;
+            }
+
+            .thread-link {
                 margin-left: 0;
             }
 
@@ -551,9 +645,9 @@
 
             <ul class="nav-links" id="navLinks">
                 <li><a href="index.html" class="active">About</a></li>
+                <li><a href="research.html">Research</a></li>
                 <li><a href="publications.html">Publications</a></li>
-                <li><a href="research.html">Data &amp; Research</a></li>
-                <li><a href="writings.html">Public Sociology</a></li>
+                <li><a href="news.html">News</a></li>
                 <li><a href="cv.html">CV</a></li>
             </ul>
         </div>
@@ -577,10 +671,10 @@
                 <h1 class="hero-name">Seong-Jo Jeong</h1>
                 <div class="hero-subtitle">정성조 · Ph.D. Candidate in Sociology · Chung-Ang University</div>
                 <p class="hero-bio-en">
-                    I study LGBTQ social movements, gender, and sexuality in South Korea. My work moves between political sociology, health inequality, and public engagement.
+                    I study LGBTQ social movements, gender, and sexuality in South Korea. My research moves across three areas: the history of the Korean LGBTQ movement and its anti-discrimination politics; health inequalities and sexual violence faced by sexual and gender minorities; and meta-research on queer studies as an academic field. Alongside, I practice public sociology, translating research into essays, reports, and public talks.
                 </p>
                 <p class="hero-bio-kr">
-                    한국의 성소수자 운동, 젠더, 섹슈얼리티를 연구합니다. 정치사회학과 건강 불평등, 공공사회학 사이에서 작업합니다.
+                    한국의 성소수자 운동, 젠더, 섹슈얼리티를 연구합니다. 한국 성소수자 운동의 역사와 반차별 정치, 차별이 만드는 건강 불평등과 직장과 제도에서의 성폭력, 한국 성소수자/퀴어 연구라는 학문 분야에 대한 메타 연구까지 세 영역에서 작업하고 있습니다. 연구를 에세이와 리포트, 강연으로 풀어 학계 바깥과도 나누는 작업을 이어오고 있습니다.
                 </p>
             </div>
         </section>
@@ -589,7 +683,6 @@
         <section class="section" aria-label="Recent activity">
             <div>
                 <div class="section-label">Now</div>
-                <div class="section-sublabel">Recent activity</div>
             </div>
             <div>
                 <div class="now-list">
@@ -598,8 +691,8 @@
                         <div class="now-date">2026.04</div>
                         <div class="tag tag-report">Report</div>
                         <div class="now-content">
-                            <span class="now-primary">성소수자의 노동권 및 차별에 관한 연구 | 다양성을향한지속가능한움직임 다움</span>
-                            <span class="now-translation">Survey on LGBTQ Labor Rights and Discrimination</span>
+                            <span class="now-primary">성소수자의 노동권 및 차별에 관한 연구</span>
+                            <span class="now-translation">Study on LGBTQ Labor Rights and Discrimination</span>
                         </div>
                     </div>
 
@@ -608,9 +701,18 @@
                         <div class="tag tag-report">Report</div>
                         <div class="now-content">
                             <a href="https://www.humanrights.go.kr/base/board/read?boardManagementNo=17&boardNo=7611978&menuLevel=3&menuNo=115" target="_blank" rel="noopener">
-                                <span class="now-primary">성적지향·성별정체성에 따른 차별실태조사 | 국가인권위원회</span>
+                                <span class="now-primary">성적지향 성별정체성에 따른 차별실태조사 | 국가인권위원회</span>
                                 <span class="now-translation">Survey on Discrimination based on Sexual Orientation and Gender Identity | NHRC Korea</span>
                             </a>
+                        </div>
+                    </div>
+
+                    <div class="now-item">
+                        <div class="now-date">2026.04</div>
+                        <div class="tag tag-talk">Talk</div>
+                        <div class="now-content">
+                            <span class="now-primary">From Silence to Solidarity: A History of the LGBTQ Movement in South Korea</span>
+                            <span class="now-translation">Carr-Ryan Center for Human Rights, Harvard Kennedy School · <em>From Roots to Future: The History of LGBTQI+ Activism in East Asia</em></span>
                         </div>
                     </div>
 
@@ -626,30 +728,19 @@
                     </div>
 
                     <div class="now-item">
-                        <div class="now-date">2025.11</div>
-                        <div class="tag tag-paper">Paper</div>
-                        <div class="now-content">
-                            <a href="https://www.dbpia.co.kr/Journal/articleDetail?nodeId=NODE12497845" target="_blank" rel="noopener">
-                                <span class="now-primary">12·3 탄핵 광장과 퀴어 가시성 | 《한국사회학》</span>
-                                <span class="now-translation">The December 3 Impeachment Square and Queer Visibility | <em>Korean Journal of Sociology</em></span>
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="now-item">
-                        <div class="now-date">2025.09</div>
+                        <div class="now-date">2025.12</div>
                         <div class="tag tag-essay">Essay</div>
                         <div class="now-content">
-                            <a href="https://newsletter.kossda.com/Story/?bmode=view&idx=169247274&t=board" target="_blank" rel="noopener">
-                                <span class="now-primary">"기타, 구체적으로 서술하시오": 데이터의 빈틈에서 삶을 짓기 | 한국사회과학자료원 웹진</span>
-                                <span class="now-translation">"Other, please specify": Building Lives in the Gaps of Data | KOSSDA Webzine</span>
+                            <a href="https://queerstudies.kr/lastissue/?bmode=view&idx=169137816&t=board" target="_blank" rel="noopener">
+                                <span class="now-primary">'페미니즘 리부트' 10년, 한국학 돌아보기 | 한국성소수자/퀴어연구학회 웹진 도착</span>
+                                <span class="now-translation">Ten Years of the 'Feminism Reboot': Looking Back on Korean Studies | <em>Korean Association for LGBTQ+ and Queer Studies Webzine</em></span>
                             </a>
                         </div>
                     </div>
 
                 </div>
 
-                <a href="writings.html" class="see-all">
+                <a href="news.html" class="see-all">
                     <span class="label">See all activity</span><span class="arrow">→</span>
                 </a>
             </div>
@@ -659,7 +750,6 @@
         <section class="section" aria-label="Research">
             <div>
                 <div class="section-label">Research</div>
-                <div class="section-sublabel">Three threads</div>
             </div>
             <div class="threads">
 
@@ -669,8 +759,11 @@
                         <h3>Queer Democracy — Movement &amp; Politics</h3>
                     </div>
                     <p class="thread-desc">
-                        How LGBTQ activists in South Korea build coalitions and reshape democratic life. Dissertation in progress, supported by the National Research Foundation of Korea.
+                        How LGBTQ activists in South Korea build coalitions and reshape democratic life. My dissertation traces the movement's history and its struggle against discrimination, linking movement formation to the politics of solidarity and anti-discrimination law.
                     </p>
+                    <a href="research.html#thread-1" class="thread-link">
+                        <span class="label">Projects &amp; publications</span><span class="arrow">→</span>
+                    </a>
                 </div>
 
                 <div>
@@ -679,20 +772,119 @@
                         <h3>Health, Discrimination &amp; Inequality</h3>
                     </div>
                     <p class="thread-desc">
-                        Quantitative and mixed-methods studies of coming out, minority stress, and mental health among LGBTQ populations in Korea.
+                        Quantitative and mixed-methods studies of discrimination and inequality. For sexual and gender minorities, I trace coming out, minority stress, and mental health. More broadly, I also examine sexual violence and discrimination at work and in institutions.
                     </p>
+                    <a href="research.html#thread-2" class="thread-link">
+                        <span class="label">Projects &amp; publications</span><span class="arrow">→</span>
+                    </a>
                 </div>
 
                 <div>
                     <div class="thread-title">
                         <span class="thread-num">III.</span>
-                        <h3>Public Sociology &amp; Policy</h3>
+                        <h3>Queer Studies as a Field</h3>
                     </div>
                     <p class="thread-desc">
-                        Translating research into public discourse — <a href="writings.html">essays</a>, media, and anti-discrimination advocacy.
+                        Meta-research on queer studies in South Korea, documenting its bibliographic record, examining researchers' working conditions, and studying the institutional infrastructure (IRB, research governance) that shapes what can be studied and by whom.
                     </p>
+                    <a href="research.html#thread-3" class="thread-link">
+                        <span class="label">Projects &amp; publications</span><span class="arrow">→</span>
+                    </a>
                 </div>
 
+            </div>
+        </section>
+
+        <!-- ========== DATASETS ========== -->
+        <section class="section" aria-label="Datasets">
+            <div>
+                <div class="section-label">Datasets</div>
+            </div>
+            <div>
+                <div class="dataset-list">
+
+                    <div class="dataset-item">
+                        <span class="dataset-year">2025</span>
+                        <div class="dataset-body">
+                            <div class="dataset-name">
+                                <a href="https://www.humanrights.go.kr/base/board/read?boardManagementNo=17&boardNo=7611978&menuLevel=3&menuNo=115" target="_blank" rel="noopener">성적지향·성별정체성에 따른 차별실태조사</a>
+                                <span class="dataset-status private">Private</span>
+                            </div>
+                            <div class="dataset-meta">National Human Rights Commission of Korea · n = 2,950</div>
+                        </div>
+                    </div>
+
+                    <div class="dataset-item">
+                        <span class="dataset-year">2025</span>
+                        <div class="dataset-body">
+                            <div class="dataset-name">
+                                성소수자의 노동권 및 차별에 관한 연구
+                                <span class="dataset-status private">Private</span>
+                            </div>
+                            <div class="dataset-meta">Dawoom / Seoul National University School of Law · n = 2,639</div>
+                        </div>
+                    </div>
+
+                    <div class="dataset-item">
+                        <span class="dataset-year">2025</span>
+                        <div class="dataset-body">
+                            <div class="dataset-name">
+                                <a href="https://drive.google.com/file/d/1X6oE1maVP-qB2C9bTjZS_8bQNy_OqeEy/view" target="_blank" rel="noopener">한국 성소수자/퀴어연구 학술환경 실태조사</a>
+                                <span class="dataset-status private">Private</span>
+                            </div>
+                            <div class="dataset-meta">Korean Association for LGBTQ+ and Queer Studies · n = 192</div>
+                        </div>
+                    </div>
+
+                    <div class="dataset-item">
+                        <span class="dataset-year">2024</span>
+                        <div class="dataset-body">
+                            <div class="dataset-name">
+                                <a href="https://queerstudies.kr/archive" target="_blank" rel="noopener">한국 성소수자 연구 아카이브, 1964–2021</a>
+                                <span class="dataset-status public">Public</span>
+                            </div>
+                            <div class="dataset-meta">Junior Scholars Network of LGBTIQ Research · 1,979 articles, bibliographic metadata</div>
+                        </div>
+                    </div>
+
+                    <div class="dataset-item">
+                        <span class="dataset-year">2023–24</span>
+                        <div class="dataset-body">
+                            <div class="dataset-name">
+                                <a href="https://kofic.kr/kofic/business/rsch/findPolicyDetail.do?boardNumber=39&policyNo=6906" target="_blank" rel="noopener">2023년 한국 영화산업 성희롱·성폭력 실태조사</a>
+                                <span class="dataset-status private">Private</span>
+                            </div>
+                            <div class="dataset-meta">Korean Film Council · n = 1,124</div>
+                        </div>
+                    </div>
+
+                    <div class="dataset-item">
+                        <span class="dataset-year">2021</span>
+                        <div class="dataset-body">
+                            <div class="dataset-name">
+                                <a href="https://www.dawoom-t4c.org/9f6687b7-d97a-45b7-be6d-7ba87274c3d5" target="_blank" rel="noopener">청년 성소수자 사회적 욕구 및 실태조사</a>
+                                <span class="dataset-status public">Public</span>
+                            </div>
+                            <div class="dataset-meta">Dawoom · n = 3,911</div>
+                        </div>
+                    </div>
+
+                    <div class="dataset-item">
+                        <span class="dataset-year">2020</span>
+                        <div class="dataset-body">
+                            <div class="dataset-name">
+                                2019년 영화계 성희롱·성폭력 실태조사
+                                <span class="dataset-status private">Private</span>
+                            </div>
+                            <div class="dataset-meta">Korean Film Council · n = 834</div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <a href="research.html#datasets" class="see-all">
+                    <span class="label">See all with access info</span><span class="arrow">→</span>
+                </a>
             </div>
         </section>
 
