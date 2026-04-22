@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>UN 인권메커니즘의 대한민국 성소수자 관련 권고 — 데이터 시각화</title>
+<meta name="description" content="UPR, 조약기구, 인권이사회 특별절차에서 대한민국에 보내온 성소수자 관련 권고 107건의 분석 (2007–2024).">
+
+<link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.css" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --ink: #1a0d2e;
+  --ink-soft: #3d2a5c;
+  --ink-muted: #8577a0;
+  --paper: #ffffff;
+  --paper-warm: #f7f3fc;
+  --paper-line: #e1d6f0;
+  --paper-line-strong: #c9b8df;
+  --accent: #5d1d9e;
+  --accent-soft: #8845c9;
+
+  --fig1-color: #6a35b8;   /* heatmap: data-4 */
+  --fig2-color: #9668d9;   /* trend:   data-3 */
+  --fig3-color: #b32876;   /* upr:     total-4 */
+
+  --font-sans: 'Pretendard Variable', Pretendard, -apple-system, BlinkMacSystemFont, system-ui, 'Apple SD Gothic Neo', 'Noto Sans KR', sans-serif;
+  --font-mono: 'JetBrains Mono', 'SF Mono', Consolas, Menlo, monospace;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; font-style: normal; }
+html, body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: 1.6;
+}
+a { color: inherit; text-decoration: none; }
+
+.page { max-width: 960px; margin: 0 auto; padding: 72px 48px 100px; }
+
+/* ---------- Masthead ---------- */
+.masthead {
+  border-bottom: 2px solid var(--ink);
+  padding-bottom: 28px;
+  margin-bottom: 56px;
+  position: relative;
+}
+.masthead::before {
+  content: ""; position: absolute; bottom: -8px; left: 0;
+  width: 100%; height: 1px; background: var(--ink);
+}
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 18px;
+  display: flex; align-items: center; gap: 12px;
+  font-weight: 500;
+}
+.eyebrow::after { content: ""; flex: 1; height: 1px; background: var(--paper-line); }
+
+h1.title {
+  font-family: var(--font-sans);
+  font-weight: 700;
+  font-size: 44px;
+  line-height: 1.15;
+  letter-spacing: -0.028em;
+  margin-bottom: 18px;
+  color: var(--ink);
+}
+h1.title .accent {
+  color: var(--accent);
+  font-weight: 700;
+}
+.lede {
+  font-size: 16px;
+  color: var(--ink-soft);
+  max-width: 720px;
+  line-height: 1.7;
+  font-weight: 400;
+  letter-spacing: -0.005em;
+}
+.lede strong {
+  color: var(--ink);
+  font-weight: 600;
+}
+
+.meta {
+  display: flex;
+  gap: 32px;
+  margin-top: 28px;
+  flex-wrap: wrap;
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  color: var(--ink-muted);
+  letter-spacing: 0.08em;
+  font-weight: 500;
+  padding-top: 24px;
+  border-top: 1px dashed var(--paper-line);
+}
+.meta span strong { color: var(--ink); font-weight: 600; }
+
+/* ---------- Intro body ---------- */
+.intro {
+  margin-bottom: 64px;
+  max-width: 720px;
+}
+.intro h2 {
+  font-family: var(--font-sans);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--accent);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 14px;
+}
+.intro p {
+  font-size: 14.5px;
+  color: var(--ink-soft);
+  line-height: 1.75;
+  margin-bottom: 14px;
+  font-weight: 400;
+}
+.intro p:last-child { margin-bottom: 0; }
+.intro strong {
+  color: var(--ink);
+  font-weight: 600;
+}
+
+/* ---------- Figure nav cards ---------- */
+.nav-section {
+  margin-bottom: 72px;
+}
+.nav-section-title {
+  font-family: var(--font-sans);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--accent);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 24px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--ink);
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+}
+.nav-section-title::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: var(--paper-line);
+}
+.nav-section-title .count {
+  color: var(--ink-muted);
+  font-family: var(--font-mono);
+  font-weight: 500;
+  letter-spacing: 0.1em;
+}
+
+.card-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.fig-card {
+  display: grid;
+  grid-template-columns: 72px 1fr auto;
+  gap: 24px;
+  align-items: start;
+  padding: 24px 20px;
+  border: 1px solid var(--paper-line);
+  background: #fff;
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s, transform 0.15s;
+  position: relative;
+  text-decoration: none;
+  color: inherit;
+  overflow: hidden;
+}
+.fig-card:hover {
+  background: var(--paper-warm);
+  border-color: var(--paper-line-strong);
+}
+.fig-card::before {
+  content: "";
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 3px;
+  background: var(--card-color, var(--accent));
+  opacity: 0;
+  transition: opacity 0.15s;
+}
+.fig-card:hover::before { opacity: 1; }
+
+.fig-card .num-block {
+  font-family: var(--font-mono);
+  color: var(--card-color, var(--accent));
+  text-align: left;
+}
+.fig-card .num-block .label {
+  display: block;
+  font-size: 9.5px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  font-weight: 600;
+  opacity: 0.75;
+  margin-bottom: 4px;
+}
+.fig-card .num-block .num {
+  display: block;
+  font-size: 32px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1;
+}
+
+.fig-card .body {
+  min-width: 0;
+}
+.fig-card .card-title {
+  font-family: var(--font-sans);
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--ink);
+  letter-spacing: -0.02em;
+  margin-bottom: 10px;
+  line-height: 1.25;
+}
+.fig-card .card-desc {
+  font-family: var(--font-sans);
+  font-size: 13.5px;
+  color: var(--ink-soft);
+  line-height: 1.65;
+  font-weight: 400;
+  margin-bottom: 12px;
+  max-width: 520px;
+}
+.fig-card .tags {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--ink-muted);
+  letter-spacing: 0.06em;
+  font-weight: 500;
+}
+.fig-card .tags span::before {
+  content: "· ";
+  color: var(--paper-line-strong);
+  margin-right: 2px;
+}
+.fig-card .tags span:first-child::before { content: ""; margin: 0; }
+.fig-card .tags .accent {
+  color: var(--card-color, var(--accent));
+  font-weight: 600;
+}
+
+.fig-card .arrow {
+  align-self: center;
+  font-size: 20px;
+  color: var(--ink-muted);
+  font-family: var(--font-mono);
+  font-weight: 300;
+  transition: transform 0.2s, color 0.2s;
+}
+.fig-card:hover .arrow {
+  color: var(--card-color, var(--accent));
+  transform: translateX(4px);
+}
+
+/* Figure-specific accent colors */
+.fig-card.fig-01 { --card-color: var(--fig1-color); }
+.fig-card.fig-02 { --card-color: var(--fig2-color); }
+.fig-card.fig-03 { --card-color: var(--fig3-color); }
+
+/* ---------- Resources section ---------- */
+.resources {
+  margin-bottom: 64px;
+  padding: 24px 28px;
+  background: var(--paper-warm);
+  border-left: 3px solid var(--accent);
+  font-family: var(--font-sans);
+  font-size: 13.5px;
+  color: var(--ink-soft);
+  line-height: 1.75;
+  font-weight: 400;
+}
+.resources h3 {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--accent);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+.resources p { margin-bottom: 6px; }
+.resources p:last-child { margin-bottom: 0; }
+.resources strong { color: var(--ink); font-weight: 600; }
+.resources .link {
+  color: var(--accent);
+  border-bottom: 1px solid var(--accent-soft);
+  padding-bottom: 1px;
+  font-weight: 600;
+  transition: color 0.15s, border-color 0.15s;
+}
+.resources .link:hover {
+  color: #b32876;
+  border-bottom-color: #b32876;
+}
+.resources .link::after {
+  content: "  ↗";
+  font-size: 10px;
+  margin-left: 2px;
+  display: inline-block;
+}
+
+/* ---------- Footer ---------- */
+.footer {
+  margin-top: 72px;
+  padding-top: 24px;
+  border-top: 1px solid var(--paper-line);
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--ink-muted);
+  letter-spacing: 0.06em;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  font-weight: 500;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+@media (max-width: 720px) {
+  .page { padding: 48px 24px 72px; }
+  h1.title { font-size: 32px; }
+  .fig-card { grid-template-columns: 56px 1fr; gap: 16px; padding: 18px 16px; }
+  .fig-card .arrow { display: none; }
+  .fig-card .num-block .num { font-size: 26px; }
+  .fig-card .card-title { font-size: 17px; }
+  .meta { gap: 20px; }
+}
+
+@media print {
+  .fig-card { break-inside: avoid; }
+  .fig-card:hover { background: #fff; border-color: var(--paper-line); }
+}
+</style>
+</head>
+<body>
+
+<div class="page">
+
+  <!-- ============ MASTHEAD ============ -->
+  <header class="masthead">
+    <div class="eyebrow">Data Visualization · 2007–2024</div>
+    <h1 class="title">UN 인권메커니즘의 대한민국<br><span class="accent">성소수자 관련 권고</span> 분석</h1>
+    <p class="lede">
+      국가별 인권상황 정기검토(UPR), 조약기구 최종견해, 인권이사회 특별절차가 대한민국에 보낸 <strong>성소수자 관련 권고 107건</strong>을 범주·시기·수용 여부로 시각화한다. 18년 동안의 국제사회 권고 흐름과 정부의 응답 패턴을 세 개의 차트로 나누어 분석한다.
+    </p>
+    <div class="meta">
+      <span>N · <strong>107</strong> 권고</span>
+      <span>범주 · <strong>21</strong></span>
+      <span>메커니즘 · <strong>9</strong></span>
+      <span>기간 · <strong>2007–2024</strong></span>
+    </div>
+  </header>
+
+  <!-- ============ INTRO ============ -->
+  <section class="intro">
+    <h2>이 프로젝트에 대하여</h2>
+    <p>
+      대한민국 정부는 1991년 UN 가입 이후 국제인권메커니즘의 심사·모니터링 대상이 되어 왔다. 이 데이터셋은 그중에서도 성적 지향·성 정체성과 관련된 권고만을 따로 추려, 어떤 주제가 누구로부터 얼마나 자주 제기되었고 한국 정부가 이에 어떻게 응답했는지를 추적한다.
+    </p>
+    <p>
+      세 시각화는 각각 다른 질문에 답한다: <strong>무엇이 권고되었는가</strong>(Figure 01), <strong>언제 집중적으로 권고되었고 그 시점에 국내에서는 무슨 일이 있었는가</strong>(Figure 02), <strong>정부는 어떤 권고를 받아들이고 어떤 권고를 거부했는가</strong>(Figure 03).
+    </p>
+  </section>
+
+  <!-- ============ NAVIGATION CARDS ============ -->
+  <nav class="nav-section">
+    <div class="nav-section-title">
+      Figures <span class="count">· 03</span>
+    </div>
+
+    <div class="card-stack">
+
+      <!-- === Figure 01 === -->
+      <a class="fig-card fig-01" href="https://jeongsj.github.io/un_sogi_hitmap.html" target="_blank" rel="noopener">
+        <div class="num-block">
+          <span class="label">Figure</span>
+          <span class="num">01</span>
+        </div>
+        <div class="body">
+          <div class="card-title">메커니즘 × 범주 빈도 매트릭스</div>
+          <p class="card-desc">
+            UPR 4개 회차, 조약기구 7개, 인권이사회 특별절차를 가로축으로, 21개 세부 범주를 세로축으로 배치한 히트맵. 어떤 주제(SOGI 차별금지법·군형법·HIV·성별인정 등)가 어느 메커니즘을 통해 주로 제기되었는지 한눈에 보여준다.
+          </p>
+          <div class="tags">
+            <span class="accent">히트맵</span>
+            <span>매트릭스</span>
+            <span>N = 155 매칭</span>
+          </div>
+        </div>
+        <span class="arrow">→</span>
+      </a>
+
+      <!-- === Figure 02 === -->
+      <a class="fig-card fig-02" href="https://jeongsj.github.io/un_sogi_reco.html" target="_blank" rel="noopener">
+        <div class="num-block">
+          <span class="label">Figure</span>
+          <span class="num">02</span>
+        </div>
+        <div class="body">
+          <div class="card-title">연도별 추이와 국내 주요 사건</div>
+          <p class="card-desc">
+            2007–2024년 연간 권고 건수를 메커니즘별로 누적 막대로 표시하고, 같은 시기의 국내 사법·사회 주요 사건(차별금지법 발의, 헌재 군형법 합헌, 육군 색출 사건, 대법 동성배우자 판결 등)을 병치한다. 오른쪽 축에는 누적 합계를 점선으로 표현.
+          </p>
+          <div class="tags">
+            <span class="accent">누적 막대 · 타임라인</span>
+            <span>18년</span>
+            <span>정권 · 5</span>
+          </div>
+        </div>
+        <span class="arrow">→</span>
+      </a>
+
+      <!-- === Figure 03 === -->
+      <a class="fig-card fig-03" href="https://jeongsj.github.io/un_sogi_supp.html" target="_blank" rel="noopener">
+        <div class="num-block">
+          <span class="label">Figure</span>
+          <span class="num">03</span>
+        </div>
+        <div class="body">
+          <div class="card-title">UPR 권고의 수용·불수용 분포</div>
+          <p class="card-desc">
+            UPR 권고 81건에 대한 한국 정부의 공식 응답을 차수별(상단)과 주제별(하단)로 분석. SOGI를 명시한 권고는 거의 전량 불수용이고, SOGI 미명시 일반적 차별금지법 권고는 절반 가량 수용되는 비대칭 구조를 드러낸다.
+          </p>
+          <div class="tags">
+            <span class="accent">스택 막대</span>
+            <span>N = 81 (UPR only)</span>
+            <span>수용률 22.2%</span>
+          </div>
+        </div>
+        <span class="arrow">→</span>
+      </a>
+
+    </div>
+  </nav>
+
+  <!-- ============ RESOURCES ============ -->
+  <section class="resources">
+    <h3>데이터 · Data</h3>
+    <p>각 권고의 원문·출처·수용여부를 포함한 <strong>상세 리스트 전체</strong>는 <a class="link" href="https://docs.google.com/spreadsheets/d/114wpb9omsfrJvt3EtdUglxx-kBTuG7Say_f9Y4JrCF8/edit?usp=sharing" target="_blank" rel="noopener noreferrer">Google Sheets</a>에서 확인할 수 있다.</p>
+    <p>출처: <strong>UN OHCHR · UPR Database · Treaty Body concluding observations · Special Procedures communications</strong>.</p>
+  </section>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="footer">
+    <span>N = 107 · 2007–2024</span>
+    <span>Hub Page · 3 Figures</span>
+  </footer>
+
+</div>
+
+</body>
+</html>
