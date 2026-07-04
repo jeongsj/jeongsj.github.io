@@ -460,6 +460,10 @@
                             src="cv_eng.pdf"
                             title="Seong-Jo Jeong CV (English)"
                             loading="lazy"></iframe>
+                    <p class="cv-viewer-note">
+                        If the preview does not load on your device, please use the download buttons above.
+                        <span lang="ko">미리보기가 표시되지 않는 기기에서는 위의 다운로드 버튼을 이용해주세요.</span>
+                    </p>
                 </div>
             </div>
         </section>
@@ -472,6 +476,10 @@
     </footer>
 
     <script>
+        // ── PDF를 새 버전으로 교체할 때마다 이 값을 바꿔주세요 (예: '2026-08').
+        //    주소가 달라져 브라우저/CDN 캐시를 우회하므로 방문자에게 항상 최신 CV가 보입니다.
+        var CV_VERSION = '2026-07';
+
         function toggleMenu() {
             var nav = document.getElementById("navLinks");
             var btn = document.querySelector(".menu-toggle");
@@ -479,14 +487,20 @@
             btn.setAttribute("aria-expanded", open ? "true" : "false");
         }
 
-        // CV language toggle
+        // CV language toggle + cache-busted sources
         (function () {
             var viewer = document.getElementById('cvViewer');
             var buttons = document.querySelectorAll('.cv-toggle-btn');
             var sources = {
-                eng: { src: 'cv_eng.pdf', title: 'Seong-Jo Jeong CV (English)' },
-                kr:  { src: 'cv_kr.pdf',  title: 'Seong-Jo Jeong CV (Korean)' }
+                eng: { src: 'cv_eng.pdf?v=' + CV_VERSION, title: 'Seong-Jo Jeong CV (English)' },
+                kr:  { src: 'cv_kr.pdf?v=' + CV_VERSION,  title: 'Seong-Jo Jeong CV (Korean)' }
             };
+
+            // Stamp the version onto the initial viewer and the download links
+            viewer.src = sources.eng.src;
+            document.querySelectorAll('.cv-download').forEach(function (a) {
+                a.href = a.getAttribute('href').split('?')[0] + '?v=' + CV_VERSION;
+            });
 
             buttons.forEach(function (btn) {
                 btn.addEventListener('click', function () {
