@@ -13,14 +13,16 @@
     <meta property="og:type" content="website">
 
     <link rel="canonical" href="https://jeongsj.github.io/news.html">
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230f6e56'/%3E%3Ctext x='16' y='22' font-family='Helvetica,Arial,sans-serif' font-size='15' font-weight='600' fill='%23fbfaf7' text-anchor='middle'%3ESJ%3C/text%3E%3C/svg%3E">
     <title>News | Seong-Jo Jeong</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,600;1,400&family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
 
     <style>
         :root {
+            /* Output-type taxonomy — the site's signature color system */
             --accent-paper: #0f6e56;
             --accent-paper-bg: #e1f5ee;
             --accent-report: #854f0b;
@@ -32,17 +34,23 @@
             --accent-event: #72243e;
             --accent-event-bg: #fbeaf0;
 
-            --text-primary: #0f0f0f;
-            --text-body: #222;
-            --text-secondary: #555;
-            --text-muted: #888;
-            --text-subtle: #aaa;
-            --text-faint: #bbb;
+            --accent: #0f6e56;
+            --accent-soft: #e4f2ec;
+            --accent-line: rgba(15, 110, 86, 0.35);
 
-            --border: #e8e8e5;
-            --border-soft: #ececec;
-            --nav-bg: #fcfcfc;
-            --photo-placeholder: #edece6;
+            /* Ink scale — all text colors pass WCAG AA on the paper background */
+            --text-primary: #161513;
+            --text-body: #2a2926;
+            --text-secondary: #52504a;
+            --text-muted: #6b6960;
+            --text-kr: #5c5a54;
+
+            --bg: #fbfaf7;
+            --bg-hover: #f3f1ea;
+            --border: #e6e3d8;
+            --border-soft: #edeae1;
+            --nav-bg: rgba(251, 250, 247, 0.88);
+            --photo-placeholder: #ece9e0;
 
             --font-sans: 'Inter', 'Noto Sans KR', 'Helvetica Neue', system-ui, -apple-system, sans-serif;
 
@@ -52,13 +60,17 @@
         }
 
         * { box-sizing: border-box; }
+
         html, body { margin: 0; padding: 0; }
-        html { scroll-behavior: smooth; }
+
+        @media (prefers-reduced-motion: no-preference) {
+            html { scroll-behavior: smooth; }
+        }
 
         body {
             font-family: var(--font-sans);
             color: var(--text-primary);
-            background: #ffffff;
+            background: var(--bg);
             line-height: 1.6;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
@@ -66,14 +78,55 @@
 
         a { color: inherit; }
 
+        ::selection {
+            background: var(--accent-soft);
+            color: var(--text-primary);
+        }
+
+        :focus-visible {
+            outline: 2px solid var(--accent);
+            outline-offset: 3px;
+            border-radius: 2px;
+        }
+
+        .skip-link {
+            position: absolute;
+            left: -9999px;
+            top: 0;
+            background: var(--accent);
+            color: #fff;
+            padding: 8px 14px;
+            font-size: 13px;
+            z-index: 200;
+            border-radius: 0 0 4px 0;
+            text-decoration: none;
+        }
+
+        .skip-link:focus { left: 0; }
+
         /* ========== NAV ========== */
-        nav {
+        nav.site-nav {
             border-bottom: 1px solid var(--border-soft);
             background: var(--nav-bg);
+            backdrop-filter: blur(10px) saturate(1.2);
+            -webkit-backdrop-filter: blur(10px) saturate(1.2);
             position: sticky;
             top: 0;
             z-index: 100;
         }
+
+        /* Signature: the taxonomy spectrum — paper / report / essay / talk */
+        nav.site-nav::before {
+            content: '';
+            display: block;
+            height: 3px;
+            background: linear-gradient(90deg,
+                var(--accent-paper)  0 25%,
+                var(--accent-report) 25% 50%,
+                var(--accent-essay)  50% 75%,
+                var(--accent-talk)   75% 100%);
+        }
+
         .nav-container {
             max-width: var(--content-max);
             margin: 0 auto;
@@ -82,42 +135,50 @@
             justify-content: space-between;
             align-items: center;
         }
+
         .nav-logo {
             font-size: 11px;
             letter-spacing: 0.2em;
             text-transform: uppercase;
             font-weight: 600;
-            color: #111;
+            color: var(--text-primary);
             text-decoration: none;
         }
+
         .nav-links {
             list-style: none;
             display: flex;
-            gap: 22px;
+            gap: 24px;
             margin: 0;
             padding: 0;
         }
+
         .nav-links a {
             font-size: 12px;
-            color: #444;
+            color: var(--text-secondary);
             font-weight: 500;
             text-decoration: none;
             transition: color 0.2s;
         }
+
         .nav-links a:hover,
-        .nav-links a.active {
-            color: #000;
-            border-bottom: 1px solid #000;
-            padding-bottom: 1px;
+        .nav-links a.active,
+        .nav-links a[aria-current="page"] {
+            color: var(--text-primary);
+            text-decoration: underline;
+            text-decoration-color: var(--accent);
+            text-decoration-thickness: 1.5px;
+            text-underline-offset: 5px;
         }
+
         .menu-toggle {
             display: none;
             background: none;
             border: none;
             font-size: 1.4rem;
-            color: #111;
+            color: var(--text-primary);
             cursor: pointer;
-            padding: 0;
+            padding: 2px 4px;
             line-height: 1;
         }
 
@@ -134,34 +195,42 @@
             grid-template-columns: var(--sidebar-w) 1fr;
             gap: var(--gutter);
         }
+
         .section + .section {
             padding-top: 36px;
             margin-top: 20px;
             border-top: 1px solid var(--border);
         }
+
         .section-label {
             font-size: 11px;
             letter-spacing: 0.25em;
             text-transform: uppercase;
             color: var(--text-secondary);
             font-weight: 500;
-            margin-bottom: 8px;
+            margin: 0 0 8px 0;
         }
-        .section-sublabel {
-            font-size: 11px;
-            color: var(--text-subtle);
-            font-weight: 400;
+
+        .year-label {
+            font-size: 14px;
+            letter-spacing: 0.04em;
+            color: var(--accent);
+            font-weight: 600;
+            font-variant-numeric: tabular-nums;
+            margin: 0;
+            text-transform: none;
         }
 
         /* ========== HERO ========== */
         .page-title {
-            font-size: 28px;
-            font-weight: 400;
+            font-size: 27px;
+            font-weight: 600;
             line-height: 1.2;
-            letter-spacing: -0.01em;
+            letter-spacing: -0.018em;
             margin: 0 0 10px 0;
             color: var(--text-primary);
         }
+
         .page-intro {
             font-size: 16px;
             line-height: 1.7;
@@ -169,61 +238,66 @@
             margin: 0;
             max-width: 560px;
         }
+
         .page-intro-kr {
             font-size: 14px;
             line-height: 1.75;
-            color: #8a8a8a;
+            color: var(--text-kr);
             margin: 14px 0 0 0;
             max-width: 560px;
         }
+
+        /* ========== YEAR FILTER ========== */
         .year-jumps {
             margin-top: 24px;
             display: flex;
-            gap: 10px;
+            gap: 8px;
             flex-wrap: wrap;
         }
+
         .year-jump {
             font-size: 12px;
             color: var(--text-secondary);
+            font-weight: 500;
             text-decoration: none;
-            padding: 4px 10px;
+            padding: 5px 11px;
             border: 1px solid var(--border);
-            border-radius: 3px;
+            border-radius: 4px;
             font-variant-numeric: tabular-nums;
-            transition: all 0.15s;
-            background: white;
+            transition: border-color 0.15s, color 0.15s, background 0.15s;
+            background: transparent;
             cursor: pointer;
             font-family: inherit;
         }
+
         .year-jump:hover {
-            border-color: #888;
-            color: #111;
+            border-color: var(--accent);
+            color: var(--accent);
+            background: var(--accent-soft);
         }
+
         .year-jump.active {
-            background: #0f0f0f;
-            color: white;
-            border-color: #0f0f0f;
+            background: var(--accent);
+            color: #fff;
+            border-color: var(--accent);
         }
 
         /* ========== YEAR SECTION ========== */
-        section[id^="year-"] { scroll-margin-top: 80px; }
+        section[id^="year-"] { scroll-margin-top: 84px; }
 
         /* ========== POST ========== */
         .post-list {
             display: flex;
             flex-direction: column;
         }
+
         .post {
             padding: 24px 0;
-            border-bottom: 1px solid var(--border);
+            border-bottom: 1px solid var(--border-soft);
         }
-        .post:first-child {
-            padding-top: 0;
-        }
-        .post:last-child {
-            border-bottom: none;
-            padding-bottom: 0;
-        }
+
+        .post:first-child { padding-top: 0; }
+        .post:last-child { border-bottom: none; padding-bottom: 0; }
 
         .post-header {
             display: flex;
@@ -231,89 +305,98 @@
             align-items: center;
             margin-bottom: 10px;
         }
+
         .post-date {
             color: var(--text-muted);
             font-variant-numeric: tabular-nums;
             font-size: 13px;
         }
 
-        /* Tags */
+        /* Tags — core taxonomy + extended types, tuned for the paper background */
         .tag {
             font-size: 10px;
             letter-spacing: 0.2em;
             text-transform: uppercase;
             font-weight: 600;
             padding: 3px 8px;
-            border-radius: 2px;
+            border-radius: 3px;
             white-space: nowrap;
         }
+
         .tag-paper  { color: var(--accent-paper);  background: var(--accent-paper-bg); }
         .tag-report { color: var(--accent-report); background: var(--accent-report-bg); }
         .tag-essay  { color: var(--accent-essay);  background: var(--accent-essay-bg); }
         .tag-talk   { color: var(--accent-talk);   background: var(--accent-talk-bg); }
         .tag-event  { color: var(--accent-event);  background: var(--accent-event-bg); }
-        .tag-interview { color: #2e4a7d; background: #e3eaf3; }
-        .tag-chapter     { color: #3d5a3a; background: #dfe8dd; }
-        .tag-translation { color: #6b4a7a; background: #ebe2f0; }
-        .tag-award       { color: #7a5d0a; background: #f5edc5; }
+        .tag-interview   { color: #2e4a7d; background: #e4ebf5; }
+        .tag-chapter     { color: #3d5a3a; background: #e2eadf; }
+        .tag-translation { color: #6b4a7a; background: #efe6f3; }
+        .tag-award       { color: #7a5d0a; background: #f6eecb; }
 
         .post-content {
             display: flex;
             gap: 22px;
             align-items: flex-start;
         }
+
         .post-text {
             flex: 1;
             min-width: 0;
         }
+
         .post-title {
             font-size: 15.5px;
             font-weight: 500;
             line-height: 1.45;
+            letter-spacing: -0.005em;
             margin: 0 0 4px 0;
             color: var(--text-primary);
         }
+
         .post-subtitle {
             font-size: 13px;
             color: var(--text-muted);
             line-height: 1.55;
             margin-bottom: 10px;
         }
-        .post-subtitle em {
-            font-style: italic;
-        }
+
+        .post-subtitle em { font-style: italic; }
+
         .post-desc {
             font-size: 14px;
             line-height: 1.65;
             color: var(--text-body);
             margin: 0 0 10px 0;
         }
+
         .post-for {
             font-size: 12px;
-            color: var(--text-subtle);
+            color: var(--text-muted);
             margin-top: 2px;
             line-height: 1.55;
         }
-        .post-for em {
-            font-style: italic;
-        }
+
+        .post-for em { font-style: italic; }
+
         .post-link {
-            font-size: 12.5px;
-            color: var(--text-secondary);
+            font-size: 12px;
+            color: var(--accent);
+            font-weight: 500;
             text-decoration: none;
             display: inline-block;
         }
+
         .post-link .label {
-            border-bottom: 1px solid #bbb;
+            border-bottom: 1px solid var(--accent-line);
             padding-bottom: 1px;
+            transition: border-color 0.15s;
         }
-        .post-link:hover .label {
-            color: #111;
-            border-bottom-color: #333;
-        }
-        .post-link .arrow {
-            color: #999;
-            margin-left: 4px;
+
+        .post-link:hover .label { border-bottom-color: var(--accent); }
+
+        .post-link .ext {
+            font-size: 11px;
+            margin-left: 3px;
         }
 
         /* Image */
@@ -321,20 +404,14 @@
             width: 140px;
             flex-shrink: 0;
         }
+
         .post-image img {
             width: 100%;
             height: auto;
             display: block;
-            border-radius: 4px;
+            border-radius: 6px;
+            border: 1px solid var(--border-soft);
             background: var(--photo-placeholder);
-        }
-
-        /* flag for items needing verification */
-        .verify-flag {
-            font-size: 11px;
-            color: #b05050;
-            margin-left: 6px;
-            font-weight: 500;
         }
 
         /* ========== FOOTER ========== */
@@ -343,21 +420,30 @@
             margin: 0 auto;
             padding: 32px 44px 48px 44px;
             border-top: 1px solid var(--border);
-            font-size: 11px;
-            color: #999;
+            font-size: 11.5px;
+            color: var(--text-muted);
             display: flex;
             justify-content: space-between;
             align-items: center;
             flex-wrap: wrap;
             gap: 12px;
         }
-        footer a { color: #999; text-decoration: none; }
-        footer a:hover { color: #333; }
+
+        footer a { color: var(--text-muted); text-decoration: none; }
+        footer a:hover { color: var(--accent); }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                transition-duration: 0.01ms !important;
+                animation-duration: 0.01ms !important;
+            }
+        }
 
         /* ========== RESPONSIVE ========== */
         @media (max-width: 768px) {
             .nav-container { padding: 12px 20px; position: relative; }
             .menu-toggle { display: block; }
+
             .nav-links {
                 display: none;
                 flex-direction: column;
@@ -365,36 +451,40 @@
                 top: 100%;
                 left: 0;
                 right: 0;
-                background: white;
+                background: var(--bg);
                 border-bottom: 1px solid var(--border-soft);
                 box-shadow: 0 4px 10px rgba(0,0,0,0.04);
                 padding: 8px 0;
                 gap: 0;
                 z-index: 99;
             }
+
             .nav-links.active { display: flex; }
             .nav-links li { width: 100%; text-align: center; }
+
             .nav-links a {
                 display: block;
                 padding: 12px 0;
                 font-size: 13px;
             }
+
             .nav-links a:hover,
-            .nav-links a.active {
-                background: #f7f7f7;
-                border-bottom: none;
+            .nav-links a.active,
+            .nav-links a[aria-current="page"] {
+                background: var(--bg-hover);
+                text-decoration: none;
             }
 
             main { padding: 32px 22px 56px 22px; }
+
             .section { grid-template-columns: 1fr; gap: 18px; }
             .section + .section { padding-top: 28px; margin-top: 16px; }
 
-            .page-title { font-size: 24px; }
+            .page-title { font-size: 23px; }
             .page-intro { font-size: 15px; }
 
-            .post-content {
-                flex-direction: column;
-            }
+            .post-content { flex-direction: column; }
+
             .post-image {
                 width: 100%;
                 max-width: 240px;
@@ -407,67 +497,72 @@
 </head>
 <body>
 
-    <nav>
+    <a href="#main" class="skip-link">Skip to content</a>
+
+    <nav class="site-nav" aria-label="Primary">
         <div class="nav-container">
             <a href="index.html" class="nav-logo">Seong-Jo Jeong</a>
-            <button class="menu-toggle" onclick="toggleMenu()" aria-label="Toggle menu">☰</button>
+
+            <button class="menu-toggle" onclick="toggleMenu()" aria-label="Toggle menu" aria-expanded="false" aria-controls="navLinks">☰</button>
+
             <ul class="nav-links" id="navLinks">
                 <li><a href="index.html">About</a></li>
                 <li><a href="research.html">Research</a></li>
                 <li><a href="publications.html">Publications</a></li>
-                <li><a href="news.html" class="active">News</a></li>
+                <li><a href="news.html" aria-current="page">News</a></li>
                 <li><a href="cv.html">CV</a></li>
             </ul>
         </div>
     </nav>
 
-    <main>
+    <main id="main">
 
         <!-- ========== HERO ========== -->
         <section class="section">
             <div>
-                <div class="section-label">News</div>
+                <div class="section-label" aria-hidden="true">News</div>
             </div>
             <div>
                 <h1 class="page-title">News &amp; activity</h1>
                 <p class="page-intro">
-                    Recent publications, essays, reports, talks, and events.
+                    Recent publications, essays, reports, talks, and more.
                 </p>
-                <p class="page-intro-kr">
-                    최근의 논문, 에세이, 리포트, 강연, 행사를 기록합니다.
+                <p class="page-intro-kr" lang="ko">
+                    최근의 논문, 에세이, 리포트, 강연, 그 밖의 활동을 기록합니다.
                 </p>
-                <div class="year-jumps" id="yearFilter">
-                    <button type="button" class="year-jump active" data-year="2026">2026</button>
-                    <button type="button" class="year-jump" data-year="2025">2025</button>
-                    <button type="button" class="year-jump" data-year="2024">2024</button>
-                    <button type="button" class="year-jump" data-year="2023">2023</button>
-                    <button type="button" class="year-jump" data-year="2022">2022</button>
-                    <button type="button" class="year-jump" data-year="2021">2021</button>
-                    <button type="button" class="year-jump" data-year="2020">2020</button>
-                    <button type="button" class="year-jump" data-year="2019">2019</button>
-                    <button type="button" class="year-jump" data-year="2018">2018</button>
+                <div class="year-jumps" id="yearFilter" role="group" aria-label="Filter by year">
+                    <button type="button" class="year-jump active" data-year="2026" aria-pressed="true">2026</button>
+                    <button type="button" class="year-jump" data-year="2025" aria-pressed="false">2025</button>
+                    <button type="button" class="year-jump" data-year="2024" aria-pressed="false">2024</button>
+                    <button type="button" class="year-jump" data-year="2023" aria-pressed="false">2023</button>
+                    <button type="button" class="year-jump" data-year="2022" aria-pressed="false">2022</button>
+                    <button type="button" class="year-jump" data-year="2021" aria-pressed="false">2021</button>
+                    <button type="button" class="year-jump" data-year="2020" aria-pressed="false">2020</button>
+                    <button type="button" class="year-jump" data-year="2019" aria-pressed="false">2019</button>
+                    <button type="button" class="year-jump" data-year="2018" aria-pressed="false">2018</button>
+                    <button type="button" class="year-jump" data-year="all" aria-pressed="false">All</button>
                 </div>
             </div>
         </section>
 
         <!-- ========== 2026 ========== -->
         <section class="section" id="year-2026">
-            <div><div class="section-label">2026</div></div>
+            <div><h2 class="year-label">2026</h2></div>
             <div class="post-list">
 
-                 <article class="post">
+                <article class="post">
                     <div class="post-header">
                         <span class="post-date">2026.06</span>
                         <span class="tag tag-talk">Talk</span>
                     </div>
                     <div class="post-content">
                         <div class="post-text">
-                            <h3 class="post-title">한국 반성소수자 운동의 형성과 반젠더 정치</h3>
-                            <div class="post-subtitle">한국문화연구학회 상반기 학술대회</div>
+                            <h3 class="post-title" lang="ko">한국 반성소수자 운동의 형성과 반젠더 정치</h3>
+                            <div class="post-subtitle" lang="ko">한국문화연구학회 상반기 학술대회</div>
                         </div>
                     </div>
                 </article>
-                
+
                 <article class="post">
                     <div class="post-header">
                         <span class="post-date">2026.04</span>
@@ -475,7 +570,7 @@
                     </div>
                     <div class="post-content">
                         <div class="post-text">
-                            <h3 class="post-title">성소수자의 노동권 및 차별에 관한 연구 발간</h3>
+                            <h3 class="post-title" lang="ko">성소수자의 노동권 및 차별에 관한 연구 발간</h3>
                             <div class="post-subtitle">Study on LGBTQ Labor Rights and Discrimination · Dawoom (funded by Seoul National University School of Law)</div>
                         </div>
                     </div>
@@ -488,9 +583,9 @@
                     </div>
                     <div class="post-content">
                         <div class="post-text">
-                            <h3 class="post-title">성적지향·성별정체성에 따른 차별실태조사 결과 발표</h3>
+                            <h3 class="post-title" lang="ko">성적지향·성별정체성에 따른 차별실태조사 결과 발표</h3>
                             <div class="post-subtitle">Survey on Discrimination based on Sexual Orientation and Gender Identity · National Human Rights Commission of Korea</div>
-                            <a href="https://www.humanrights.go.kr/base/board/read?boardManagementNo=17&boardNo=7611978&menuLevel=3&menuNo=115" target="_blank" rel="noopener" class="post-link"><span class="label">NHRC report</span><span class="arrow">→</span></a>
+                            <a href="https://www.humanrights.go.kr/base/board/read?boardManagementNo=17&boardNo=7611978&menuLevel=3&menuNo=115" target="_blank" rel="noopener" class="post-link"><span class="label">NHRC report</span><span class="ext" aria-hidden="true">↗</span></a>
                         </div>
                     </div>
                 </article>
@@ -515,9 +610,9 @@
                     </div>
                     <div class="post-content">
                         <div class="post-text">
-                            <h3 class="post-title">직장에서 커밍아웃할 수 있는 조건은 무엇인가: 한국 성소수자 노동자의 경험 분석</h3>
+                            <h3 class="post-title" lang="ko">직장에서 커밍아웃할 수 있는 조건은 무엇인가: 한국 성소수자 노동자의 경험 분석</h3>
                             <div class="post-subtitle">What Enables Coming Out at Work? An Analysis of Sexual and Gender Minority Workers' Experiences in Korea · <em>Korean Journal of Industrial Relations</em></div>
-                            <a href="https://www.kci.go.kr/kciportal/ci/sereArticleSearch/ciSereArtiView.kci?sereArticleSearchBean.artiId=ART003314048" target="_blank" rel="noopener" class="post-link"><span class="label">Read article</span><span class="arrow">→</span></a>
+                            <a href="https://www.kci.go.kr/kciportal/ci/sereArticleSearch/ciSereArtiView.kci?sereArticleSearchBean.artiId=ART003314048" target="_blank" rel="noopener" class="post-link"><span class="label">Read article</span><span class="ext" aria-hidden="true">↗</span></a>
                         </div>
                     </div>
                 </article>
@@ -527,7 +622,7 @@
 
         <!-- ========== 2025 ========== -->
         <section class="section" id="year-2025">
-            <div><div class="section-label">2025</div></div>
+            <div><h2 class="year-label">2025</h2></div>
             <div class="post-list">
 
                 <article class="post">
@@ -537,9 +632,9 @@
                     </div>
                     <div class="post-content">
                         <div class="post-text">
-                            <h3 class="post-title">'페미니즘 리부트' 10년, 한국학 돌아보기</h3>
-                            <div class="post-subtitle">한국성소수자/퀴어연구학회 웹진 도착 (Korean Association for LGBTQ+ and Queer Studies Webzine)</div>
-                            <a href="https://queerstudies.kr/lastissue/?bmode=view&idx=169137816&t=board" target="_blank" rel="noopener" class="post-link"><span class="label">Read article</span><span class="arrow">→</span></a>
+                            <h3 class="post-title" lang="ko">'페미니즘 리부트' 10년, 한국학 돌아보기</h3>
+                            <div class="post-subtitle"><span lang="ko">한국성소수자/퀴어연구학회 웹진 도착</span> (Korean Association for LGBTQ+ and Queer Studies Webzine)</div>
+                            <a href="https://queerstudies.kr/lastissue/?bmode=view&idx=169137816&t=board" target="_blank" rel="noopener" class="post-link"><span class="label">Read article</span><span class="ext" aria-hidden="true">↗</span></a>
                         </div>
                     </div>
                 </article>
@@ -551,8 +646,8 @@
                     </div>
                     <div class="post-content">
                         <div class="post-text">
-                            <h3 class="post-title">성소수자 차별과 저항의 역사</h3>
-                            <div class="post-subtitle">History of LGBTQ Discrimination and Resistance · 중앙대학교 사회학과 (Dept. of Sociology, Chung-Ang University)</div>
+                            <h3 class="post-title" lang="ko">성소수자 차별과 저항의 역사</h3>
+                            <div class="post-subtitle">History of LGBTQ Discrimination and Resistance · <span lang="ko">중앙대학교 사회학과</span> (Dept. of Sociology, Chung-Ang University)</div>
                         </div>
                     </div>
                 </article>
@@ -564,9 +659,9 @@
                     </div>
                     <div class="post-content">
                         <div class="post-text">
-                            <h3 class="post-title">12·3 탄핵 광장과 퀴어 가시성</h3>
+                            <h3 class="post-title" lang="ko">12·3 탄핵 광장과 퀴어 가시성</h3>
                             <div class="post-subtitle">The December 3 Impeachment Square and Queer Visibility · <em>Korean Journal of Sociology</em></div>
-                            <a href="https://www.dbpia.co.kr/Journal/articleDetail?nodeId=NODE12497845" target="_blank" rel="noopener" class="post-link"><span class="label">Read article</span><span class="arrow">→</span></a>
+                            <a href="https://www.dbpia.co.kr/Journal/articleDetail?nodeId=NODE12497845" target="_blank" rel="noopener" class="post-link"><span class="label">Read article</span><span class="ext" aria-hidden="true">↗</span></a>
                         </div>
                     </div>
                 </article>
@@ -578,8 +673,8 @@
                     </div>
                     <div class="post-content">
                         <div class="post-text">
-                            <h3 class="post-title">성소수자 노동자, 설문조사를 통해 퀴어한 삶을 들여다보기</h3>
-                            <div class="post-subtitle">LGBTQ Workers: Looking into Queer Lives through Surveys · 부산대학교 사회학과 (Dept. of Sociology, Pusan National University)</div>
+                            <h3 class="post-title" lang="ko">성소수자 노동자, 설문조사를 통해 퀴어한 삶을 들여다보기</h3>
+                            <div class="post-subtitle">LGBTQ Workers: Looking into Queer Lives through Surveys · <span lang="ko">부산대학교 사회학과</span> (Dept. of Sociology, Pusan National University)</div>
                         </div>
                     </div>
                 </article>
@@ -591,9 +686,9 @@
                     </div>
                     <div class="post-content">
                         <div class="post-text">
-                            <h3 class="post-title">팬덤과 광장의 조우: 2030 여성들의 윤석열 탄핵 광장 참여 경험을 통해 본 젠더화된 문화정치</h3>
+                            <h3 class="post-title" lang="ko">팬덤과 광장의 조우: 2030 여성들의 윤석열 탄핵 광장 참여 경험을 통해 본 젠더화된 문화정치</h3>
                             <div class="post-subtitle">Encountering Between Fandom and Impeachment Square: Experiences of 2030 Women and Gendered Cultural Politics · <em>Media, Gender &amp; Culture</em></div>
-                            <a href="https://www.dbpia.co.kr/journal/articleDetail?nodeId=NODE12405373" target="_blank" rel="noopener" class="post-link"><span class="label">Read article</span><span class="arrow">→</span></a>
+                            <a href="https://www.dbpia.co.kr/journal/articleDetail?nodeId=NODE12405373" target="_blank" rel="noopener" class="post-link"><span class="label">Read article</span><span class="ext" aria-hidden="true">↗</span></a>
                         </div>
                     </div>
                 </article>
@@ -605,9 +700,9 @@
                     </div>
                     <div class="post-content">
                         <div class="post-text">
-                            <h3 class="post-title">"기타, 구체적으로 서술하시오": 데이터의 빈틈에서 삶을 짓기</h3>
-                            <div class="post-subtitle">"Other, please specify": Building Lives in the Gaps of Data · 한국사회과학자료원 웹진 (KOSSDA Webzine)</div>
-                            <a href="https://newsletter.kossda.com/Story/?bmode=view&idx=169247274&t=board" target="_blank" rel="noopener" class="post-link"><span class="label">Read article</span><span class="arrow">→</span></a>
+                            <h3 class="post-title" lang="ko">"기타, 구체적으로 서술하시오": 데이터의 빈틈에서 삶을 짓기</h3>
+                            <div class="post-subtitle">"Other, please specify": Building Lives in the Gaps of Data · <span lang="ko">한국사회과학자료원 웹진</span> (KOSSDA Webzine)</div>
+                            <a href="https://newsletter.kossda.com/Story/?bmode=view&idx=169247274&t=board" target="_blank" rel="noopener" class="post-link"><span class="label">Read article</span><span class="ext" aria-hidden="true">↗</span></a>
                         </div>
                     </div>
                 </article>
@@ -619,9 +714,9 @@
                     </div>
                     <div class="post-content">
                         <div class="post-text">
-                            <h3 class="post-title">성소수자/퀴어 연구라는 '궂은일' 학회 전환의 도전</h3>
-                            <div class="post-subtitle">한국성소수자/퀴어연구학회 웹진 도착 (Korean Association for LGBTQ+ and Queer Studies Webzine)</div>
-                            <a href="https://queerstudies.kr/lastissue/?bmode=view&idx=167746287&t=board" target="_blank" rel="noopener" class="post-link"><span class="label">Read article</span><span class="arrow">→</span></a>
+                            <h3 class="post-title" lang="ko">성소수자/퀴어 연구라는 '궂은일' 학회 전환의 도전</h3>
+                            <div class="post-subtitle"><span lang="ko">한국성소수자/퀴어연구학회 웹진 도착</span> (Korean Association for LGBTQ+ and Queer Studies Webzine)</div>
+                            <a href="https://queerstudies.kr/lastissue/?bmode=view&idx=167746287&t=board" target="_blank" rel="noopener" class="post-link"><span class="label">Read article</span><span class="ext" aria-hidden="true">↗</span></a>
                         </div>
                     </div>
                 </article>
@@ -635,7 +730,7 @@
                         <div class="post-text">
                             <h3 class="post-title">Gender Differences in the Relationship between Coming Out as LGB to Family and Depression in South Korea</h3>
                             <div class="post-subtitle"><em>Society and Mental Health</em></div>
-                            <a href="https://journals.sagepub.com/doi/10.1177/21568693241242400" target="_blank" rel="noopener" class="post-link"><span class="label">Read article</span><span class="arrow">→</span></a>
+                            <a href="https://journals.sagepub.com/doi/10.1177/21568693241242400" target="_blank" rel="noopener" class="post-link"><span class="label">Read article</span><span class="ext" aria-hidden="true">↗</span></a>
                         </div>
                     </div>
                 </article>
@@ -647,8 +742,8 @@
                     </div>
                     <div class="post-content">
                         <div class="post-text">
-                            <h3 class="post-title">퀴어한 존재의 고립과 정책에 관한 상상</h3>
-                            <div class="post-subtitle">On the Isolation of Queer Lives and Imagining Policy · <em>청년 고립의 젠더적 접근 필요성</em> 토론회 · 고립은둔인권지지모임</div>
+                            <h3 class="post-title" lang="ko">퀴어한 존재의 고립과 정책에 관한 상상</h3>
+                            <div class="post-subtitle">On the Isolation of Queer Lives and Imagining Policy · <em lang="ko">청년 고립의 젠더적 접근 필요성</em> <span lang="ko">토론회 · 고립은둔인권지지모임</span></div>
                         </div>
                     </div>
                 </article>
@@ -662,7 +757,7 @@
                         <div class="post-text">
                             <h3 class="post-title">Moving Apart, Coming Together: The Formation of an LGBTQ Movement Community in South Korea</h3>
                             <div class="post-subtitle"><em>Journal of Homosexuality</em></div>
-                            <a href="https://www.tandfonline.com/doi/full/10.1080/00918369.2024.2378743" target="_blank" rel="noopener" class="post-link"><span class="label">Read article</span><span class="arrow">→</span></a>
+                            <a href="https://www.tandfonline.com/doi/full/10.1080/00918369.2024.2378743" target="_blank" rel="noopener" class="post-link"><span class="label">Read article</span><span class="ext" aria-hidden="true">↗</span></a>
                         </div>
                     </div>
                 </article>
@@ -674,7 +769,7 @@
                     </div>
                     <div class="post-content">
                         <div class="post-text">
-                            <h3 class="post-title">성소수자환대목회 탄압과 한국 개신교 극우화의 연관성</h3>
+                            <h3 class="post-title" lang="ko">성소수자환대목회 탄압과 한국 개신교 극우화의 연관성</h3>
                             <div class="post-subtitle">The Suppression of LGBTQ-Affirming Ministries and Its Connection to the Far-Right Turn in Korean Protestantism · <em>International Conference on LGBTQ+ Rights and Freedom of Religion or Belief</em></div>
                         </div>
                     </div>
@@ -687,9 +782,9 @@
                     </div>
                     <div class="post-content">
                         <div class="post-text">
-                            <h3 class="post-title">비판적 퀴어 연구의 구축과 과제</h3>
-                            <div class="post-subtitle">한국성소수자/퀴어연구학회 웹진 도착 (Korean Association for LGBTQ+ and Queer Studies Webzine)</div>
-                            <a href="https://queerstudies.kr/lastissue/?bmode=view&idx=165430310&t=board" target="_blank" rel="noopener" class="post-link"><span class="label">Read article</span><span class="arrow">→</span></a>
+                            <h3 class="post-title" lang="ko">비판적 퀴어 연구의 구축과 과제</h3>
+                            <div class="post-subtitle"><span lang="ko">한국성소수자/퀴어연구학회 웹진 도착</span> (Korean Association for LGBTQ+ and Queer Studies Webzine)</div>
+                            <a href="https://queerstudies.kr/lastissue/?bmode=view&idx=165430310&t=board" target="_blank" rel="noopener" class="post-link"><span class="label">Read article</span><span class="ext" aria-hidden="true">↗</span></a>
                         </div>
                     </div>
                 </article>
@@ -701,9 +796,9 @@
                     </div>
                     <div class="post-content">
                         <div class="post-text">
-                            <h3 class="post-title">극우리포트: 성소수자 혐오부터 내란 옹호까지</h3>
-                            <div class="post-subtitle">Far-Right Report: From Anti-LGBTQ Hate to Defense of Insurrection · 무지개행동 &amp; 차별금지법제정연대</div>
-                            <a href="https://equalityact.kr/farright_report/" target="_blank" rel="noopener" class="post-link"><span class="label">Read report</span><span class="arrow">→</span></a>
+                            <h3 class="post-title" lang="ko">극우리포트: 성소수자 혐오부터 내란 옹호까지</h3>
+                            <div class="post-subtitle">Far-Right Report: From Anti-LGBTQ Hate to Defense of Insurrection · <span lang="ko">무지개행동 &amp; 차별금지법제정연대</span></div>
+                            <a href="https://equalityact.kr/farright_report/" target="_blank" rel="noopener" class="post-link"><span class="label">Read report</span><span class="ext" aria-hidden="true">↗</span></a>
                         </div>
                         <div class="post-image">
                             <img src="images/news/farright-report.jpg" alt="극우리포트 표지" onerror="this.parentNode.style.display='none'">
@@ -718,8 +813,8 @@
                     </div>
                     <div class="post-content">
                         <div class="post-text">
-                            <h3 class="post-title">퀴어 민주주의를 위하여</h3>
-                            <div class="post-subtitle">For Queer Democracy · <em>문화과학</em> 121 (Cultural Science)</div>
+                            <h3 class="post-title" lang="ko">퀴어 민주주의를 위하여</h3>
+                            <div class="post-subtitle">For Queer Democracy · <em lang="ko">문화과학</em> 121 (Cultural Science)</div>
                         </div>
                     </div>
                 </article>
@@ -731,9 +826,9 @@
                     </div>
                     <div class="post-content">
                         <div class="post-text">
-                            <h3 class="post-title">광장의 성소수자들: 젠더노소 여러분, 안녕하십니까?</h3>
-                            <div class="post-subtitle">이내창기념사업회 웹진 끈덕지게 어깨동무 (Naechang Memorial Association Webzine)</div>
-                            <a href="http://www.naechang.kr/blog/2025/02/21/m-2025-4/" target="_blank" rel="noopener" class="post-link"><span class="label">Read article</span><span class="arrow">→</span></a>
+                            <h3 class="post-title" lang="ko">광장의 성소수자들: 젠더노소 여러분, 안녕하십니까?</h3>
+                            <div class="post-subtitle"><span lang="ko">이내창기념사업회 웹진 끈덕지게 어깨동무</span> (Naechang Memorial Association Webzine)</div>
+                            <a href="http://www.naechang.kr/blog/2025/02/21/m-2025-4/" target="_blank" rel="noopener" class="post-link"><span class="label">Read article</span><span class="ext" aria-hidden="true">↗</span></a>
                         </div>
                     </div>
                 </article>
@@ -743,7 +838,7 @@
 
         <!-- ========== 2024 ========== -->
         <section class="section" id="year-2024">
-            <div><div class="section-label">2024</div></div>
+            <div><h2 class="year-label">2024</h2></div>
             <div class="post-list">
 
                 <article class="post">
@@ -753,9 +848,9 @@
                     </div>
                     <div class="post-content">
                         <div class="post-text">
-                            <h3 class="post-title">한국 성소수자 연구 동향과 과제 체계적 문헌고찰 및 텍스트 분석</h3>
+                            <h3 class="post-title" lang="ko">한국 성소수자 연구 동향과 과제 체계적 문헌고찰 및 텍스트 분석</h3>
                             <div class="post-subtitle">Trends and Implications of Sexual and Gender Minority Research in South Korea · <em>Economy and Society</em></div>
-                            <a href="https://www.dbpia.co.kr/journal/articleDetail?nodeId=NODE11935551" target="_blank" rel="noopener" class="post-link"><span class="label">Read article</span><span class="arrow">→</span></a>
+                            <a href="https://www.dbpia.co.kr/journal/articleDetail?nodeId=NODE11935551" target="_blank" rel="noopener" class="post-link"><span class="label">Read article</span><span class="ext" aria-hidden="true">↗</span></a>
                         </div>
                     </div>
                 </article>
@@ -767,8 +862,8 @@
                     </div>
                     <div class="post-content">
                         <div class="post-text">
-                            <h3 class="post-title">영화 속 에이즈와 애도의 (불)가능성</h3>
-                            <div class="post-subtitle">AIDS in Film and the (Im)possibility of Mourning · <em>퀴어영화지도 2024</em></div>
+                            <h3 class="post-title" lang="ko">영화 속 에이즈와 애도의 (불)가능성</h3>
+                            <div class="post-subtitle">AIDS in Film and the (Im)possibility of Mourning · <em lang="ko">퀴어영화지도 2024</em></div>
                         </div>
                     </div>
                 </article>
@@ -780,9 +875,9 @@
                     </div>
                     <div class="post-content">
                         <div class="post-text">
-                            <h3 class="post-title">2023 한국영화산업 성희롱·성폭력 실태조사</h3>
-                            <div class="post-subtitle">2023 Survey on Sexual Harassment and Sexual Violence in the Korean Film Industry · 영화진흥위원회 (Korean Film Council)</div>
-                            <a href="https://www.dbpia.co.kr/journal/articleDetail?nodeId=NODE11915007" target="_blank" rel="noopener" class="post-link"><span class="label">Read report</span><span class="arrow">→</span></a>
+                            <h3 class="post-title" lang="ko">2023 한국영화산업 성희롱·성폭력 실태조사</h3>
+                            <div class="post-subtitle">2023 Survey on Sexual Harassment and Sexual Violence in the Korean Film Industry · <span lang="ko">영화진흥위원회</span> (Korean Film Council)</div>
+                            <a href="https://www.dbpia.co.kr/journal/articleDetail?nodeId=NODE11915007" target="_blank" rel="noopener" class="post-link"><span class="label">Read report</span><span class="ext" aria-hidden="true">↗</span></a>
                         </div>
                     </div>
                 </article>
@@ -794,9 +889,9 @@
                     </div>
                     <div class="post-content">
                         <div class="post-text">
-                            <h3 class="post-title">함께, 평등하게, 당연하게: '2023년 한국 영화 산업 성희롱·성폭력 실태조사' 결과로 살펴보는 과제</h3>
-                            <div class="post-subtitle">KOFIC 웹진 한국영화 (Korean Film Council Webzine)</div>
-                            <a href="https://magazine.kofic.or.kr/webzine/web/2418/pdsView.do" target="_blank" rel="noopener" class="post-link"><span class="label">Read article</span><span class="arrow">→</span></a>
+                            <h3 class="post-title" lang="ko">함께, 평등하게, 당연하게: '2023년 한국 영화 산업 성희롱·성폭력 실태조사' 결과로 살펴보는 과제</h3>
+                            <div class="post-subtitle"><span lang="ko">KOFIC 웹진 한국영화</span> (Korean Film Council Webzine)</div>
+                            <a href="https://magazine.kofic.or.kr/webzine/web/2418/pdsView.do" target="_blank" rel="noopener" class="post-link"><span class="label">Read article</span><span class="ext" aria-hidden="true">↗</span></a>
                         </div>
                     </div>
                 </article>
@@ -810,7 +905,7 @@
                         <div class="post-text">
                             <h3 class="post-title">Paul Meadows Excellence in Research Award</h3>
                             <div class="post-subtitle">Sociology Department, University at Albany, SUNY</div>
-                            <div class="post-for">수상작: <em>Gender Differences in the Relationship between Coming Out as LGB to Family and Depression in South Korea</em> (Society and Mental Health)</div>
+                            <div class="post-for"><span lang="ko">수상작:</span> <em>Gender Differences in the Relationship between Coming Out as LGB to Family and Depression in South Korea</em> (Society and Mental Health)</div>
                         </div>
                     </div>
                 </article>
@@ -822,9 +917,9 @@
                     </div>
                     <div class="post-content">
                         <div class="post-text">
-                            <h3 class="post-title">청년 성소수자의 차별 경험 및 사회적 욕구와 법정책적 함의</h3>
+                            <h3 class="post-title" lang="ko">청년 성소수자의 차별 경험 및 사회적 욕구와 법정책적 함의</h3>
                             <div class="post-subtitle">Discrimination Experiences and Social Needs of Sexual and Gender Minority Young Adults: Legal and Policy Implication · <em>Gender Law</em></div>
-                            <a href="https://www.dbpia.co.kr/journal/articleDetail?nodeId=NODE11722700" target="_blank" rel="noopener" class="post-link"><span class="label">Read article</span><span class="arrow">→</span></a>
+                            <a href="https://www.dbpia.co.kr/journal/articleDetail?nodeId=NODE11722700" target="_blank" rel="noopener" class="post-link"><span class="label">Read article</span><span class="ext" aria-hidden="true">↗</span></a>
                         </div>
                     </div>
                 </article>
@@ -834,7 +929,7 @@
 
         <!-- ========== 2023 ========== -->
         <section class="section" id="year-2023">
-            <div><div class="section-label">2023</div></div>
+            <div><h2 class="year-label">2023</h2></div>
             <div class="post-list">
 
                 <article class="post">
@@ -844,9 +939,9 @@
                     </div>
                     <div class="post-content">
                         <div class="post-text">
-                            <h3 class="post-title">대한민국은 성소수자를 처벌합니다: 성소수자 차별 조항, 군형법상 추행죄의 위헌성을 파헤치다</h3>
-                            <div class="post-subtitle">서울대저널 (SNU Journal)</div>
-                            <a href="http://www.snujn.com/news/62747" target="_blank" rel="noopener" class="post-link"><span class="label">Read article</span><span class="arrow">→</span></a>
+                            <h3 class="post-title" lang="ko">대한민국은 성소수자를 처벌합니다: 성소수자 차별 조항, 군형법상 추행죄의 위헌성을 파헤치다</h3>
+                            <div class="post-subtitle"><span lang="ko">서울대저널</span> (SNU Journal)</div>
+                            <a href="http://www.snujn.com/news/62747" target="_blank" rel="noopener" class="post-link"><span class="label">Read article</span><span class="ext" aria-hidden="true">↗</span></a>
                         </div>
                     </div>
                 </article>
@@ -858,9 +953,9 @@
                     </div>
                     <div class="post-content">
                         <div class="post-text">
-                            <h3 class="post-title">제20회 청년사회학도상 우수상</h3>
-                            <div class="post-subtitle">중앙대학교 사회학과 (Dept. of Sociology, Chung-Ang University)</div>
-                            <div class="post-for">수상작: <em>Gender Differences in the Relationship between Coming Out as LGB to Family and Depression in South Korea</em> (Society and Mental Health)</div>
+                            <h3 class="post-title" lang="ko">제20회 청년사회학도상 우수상</h3>
+                            <div class="post-subtitle"><span lang="ko">중앙대학교 사회학과</span> (Dept. of Sociology, Chung-Ang University)</div>
+                            <div class="post-for"><span lang="ko">수상작:</span> <em>Gender Differences in the Relationship between Coming Out as LGB to Family and Depression in South Korea</em> (Society and Mental Health)</div>
                         </div>
                     </div>
                 </article>
@@ -872,8 +967,8 @@
                     </div>
                     <div class="post-content">
                         <div class="post-text">
-                            <h3 class="post-title">청년 성소수자의 구직 과정과 노동 경험</h3>
-                            <div class="post-subtitle">Job-Seeking Processes and Labor Experiences of LGBTQ Young Adults · 퀴어 노동권 포럼 (Queer Labor Rights Forum)</div>
+                            <h3 class="post-title" lang="ko">청년 성소수자의 구직 과정과 노동 경험</h3>
+                            <div class="post-subtitle">Job-Seeking Processes and Labor Experiences of LGBTQ Young Adults · <span lang="ko">퀴어 노동권 포럼</span> (Queer Labor Rights Forum)</div>
                         </div>
                     </div>
                 </article>
@@ -885,9 +980,9 @@
                     </div>
                     <div class="post-content">
                         <div class="post-text">
-                            <h3 class="post-title">개방형, 은둔형, 억압형 벽장: 청년 성소수자의 커밍아웃 양상에 관한 잠재집단분석</h3>
-                            <div class="post-subtitle">Open, Discreet, and Repressive Closet: Latent Class Analysis on the Patterns of LGBTQ+ Youth's Coming Out · <em>한국사회학</em> 57(4) (Korean Journal of Sociology)</div>
-                            <a href="https://www.dbpia.co.kr/journal/articleDetail?nodeId=NODE11630717" target="_blank" rel="noopener" class="post-link"><span class="label">Read article</span><span class="arrow">→</span></a>
+                            <h3 class="post-title" lang="ko">개방형, 은둔형, 억압형 벽장: 청년 성소수자의 커밍아웃 양상에 관한 잠재집단분석</h3>
+                            <div class="post-subtitle">Open, Discreet, and Repressive Closet: Latent Class Analysis on the Patterns of LGBTQ+ Youth's Coming Out · <em lang="ko">한국사회학</em> 57(4) (Korean Journal of Sociology)</div>
+                            <a href="https://www.dbpia.co.kr/journal/articleDetail?nodeId=NODE11630717" target="_blank" rel="noopener" class="post-link"><span class="label">Read article</span><span class="ext" aria-hidden="true">↗</span></a>
                         </div>
                     </div>
                 </article>
@@ -899,9 +994,9 @@
                     </div>
                     <div class="post-content">
                         <div class="post-text">
-                            <h3 class="post-title">인문사회 분야 연구자들의 기관생명윤리위원회(IRB) 갈등 경험 및 인식 연구</h3>
-                            <div class="post-subtitle">A Study on IRB Conflict Experiences and Perceptions among Humanities and Social Sciences Researchers · <em>사회과학논집</em> 54(2) (Journal of Social Sciences)</div>
-                            <a href="https://www.kci.go.kr/kciportal/ci/sereArticleSearch/ciSereArtiView.kci?sereArticleSearchBean.artiId=ART003022619" target="_blank" rel="noopener" class="post-link"><span class="label">Read article</span><span class="arrow">→</span></a>
+                            <h3 class="post-title" lang="ko">인문사회 분야 연구자들의 기관생명윤리위원회(IRB) 갈등 경험 및 인식 연구</h3>
+                            <div class="post-subtitle">A Study on IRB Conflict Experiences and Perceptions among Humanities and Social Sciences Researchers · <em lang="ko">사회과학논집</em> 54(2) (Journal of Social Sciences)</div>
+                            <a href="https://www.kci.go.kr/kciportal/ci/sereArticleSearch/ciSereArtiView.kci?sereArticleSearchBean.artiId=ART003022619" target="_blank" rel="noopener" class="post-link"><span class="label">Read article</span><span class="ext" aria-hidden="true">↗</span></a>
                         </div>
                     </div>
                 </article>
@@ -913,9 +1008,9 @@
                     </div>
                     <div class="post-content">
                         <div class="post-text">
-                            <h3 class="post-title">'취약성'의 제도화?: 인문사회 분야 IRB의 '취약한 대상' 연구 심의에서 나타나는 갈등과 쟁점</h3>
-                            <div class="post-subtitle">Institutionalization of Vulnerability: Issues from IRB Reviews of Vulnerable Subject Research in the Humanities and Social Sciences · <em>사회과학연구</em> 34(4) (Social Science Research)</div>
-                            <a href="https://www.dbpia.co.kr/journal/articleDetail?nodeId=NODE11556833" target="_blank" rel="noopener" class="post-link"><span class="label">Read article</span><span class="arrow">→</span></a>
+                            <h3 class="post-title" lang="ko">'취약성'의 제도화?: 인문사회 분야 IRB의 '취약한 대상' 연구 심의에서 나타나는 갈등과 쟁점</h3>
+                            <div class="post-subtitle">Institutionalization of Vulnerability: Issues from IRB Reviews of Vulnerable Subject Research in the Humanities and Social Sciences · <em lang="ko">사회과학연구</em> 34(4) (Social Science Research)</div>
+                            <a href="https://www.dbpia.co.kr/journal/articleDetail?nodeId=NODE11556833" target="_blank" rel="noopener" class="post-link"><span class="label">Read article</span><span class="ext" aria-hidden="true">↗</span></a>
                         </div>
                     </div>
                 </article>
@@ -927,8 +1022,8 @@
                     </div>
                     <div class="post-content">
                         <div class="post-text">
-                            <h3 class="post-title">청년·청소년 성소수자의 삶을 들여다보기</h3>
-                            <div class="post-subtitle">Looking into the Lives of LGBTQ Youth · 서울대학교 대학원 교육학과 (Graduate School of Education, Seoul National University)</div>
+                            <h3 class="post-title" lang="ko">청년·청소년 성소수자의 삶을 들여다보기</h3>
+                            <div class="post-subtitle">Looking into the Lives of LGBTQ Youth · <span lang="ko">서울대학교 대학원 교육학과</span> (Graduate School of Education, Seoul National University)</div>
                         </div>
                     </div>
                 </article>
@@ -953,8 +1048,8 @@
                     </div>
                     <div class="post-content">
                         <div class="post-text">
-                            <h3 class="post-title">성소수자 차별과 욕구들</h3>
-                            <div class="post-subtitle">Discrimination and Needs among Sexual Minorities · 성소수자 통계 캐나다–한국 간담회 (Canada–Korea Dialogue on LGBTQ Statistics)</div>
+                            <h3 class="post-title" lang="ko">성소수자 차별과 욕구들</h3>
+                            <div class="post-subtitle">Discrimination and Needs among Sexual Minorities · <span lang="ko">성소수자 통계 캐나다–한국 간담회</span> (Canada–Korea Dialogue on LGBTQ Statistics)</div>
                         </div>
                     </div>
                 </article>
@@ -966,8 +1061,8 @@
                     </div>
                     <div class="post-content">
                         <div class="post-text">
-                            <h3 class="post-title">퀴어 코리아</h3>
-                            <div class="post-subtitle">Co-translation of Todd A. Henry (ed.), <em>Queer Korea</em> · 산처럼</div>
+                            <h3 class="post-title" lang="ko">퀴어 코리아</h3>
+                            <div class="post-subtitle">Co-translation of Todd A. Henry (ed.), <em>Queer Korea</em> · <span lang="ko">산처럼</span></div>
                         </div>
                     </div>
                 </article>
@@ -977,7 +1072,7 @@
 
         <!-- ========== 2022 ========== -->
         <section class="section" id="year-2022">
-            <div><div class="section-label">2022</div></div>
+            <div><h2 class="year-label">2022</h2></div>
             <div class="post-list">
 
                 <article class="post">
@@ -987,9 +1082,9 @@
                     </div>
                     <div class="post-content">
                         <div class="post-text">
-                            <h3 class="post-title">반짝반짝 논문상</h3>
-                            <div class="post-subtitle">참여연대 참여사회연구소 (Participatory Society Institute, People's Solidarity for Participatory Democracy)</div>
-                            <div class="post-for">수상작: <em>민주적 방역, 혹은 권리 없는 자들과의 협치: 이태원 클럽 집단 감염 사례를 중심으로</em> (기억과전망)</div>
+                            <h3 class="post-title" lang="ko">반짝반짝 논문상</h3>
+                            <div class="post-subtitle"><span lang="ko">참여연대 참여사회연구소</span> (Participatory Society Institute, People's Solidarity for Participatory Democracy)</div>
+                            <div class="post-for" lang="ko">수상작: <em>민주적 방역, 혹은 권리 없는 자들과의 협치: 이태원 클럽 집단 감염 사례를 중심으로</em> (기억과전망)</div>
                         </div>
                     </div>
                 </article>
@@ -1003,7 +1098,7 @@
                         <div class="post-text">
                             <h3 class="post-title">Life of LGBTQI Youth &amp; the Role of Politics</h3>
                             <div class="post-subtitle">World Human Rights Cities Forum</div>
-                            <a href="https://en.whrcf.org/forummaterial_new/?bmode=view&idx=49989095" target="_blank" rel="noopener" class="post-link"><span class="label">Read article</span><span class="arrow">→</span></a>
+                            <a href="https://en.whrcf.org/forummaterial_new/?bmode=view&idx=49989095" target="_blank" rel="noopener" class="post-link"><span class="label">Read article</span><span class="ext" aria-hidden="true">↗</span></a>
                         </div>
                     </div>
                 </article>
@@ -1015,9 +1110,9 @@
                     </div>
                     <div class="post-content">
                         <div class="post-text">
-                            <h3 class="post-title">현장지식x좋은연구</h3>
-                            <div class="post-subtitle">사단법인 시민 (Citizen)</div>
-                            <div class="post-for">수상 연구: <em>나 같은 사람이 혼자가 아니구나: 청년 성소수자 사회적 욕구 및 실태조사</em> (다움)</div>
+                            <h3 class="post-title" lang="ko">현장지식x좋은연구</h3>
+                            <div class="post-subtitle"><span lang="ko">사단법인 시민</span> (Citizen)</div>
+                            <div class="post-for" lang="ko">수상 연구: <em>나 같은 사람이 혼자가 아니구나: 청년 성소수자 사회적 욕구 및 실태조사</em> (다움)</div>
                         </div>
                     </div>
                 </article>
@@ -1029,9 +1124,9 @@
                     </div>
                     <div class="post-content">
                         <div class="post-text">
-                            <h3 class="post-title">점멸하는 자긍심과 퀴어 공동체</h3>
-                            <div class="post-subtitle">안동대학교 민속학연구소 웹진 공生공樂 (Andong University Folklore Institute Webzine)</div>
-                            <a href="https://conviviality.andong.ac.kr:2019/2020/sub1/view.asp?id=128" target="_blank" rel="noopener" class="post-link"><span class="label">Read article</span><span class="arrow">→</span></a>
+                            <h3 class="post-title" lang="ko">점멸하는 자긍심과 퀴어 공동체</h3>
+                            <div class="post-subtitle"><span lang="ko">안동대학교 민속학연구소 웹진 공生공樂</span> (Andong University Folklore Institute Webzine)</div>
+                            <a href="https://conviviality.andong.ac.kr:2019/2020/sub1/view.asp?id=128" target="_blank" rel="noopener" class="post-link"><span class="label">Read article</span><span class="ext" aria-hidden="true">↗</span></a>
                         </div>
                     </div>
                 </article>
@@ -1043,8 +1138,8 @@
                     </div>
                     <div class="post-content">
                         <div class="post-text">
-                            <h3 class="post-title">성의 역전</h3>
-                            <div class="post-subtitle">Co-translation of Havelock Ellis &amp; John Addington Symonds, <em>Sexual Inversion</em> · 아모르문디</div>
+                            <h3 class="post-title" lang="ko">성의 역전</h3>
+                            <div class="post-subtitle">Co-translation of Havelock Ellis &amp; John Addington Symonds, <em>Sexual Inversion</em> · <span lang="ko">아모르문디</span></div>
                         </div>
                     </div>
                 </article>
@@ -1056,8 +1151,9 @@
                     </div>
                     <div class="post-content">
                         <div class="post-text">
-                            <h3 class="post-title">청소년 성소수자와 안전공간: '배제된 이들'이 만들어가는 대안 공간들</h3>
-                            <div class="post-subtitle">LGBTQ Youth and Safe Space: Alternative Spaces Created by the Excluded · <em>공간과사회</em> 32(2) (Space and Society)</div>
+                            <h3 class="post-title" lang="ko">청소년 성소수자와 안전공간: '배제된 이들'이 만들어가는 대안 공간들</h3>
+                            <div class="post-subtitle">LGBTQ Youth and Safe Space: Alternative Spaces Created by the Excluded · <em lang="ko">공간과사회</em> 32(2) (Space and Society)</div>
+                            <a href="https://www.kci.go.kr/kciportal/landing/article.kci?arti_id=ART002862108" target="_blank" rel="noopener" class="post-link"><span class="label">Read article</span><span class="ext" aria-hidden="true">↗</span></a>
                         </div>
                     </div>
                 </article>
@@ -1069,9 +1165,9 @@
                     </div>
                     <div class="post-content">
                         <div class="post-text">
-                            <h3 class="post-title">나 같은 사람이 혼자가 아니구나: 청년 성소수자 사회적 욕구 및 실태조사</h3>
-                            <div class="post-subtitle">Social Needs and Experiences of LGBTQ Young Adults · 다양성을향한지속가능한움직임 다움 (Dawoom)</div>
-                            <a href="https://www.dawoom-t4c.org/9f6687b7-d97a-45b7-be6d-7ba87274c3d5" target="_blank" rel="noopener" class="post-link"><span class="label">Read report</span><span class="arrow">→</span></a>
+                            <h3 class="post-title" lang="ko">나 같은 사람이 혼자가 아니구나: 청년 성소수자 사회적 욕구 및 실태조사</h3>
+                            <div class="post-subtitle">Social Needs and Experiences of LGBTQ Young Adults · <span lang="ko">다양성을향한지속가능한움직임 다움</span> (Dawoom)</div>
+                            <a href="https://www.dawoom-t4c.org/9f6687b7-d97a-45b7-be6d-7ba87274c3d5" target="_blank" rel="noopener" class="post-link"><span class="label">Read report</span><span class="ext" aria-hidden="true">↗</span></a>
                         </div>
                     </div>
                 </article>
@@ -1083,8 +1179,8 @@
                     </div>
                     <div class="post-content">
                         <div class="post-text">
-                            <h3 class="post-title">성소수자 대상 조사에서 마주한 고민들</h3>
-                            <div class="post-subtitle">Reflections from Conducting LGBTQ Surveys · 성소수자 대학원생/신진연구자 네트워크 (Junior Scholars Network of LGBTIQ Research)</div>
+                            <h3 class="post-title" lang="ko">성소수자 대상 조사에서 마주한 고민들</h3>
+                            <div class="post-subtitle">Reflections from Conducting LGBTQ Surveys · <span lang="ko">성소수자 대학원생/신진연구자 네트워크</span> (Junior Scholars Network of LGBTIQ Research)</div>
                         </div>
                     </div>
                 </article>
@@ -1096,9 +1192,9 @@
                     </div>
                     <div class="post-content">
                         <div class="post-text">
-                            <h3 class="post-title">인문사회 분야 연구자들의 기관생명윤리위원회(IRB) 갈등 경험 및 개선 방안 연구</h3>
-                            <div class="post-subtitle">IRB Conflict Experiences and Improvement Measures in Humanities and Social Sciences · 경제인문사회연구회 (National Research Council for Economics, Humanities and Social Sciences)</div>
-                            <a href="https://www.nrc.re.kr/board.es?mid=a10301000000&bid=0008&act=view&list_no=175917" target="_blank" rel="noopener" class="post-link"><span class="label">Read report</span><span class="arrow">→</span></a>
+                            <h3 class="post-title" lang="ko">인문사회 분야 연구자들의 기관생명윤리위원회(IRB) 갈등 경험 및 개선 방안 연구</h3>
+                            <div class="post-subtitle">IRB Conflict Experiences and Improvement Measures in Humanities and Social Sciences · <span lang="ko">경제인문사회연구회</span> (National Research Council for Economics, Humanities and Social Sciences)</div>
+                            <a href="https://www.nrc.re.kr/board.es?mid=a10301000000&bid=0008&act=view&list_no=175917" target="_blank" rel="noopener" class="post-link"><span class="label">Read report</span><span class="ext" aria-hidden="true">↗</span></a>
                         </div>
                     </div>
                 </article>
@@ -1108,7 +1204,7 @@
 
         <!-- ========== 2021 ========== -->
         <section class="section" id="year-2021">
-            <div><div class="section-label">2021</div></div>
+            <div><h2 class="year-label">2021</h2></div>
             <div class="post-list">
 
                 <article class="post">
@@ -1118,9 +1214,9 @@
                     </div>
                     <div class="post-content">
                         <div class="post-text">
-                            <h3 class="post-title">민주적 방역, 혹은 권리 없는 자들과의 협치: 이태원 클럽 집단 감염 사례를 중심으로</h3>
-                            <div class="post-subtitle">A Democratic Response to COVID-19 or a Governance with People without Rights: The Itaewon 'Gay Club' Mass Infection in South Korea · <em>기억과전망</em> 45 (Memory and Future Vision)</div>
-                            <a href="https://www.kci.go.kr/kciportal/ci/sereArticleSearch/ciSereArtiView.kci?sereArticleSearchBean.artiId=ART002785020" target="_blank" rel="noopener" class="post-link"><span class="label">Read article</span><span class="arrow">→</span></a>
+                            <h3 class="post-title" lang="ko">민주적 방역, 혹은 권리 없는 자들과의 협치: 이태원 클럽 집단 감염 사례를 중심으로</h3>
+                            <div class="post-subtitle">A Democratic Response to COVID-19 or a Governance with People without Rights: The Itaewon 'Gay Club' Mass Infection in South Korea · <em lang="ko">기억과전망</em> 45 (Memory and Future Vision)</div>
+                            <a href="https://www.kci.go.kr/kciportal/ci/sereArticleSearch/ciSereArtiView.kci?sereArticleSearchBean.artiId=ART002785020" target="_blank" rel="noopener" class="post-link"><span class="label">Read article</span><span class="ext" aria-hidden="true">↗</span></a>
                         </div>
                     </div>
                 </article>
@@ -1132,9 +1228,9 @@
                     </div>
                     <div class="post-content">
                         <div class="post-text">
-                            <h3 class="post-title">2019 영화계 성희롱·성폭력 실태조사</h3>
-                            <div class="post-subtitle">2019 Survey on Sexual Harassment and Sexual Violence in the Film Industry · 영화진흥위원회·(사)여성영화인모임 (Korean Film Council &amp; Women in Film Korea)</div>
-                            <a href="https://www.dbpia.co.kr/journal/articleDetail?nodeId=NODE11523566" target="_blank" rel="noopener" class="post-link"><span class="label">Read report</span><span class="arrow">→</span></a>
+                            <h3 class="post-title" lang="ko">2019 영화계 성희롱·성폭력 실태조사</h3>
+                            <div class="post-subtitle">2019 Survey on Sexual Harassment and Sexual Violence in the Film Industry · <span lang="ko">영화진흥위원회·(사)여성영화인모임</span> (Korean Film Council &amp; Women in Film Korea)</div>
+                            <a href="https://www.dbpia.co.kr/journal/articleDetail?nodeId=NODE11523566" target="_blank" rel="noopener" class="post-link"><span class="label">Read report</span><span class="ext" aria-hidden="true">↗</span></a>
                         </div>
                     </div>
                 </article>
@@ -1146,8 +1242,8 @@
                     </div>
                     <div class="post-content">
                         <div class="post-text">
-                            <h3 class="post-title">'청년 세대'의 사회적 구성</h3>
-                            <div class="post-subtitle">The Social Construction of the 'Youth Generation' · <em>청년 연구자 되기: 청년학 개론</em></div>
+                            <h3 class="post-title" lang="ko">'청년 세대'의 사회적 구성</h3>
+                            <div class="post-subtitle">The Social Construction of the 'Youth Generation' · <em lang="ko">청년 연구자 되기: 청년학 개론</em></div>
                         </div>
                     </div>
                 </article>
@@ -1157,7 +1253,7 @@
 
         <!-- ========== 2020 ========== -->
         <section class="section" id="year-2020">
-            <div><div class="section-label">2020</div></div>
+            <div><h2 class="year-label">2020</h2></div>
             <div class="post-list">
 
                 <article class="post">
@@ -1169,7 +1265,7 @@
                         <div class="post-text">
                             <h3 class="post-title">How COVID-19 Became an Issue of LGBTQ?: Homophobia and LGBTQ Movements in South Korea</h3>
                             <div class="post-subtitle">Youth Voices Count Report #CopingWithCOVID</div>
-                            <a href="https://yvc-asiapacific.org/storage/2023/05/13-CopingWithCOVID-discussion-paper-1.pdf" target="_blank" rel="noopener" class="post-link"><span class="label">Read report</span><span class="arrow">→</span></a>
+                            <a href="https://yvc-asiapacific.org/storage/2023/05/13-CopingWithCOVID-discussion-paper-1.pdf" target="_blank" rel="noopener" class="post-link"><span class="label">Read report</span><span class="ext" aria-hidden="true">↗</span></a>
                         </div>
                     </div>
                 </article>
@@ -1181,9 +1277,9 @@
                     </div>
                     <div class="post-content">
                         <div class="post-text">
-                            <h3 class="post-title">'비정상적인' 성, 혹은 지식의 정치</h3>
-                            <div class="post-subtitle">중앙대학교 대학원신문 (Chung-Ang University Graduate School Press)</div>
-                            <a href="https://gspress.cauon.net/news/articleView.html?idxno=21927" target="_blank" rel="noopener" class="post-link"><span class="label">Read article</span><span class="arrow">→</span></a>
+                            <h3 class="post-title" lang="ko">'비정상적인' 성, 혹은 지식의 정치</h3>
+                            <div class="post-subtitle"><span lang="ko">중앙대학교 대학원신문</span> (Chung-Ang University Graduate School Press)</div>
+                            <a href="https://gspress.cauon.net/news/articleView.html?idxno=21927" target="_blank" rel="noopener" class="post-link"><span class="label">Read article</span><span class="ext" aria-hidden="true">↗</span></a>
                         </div>
                     </div>
                 </article>
@@ -1193,7 +1289,7 @@
 
         <!-- ========== 2019 ========== -->
         <section class="section" id="year-2019">
-            <div><div class="section-label">2019</div></div>
+            <div><h2 class="year-label">2019</h2></div>
             <div class="post-list">
 
                 <article class="post">
@@ -1203,9 +1299,9 @@
                     </div>
                     <div class="post-content">
                         <div class="post-text">
-                            <h3 class="post-title">현장에서 찾는 연대와 교차의 길</h3>
-                            <div class="post-subtitle">성대신문 (Sungkyunkwan University Newspaper)</div>
-                            <a href="https://www.skkuw.com/news/articleView.html?idxno=20620" target="_blank" rel="noopener" class="post-link"><span class="label">Read article</span><span class="arrow">→</span></a>
+                            <h3 class="post-title" lang="ko">현장에서 찾는 연대와 교차의 길</h3>
+                            <div class="post-subtitle"><span lang="ko">성대신문</span> (Sungkyunkwan University Newspaper)</div>
+                            <a href="https://www.skkuw.com/news/articleView.html?idxno=20620" target="_blank" rel="noopener" class="post-link"><span class="label">Read article</span><span class="ext" aria-hidden="true">↗</span></a>
                         </div>
                     </div>
                 </article>
@@ -1217,8 +1313,8 @@
                     </div>
                     <div class="post-content">
                         <div class="post-text">
-                            <h3 class="post-title">질적 연구 수행과 논문 작성에서 만난 문제들</h3>
-                            <div class="post-subtitle">Challenges in Conducting Qualitative Research and Writing a Thesis · 중앙대학교 사회학과 (Dept. of Sociology, Chung-Ang University)</div>
+                            <h3 class="post-title" lang="ko">질적 연구 수행과 논문 작성에서 만난 문제들</h3>
+                            <div class="post-subtitle">Challenges in Conducting Qualitative Research and Writing a Thesis · <span lang="ko">중앙대학교 사회학과</span> (Dept. of Sociology, Chung-Ang University)</div>
                         </div>
                     </div>
                 </article>
@@ -1230,8 +1326,9 @@
                     </div>
                     <div class="post-content">
                         <div class="post-text">
-                            <h3 class="post-title">'청년 세대' 담론의 비판적 재구성: 젠더와 섹슈얼리티를 중심으로</h3>
-                            <div class="post-subtitle">The Critical Reconstruction of the 'Youth Generation' Discourse: Focusing on Gender and Sexuality · <em>경제와사회</em> 123 (Economy and Society)</div>
+                            <h3 class="post-title" lang="ko">'청년 세대' 담론의 비판적 재구성: 젠더와 섹슈얼리티를 중심으로</h3>
+                            <div class="post-subtitle">The Critical Reconstruction of the 'Youth Generation' Discourse: Focusing on Gender and Sexuality · <em lang="ko">경제와사회</em> 123 (Economy and Society)</div>
+                            <a href="https://www.dbpia.co.kr/journal/articleDetail?nodeId=NODE08895604" target="_blank" rel="noopener" class="post-link"><span class="label">Read article</span><span class="ext" aria-hidden="true">↗</span></a>
                         </div>
                     </div>
                 </article>
@@ -1241,7 +1338,7 @@
 
         <!-- ========== 2018 ========== -->
         <section class="section" id="year-2018">
-            <div><div class="section-label">2018</div></div>
+            <div><h2 class="year-label">2018</h2></div>
             <div class="post-list">
 
                 <article class="post">
@@ -1251,8 +1348,9 @@
                     </div>
                     <div class="post-content">
                         <div class="post-text">
-                            <h3 class="post-title">보이지 않는 군인들: 한국 군대의 제도적 동성애혐오와 성소수자 정체성</h3>
-                            <div class="post-subtitle">Invisible Others: Institutional Homophobia and Identities of Sexual Minority in the Korean Military · <em>문화와사회</em> 26(3) (Culture and Society)</div>
+                            <h3 class="post-title" lang="ko">보이지 않는 군인들: 한국 군대의 제도적 동성애혐오와 성소수자 정체성</h3>
+                            <div class="post-subtitle">Invisible Others: Institutional Homophobia and Identities of Sexual Minority in the Korean Military · <em lang="ko">문화와사회</em> 26(3) (Culture and Society)</div>
+                            <a href="https://www.dbpia.co.kr/journal/articleDetail?nodeId=NODE07588823" target="_blank" rel="noopener" class="post-link"><span class="label">Read article</span><span class="ext" aria-hidden="true">↗</span></a>
                         </div>
                     </div>
                 </article>
@@ -1263,28 +1361,35 @@
     </main>
 
     <footer>
-        <div>© Seong-Jo Jeong · Last updated April 2026</div>
+        <div>© Seong-Jo Jeong · Last updated July 2026</div>
         <div><a href="mailto:demonicsj@gmail.com">demonicsj@gmail.com</a></div>
     </footer>
 
     <script>
         function toggleMenu() {
-            document.getElementById("navLinks").classList.toggle("active");
+            var nav = document.getElementById("navLinks");
+            var btn = document.querySelector(".menu-toggle");
+            var open = nav.classList.toggle("active");
+            btn.setAttribute("aria-expanded", open ? "true" : "false");
         }
 
-        // Year filter
+        // Year filter ("all" shows every year)
         function showYear(year) {
-            document.querySelectorAll('section[id^="year-"]').forEach(section => {
-                const sectionYear = section.id.replace('year-', '');
-                section.style.display = year === sectionYear ? '' : 'none';
+            document.querySelectorAll('section[id^="year-"]').forEach(function (section) {
+                var sectionYear = section.id.replace('year-', '');
+                section.style.display = (year === 'all' || year === sectionYear) ? '' : 'none';
             });
         }
 
-        document.querySelectorAll('#yearFilter .year-jump').forEach(btn => {
-            btn.addEventListener('click', function() {
-                const year = this.dataset.year;
-                document.querySelectorAll('#yearFilter .year-jump').forEach(b => b.classList.remove('active'));
+        document.querySelectorAll('#yearFilter .year-jump').forEach(function (btn) {
+            btn.addEventListener('click', function () {
+                var year = this.dataset.year;
+                document.querySelectorAll('#yearFilter .year-jump').forEach(function (b) {
+                    b.classList.remove('active');
+                    b.setAttribute('aria-pressed', 'false');
+                });
                 this.classList.add('active');
+                this.setAttribute('aria-pressed', 'true');
                 showYear(year);
             });
         });
