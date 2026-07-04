@@ -418,76 +418,6 @@
             margin-left: 3px;
         }
 
-        /* ========== PUBLICATION ITEMS ========== */
-        .pub-list {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
-
-        .pub-item {
-            display: grid;
-            grid-template-columns: 98px 1fr;
-            gap: 18px;
-            align-items: start;
-        }
-
-        .pub-year {
-            color: var(--accent);
-            font-weight: 500;
-            font-variant-numeric: tabular-nums;
-            font-size: 13px;
-            padding-top: 2px;
-        }
-
-        .pub-content {
-            font-size: 14px;
-            line-height: 1.55;
-        }
-
-        .pub-content a {
-            text-decoration: none;
-            color: inherit;
-        }
-
-        /* Linked titles: dotted underline + ↗, matching index */
-        .pub-content a .pub-title {
-            text-decoration: underline;
-            text-decoration-style: dotted;
-            text-decoration-color: var(--text-muted);
-            text-decoration-thickness: 1px;
-            text-underline-offset: 3px;
-            transition: text-decoration-color 0.15s;
-        }
-
-        .pub-content a:hover .pub-title {
-            text-decoration-style: solid;
-            text-decoration-color: var(--accent);
-        }
-
-        .pub-content .ext {
-            color: var(--text-muted);
-            font-size: 12px;
-            margin-left: 4px;
-        }
-
-        .pub-content a:hover .ext { color: var(--accent); }
-
-        .pub-title {
-            color: var(--text-primary);
-            display: inline;
-        }
-
-        .pub-sub {
-            color: var(--text-muted);
-            font-size: 13px;
-            display: block;
-            margin-top: 2px;
-            line-height: 1.5;
-        }
-
-        .pub-sub em { font-style: italic; }
-
         .see-more {
             font-size: 12px;
             color: var(--text-secondary);
@@ -524,7 +454,7 @@
         .data-list {
             display: flex;
             flex-direction: column;
-            gap: 20px;
+            gap: 12px;
         }
 
         .data-item {
@@ -539,7 +469,26 @@
             font-weight: 500;
             font-variant-numeric: tabular-nums;
             font-size: 13px;
-            padding-top: 2px;
+            padding-top: 1px;
+        }
+
+        .data-line {
+            font-size: 14px;
+            line-height: 1.65;
+            color: var(--text-primary);
+        }
+
+        .data-n {
+            color: var(--text-muted);
+            font-size: 12.5px;
+            margin-left: 8px;
+            white-space: nowrap;
+        }
+
+        .data-line .project-link {
+            margin-top: 0;
+            margin-left: 12px;
+            margin-right: 0;
         }
 
         .data-status {
@@ -657,14 +606,12 @@
             .thread-heading { font-size: 16.5px; }
 
             .project-item,
-            .pub-item,
             .data-item {
                 grid-template-columns: 80px 1fr;
                 gap: 12px;
             }
 
             .project-date,
-            .pub-year,
             .data-year { font-size: 12px; }
 
             .see-more { margin-left: 0; }
@@ -713,7 +660,6 @@
                     <a href="#thread-1"><span class="toc-num">I.</span> Queer Democracy — Movement &amp; Politics</a>
                     <a href="#thread-2"><span class="toc-num">II.</span> Health, Discrimination &amp; Inequality</a>
                     <a href="#thread-3"><span class="toc-num">III.</span> Queer Studies as a Field</a>
-                    <a href="#other"><span class="toc-num dash">—</span> Other research projects</a>
                     <a href="#datasets"><span class="toc-num dash">—</span> Datasets</a>
                 </nav>
             </div>
@@ -775,43 +721,7 @@
                     </div>
                 </div>
 
-                <div class="subsection">
-                    <h4 class="subsection-label">Selected publications</h4>
-                    <div class="pub-list">
-
-                        <div class="pub-item">
-                            <div class="pub-year">2025</div>
-                            <div class="pub-content">
-                                <a href="https://www.tandfonline.com/doi/full/10.1080/00918369.2024.2378743" target="_blank" rel="noopener">
-                                    <span class="pub-title">Moving Apart, Coming Together: The Formation of an LGBTQ Movement Community in South Korea</span><span class="ext" aria-hidden="true">↗</span>
-                                    <span class="pub-sub"><em>Journal of Homosexuality</em></span>
-                                </a>
-                            </div>
-                        </div>
-
-                        <div class="pub-item">
-                            <div class="pub-year">2025</div>
-                            <div class="pub-content">
-                                <a href="https://www.dbpia.co.kr/Journal/articleDetail?nodeId=NODE12497845" target="_blank" rel="noopener">
-                                    <span class="pub-title">12·3 탄핵 광장과 퀴어 가시성</span><span class="ext" aria-hidden="true">↗</span>
-                                    <span class="pub-sub">The December 3 Impeachment Square and Queer Visibility · <em>Korean Journal of Sociology</em></span>
-                                </a>
-                            </div>
-                        </div>
-
-                        <div class="pub-item">
-                            <div class="pub-year">2021</div>
-                            <div class="pub-content">
-                                <a href="https://www.kci.go.kr/kciportal/ci/sereArticleSearch/ciSereArtiView.kci?sereArticleSearchBean.artiId=ART002785020" target="_blank" rel="noopener">
-                                    <span class="pub-title">민주적 방역, 혹은 권리 없는 자들과의 협치: 이태원 클럽 집단 감염 사례를 중심으로</span><span class="ext" aria-hidden="true">↗</span>
-                                    <span class="pub-sub">A Democratic Response to COVID-19 or a Governance with People without Rights · <em>Memory and Vision</em></span>
-                                </a>
-                            </div>
-                        </div>
-
-                    </div>
-                    <a href="publications.html" class="see-more"><span class="label">See all publications</span><span class="arrow" aria-hidden="true">→</span></a>
-                </div>
+                <a href="publications.html" class="see-more"><span class="label">See all publications</span><span class="arrow" aria-hidden="true">→</span></a>
             </div>
         </section>
 
@@ -908,43 +818,7 @@
                     </div>
                 </div>
 
-                <div class="subsection">
-                    <h4 class="subsection-label">Selected publications</h4>
-                    <div class="pub-list">
-
-                        <div class="pub-item">
-                            <div class="pub-year">2026</div>
-                            <div class="pub-content">
-                                <a href="https://www.kci.go.kr/kciportal/ci/sereArticleSearch/ciSereArtiView.kci?sereArticleSearchBean.artiId=ART003314048" target="_blank" rel="noopener">
-                                    <span class="pub-title">직장에서 커밍아웃할 수 있는 조건은 무엇인가: 한국 성소수자 노동자의 경험 분석</span><span class="ext" aria-hidden="true">↗</span>
-                                    <span class="pub-sub">What Enables Coming Out at Work? · <em>Korean Journal of Industrial Relations</em></span>
-                                </a>
-                            </div>
-                        </div>
-
-                        <div class="pub-item">
-                            <div class="pub-year">2025</div>
-                            <div class="pub-content">
-                                <a href="https://journals.sagepub.com/doi/10.1177/21568693241242400" target="_blank" rel="noopener">
-                                    <span class="pub-title">Gender Differences in the Relationship between Coming Out as LGB to Family and Depression in South Korea</span><span class="ext" aria-hidden="true">↗</span>
-                                    <span class="pub-sub"><em>Society and Mental Health</em></span>
-                                </a>
-                            </div>
-                        </div>
-
-                        <div class="pub-item">
-                            <div class="pub-year">2023</div>
-                            <div class="pub-content">
-                                <a href="https://www.dbpia.co.kr/journal/articleDetail?nodeId=NODE11630717" target="_blank" rel="noopener">
-                                    <span class="pub-title">개방형, 은둔형, 억압형 벽장: 청년 성소수자의 커밍아웃 양상에 관한 잠재집단분석</span><span class="ext" aria-hidden="true">↗</span>
-                                    <span class="pub-sub">Open, Discreet, and Repressive Closet · <em>Korean Journal of Sociology</em></span>
-                                </a>
-                            </div>
-                        </div>
-
-                    </div>
-                    <a href="publications.html" class="see-more"><span class="label">See all publications</span><span class="arrow" aria-hidden="true">→</span></a>
-                </div>
+                <a href="publications.html" class="see-more"><span class="label">See all publications</span><span class="arrow" aria-hidden="true">→</span></a>
             </div>
         </section>
 
@@ -1018,95 +892,7 @@
                     </div>
                 </div>
 
-                <div class="subsection">
-                    <h4 class="subsection-label">Selected publications</h4>
-                    <div class="pub-list">
-
-                        <div class="pub-item">
-                            <div class="pub-year">2024</div>
-                            <div class="pub-content">
-                                <a href="https://www.dbpia.co.kr/journal/articleDetail?nodeId=NODE11935551" target="_blank" rel="noopener">
-                                    <span class="pub-title">한국 성소수자 연구 동향과 과제 체계적 문헌고찰 및 텍스트 분석</span><span class="ext" aria-hidden="true">↗</span>
-                                    <span class="pub-sub">Trends and Implications of Sexual and Gender Minority Research in South Korea · <em>Economy and Society</em></span>
-                                </a>
-                            </div>
-                        </div>
-
-                        <div class="pub-item">
-                            <div class="pub-year">2023</div>
-                            <div class="pub-content">
-                                <a href="https://www.kci.go.kr/kciportal/ci/sereArticleSearch/ciSereArtiView.kci?sereArticleSearchBean.artiId=ART003022619" target="_blank" rel="noopener">
-                                    <span class="pub-title">인문사회 분야 연구자들의 기관생명윤리위원회(IRB) 갈등 경험 및 인식 연구</span><span class="ext" aria-hidden="true">↗</span>
-                                    <span class="pub-sub">A Study on the Conflict Cases between IRB and Humanities &amp; Social Sciences Researchers · <em>Journal of Social Sciences</em></span>
-                                </a>
-                            </div>
-                        </div>
-
-                        <div class="pub-item">
-                            <div class="pub-year">2023</div>
-                            <div class="pub-content">
-                                <a href="https://www.dbpia.co.kr/journal/articleDetail?nodeId=NODE11556833" target="_blank" rel="noopener">
-                                    <span class="pub-title">'취약성'의 제도화?: 인문사회 분야 IRB의 '취약한 대상' 연구 심의에서 나타나는 갈등과 쟁점</span><span class="ext" aria-hidden="true">↗</span>
-                                    <span class="pub-sub">Institutionalization of Vulnerability · <em>Social Science Research</em></span>
-                                </a>
-                            </div>
-                        </div>
-
-                    </div>
-                    <a href="publications.html" class="see-more"><span class="label">See all publications</span><span class="arrow" aria-hidden="true">→</span></a>
-                </div>
-            </div>
-        </section>
-
-        <!-- ========== OTHER RESEARCH ========== -->
-        <section class="section" id="other">
-            <div>
-                <h2 class="section-label">Other</h2>
-            </div>
-            <div>
-                <p class="intro-note">
-                    Applied and commissioned research outside the three areas above.
-                </p>
-                <p class="intro-note-kr" lang="ko">
-                    위의 세 영역에 속하지 않는 연구 프로젝트는 아래와 같습니다.
-                </p>
-
-                <div class="project-list">
-
-                    <div class="project-item">
-                        <div class="project-date">2021</div>
-                        <div class="project-content">
-                            <span class="project-title">한국영화성평등센터 든든 중장기 발전 방안 연구</span>
-                            <span class="project-subtitle">Mid-to-Long Term Development Plan for the Center for Gender Equality in Korean Film Deundeun</span>
-                            <div class="project-meta">
-                                Funded by Women in Film Korea
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="project-item">
-                        <div class="project-date">2019–2020</div>
-                        <div class="project-content">
-                            <span class="project-title">청소년 성소수자 지원사업 발전방안 연구</span>
-                            <span class="project-subtitle">Study on Development Plan for LGBTQ Youth Support Projects</span>
-                            <div class="project-meta">
-                                Funded by Seoul Dream Center
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="project-item">
-                        <div class="project-date">2019</div>
-                        <div class="project-content">
-                            <span class="project-title">젠더에 관한 유권자 인식조사</span>
-                            <span class="project-subtitle">Voter Perception Survey on Gender</span>
-                            <div class="project-meta">
-                                Funded by Democratic Party of Korea
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
+                <a href="publications.html" class="see-more"><span class="label">See all publications</span><span class="arrow" aria-hidden="true">→</span></a>
             </div>
         </section>
 
@@ -1127,59 +913,31 @@
 
                     <div class="data-item">
                         <div class="data-year">2025</div>
-                        <div class="project-content">
-                            <span class="project-title">
-                                2025 성소수자 노동실태조사
-                                <span class="data-status status-request">On request</span>
-                            </span>
-                            <span class="project-subtitle">2025 Study on LGBTQ Labor Rights and Discrimination · n = 2,639</span>
-                            <div class="project-meta">
-                                <span class="role">Principal Investigator</span> · Dawoom
-                            </div>
+                        <div class="data-line">
+                            2025 성소수자 노동실태조사<span class="data-n">n = 2,639</span><span class="data-status status-request">On request</span>
                         </div>
                     </div>
 
                     <div class="data-item">
                         <div class="data-year">2025</div>
-                        <div class="project-content">
-                            <span class="project-title">
-                                2025 성적지향·성별정체성에 따른 차별실태조사
-                                <span class="data-status status-request">On request</span>
-                            </span>
-                            <span class="project-subtitle">2025 Survey on Discrimination based on Sexual Orientation and Gender Identity · n = 2,950</span>
-                            <div class="project-meta">
-                                <span class="role">Co-Researcher</span> · National Human Rights Commission of Korea
-                            </div>
+                        <div class="data-line">
+                            2025 성적지향·성별정체성에 따른 차별실태조사<span class="data-n">n = 2,950</span><span class="data-status status-request">On request</span>
                             <a href="https://www.humanrights.go.kr/base/board/read?boardManagementNo=17&boardNo=7611978&menuLevel=3&menuNo=115" target="_blank" rel="noopener" class="project-link"><span class="label">Report</span><span class="ext" aria-hidden="true">↗</span></a>
                         </div>
                     </div>
 
                     <div class="data-item">
                         <div class="data-year">2025</div>
-                        <div class="project-content">
-                            <span class="project-title">
-                                한국 성소수자/퀴어연구 학술환경 실태조사
-                                <span class="data-status status-request">On request</span>
-                            </span>
-                            <span class="project-subtitle">Survey on the Academic Environment of LGBTQ/Queer Studies in Korea · n = 192</span>
-                            <div class="project-meta">
-                                <span class="role">Principal Investigator</span> · Korean Association for LGBTQ+ and Queer Studies
-                            </div>
+                        <div class="data-line">
+                            한국 성소수자/퀴어연구 학술환경 실태조사<span class="data-n">n = 192</span><span class="data-status status-request">On request</span>
                             <a href="https://drive.google.com/file/d/1X6oE1maVP-qB2C9bTjZS_8bQNy_OqeEy/view" target="_blank" rel="noopener" class="project-link"><span class="label">Report</span><span class="ext" aria-hidden="true">↗</span></a>
                         </div>
                     </div>
 
                     <div class="data-item">
                         <div class="data-year">2024</div>
-                        <div class="project-content">
-                            <span class="project-title">
-                                한국 성소수자 연구 아카이브, 1964–2021
-                                <span class="data-status status-public">Public</span>
-                            </span>
-                            <span class="project-subtitle">Archive of Korean LGBTQ Studies · Bibliographic metadata · 1,979 articles</span>
-                            <div class="project-meta">
-                                <span class="role">Co-Principal Investigator</span> · Junior Scholars Network of LGBTIQ Research
-                            </div>
+                        <div class="data-line">
+                            한국 성소수자 연구 아카이브, 1964–2021<span class="data-n">1,979 articles</span><span class="data-status status-public">Public</span>
                             <a href="https://queerstudies.kr/archive" target="_blank" rel="noopener" class="project-link"><span class="label">Archive</span><span class="ext" aria-hidden="true">↗</span></a>
                             <a href="https://docs.google.com/forms/d/e/1FAIpQLScm0w3LeqsZrtt9VBWk2Lu1NoRhov2ElePvBuejIqh3mcIznQ/viewform" target="_blank" rel="noopener" class="project-link"><span class="label">Data access</span><span class="ext" aria-hidden="true">↗</span></a>
                         </div>
@@ -1187,30 +945,16 @@
 
                     <div class="data-item">
                         <div class="data-year">2023</div>
-                        <div class="project-content">
-                            <span class="project-title">
-                                2023년 한국 영화산업 성희롱·성폭력 실태조사
-                                <span class="data-status status-request">On request</span>
-                            </span>
-                            <span class="project-subtitle">2023 Survey on Sexual Harassment and Sexual Violence in the Korean Film Industry · n = 1,124</span>
-                            <div class="project-meta">
-                                <span class="role">Co-Researcher</span> · Korean Film Council
-                            </div>
+                        <div class="data-line">
+                            2023년 한국 영화산업 성희롱·성폭력 실태조사<span class="data-n">n = 1,124</span><span class="data-status status-request">On request</span>
                             <a href="https://kofic.kr/kofic/business/rsch/findPolicyDetail.do?boardNumber=39&policyNo=6906" target="_blank" rel="noopener" class="project-link"><span class="label">Report</span><span class="ext" aria-hidden="true">↗</span></a>
                         </div>
                     </div>
 
                     <div class="data-item">
                         <div class="data-year">2021</div>
-                        <div class="project-content">
-                            <span class="project-title">
-                                2021 청년 성소수자 사회적 욕구 및 실태조사
-                                <span class="data-status status-public">Public</span>
-                            </span>
-                            <span class="project-subtitle">2021 Social Needs of LGBTQIA+ Young Adults in South Korea · n = 3,911</span>
-                            <div class="project-meta">
-                                <span class="role">Principal Investigator</span> · Dawoom
-                            </div>
+                        <div class="data-line">
+                            2021 청년 성소수자 사회적 욕구 및 실태조사<span class="data-n">n = 3,911</span><span class="data-status status-public">Public</span>
                             <a href="https://www.dawoom-t4c.org/397d4ebb-6ad4-4525-9b71-9706f13a5e8b" target="_blank" rel="noopener" class="project-link"><span class="label">Report (Kor)</span><span class="ext" aria-hidden="true">↗</span></a>
                             <a href="https://www.dawoom-t4c.org/9f6687b7-d97a-45b7-be6d-7ba87274c3d5" target="_blank" rel="noopener" class="project-link"><span class="label">Overview (Eng)</span><span class="ext" aria-hidden="true">↗</span></a>
                             <a href="https://www.dawoom-t4c.org/e1f08999-0967-409c-9aea-3ec4f65a2bad" target="_blank" rel="noopener" class="project-link"><span class="label">Data access</span><span class="ext" aria-hidden="true">↗</span></a>
@@ -1219,15 +963,8 @@
 
                     <div class="data-item">
                         <div class="data-year">2021</div>
-                        <div class="project-content">
-                            <span class="project-title">
-                                2019년 영화계 성희롱·성폭력 실태조사
-                                <span class="data-status status-request">On request</span>
-                            </span>
-                            <span class="project-subtitle">2019 Survey on Sexual Harassment and Sexual Violence in the Film Industry · n = 834</span>
-                            <div class="project-meta">
-                                <span class="role">Research Assistant</span> · Korean Film Council
-                            </div>
+                        <div class="data-line">
+                            2019년 영화계 성희롱·성폭력 실태조사<span class="data-n">n = 834</span><span class="data-status status-request">On request</span>
                             <a href="http://solido.kr/recent/publication/?mod=document&uid=190" target="_blank" rel="noopener" class="project-link"><span class="label">Report</span><span class="ext" aria-hidden="true">↗</span></a>
                         </div>
                     </div>
