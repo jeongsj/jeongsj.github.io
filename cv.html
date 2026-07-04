@@ -3,34 +3,51 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Curriculum Vitae of Seong-Jo Jeong (정성조). Ph.D. Candidate in Sociology at Chung-Ang University. Download English or Korean version.">
-    <meta name="keywords" content="Seong-Jo Jeong, 정성조, CV, Curriculum Vitae, Sociology, Chung-Ang University">
+    <meta name="description" content="Curriculum Vitae of Seong-Jo Jeong (정성조), postdoctoral researcher in Sociology. Download English or Korean version.">
+    <meta name="keywords" content="Seong-Jo Jeong, 정성조, CV, Curriculum Vitae, Sociology">
     <meta name="author" content="Seong-Jo Jeong">
 
     <meta property="og:title" content="CV — Seong-Jo Jeong">
-    <meta property="og:description" content="Curriculum Vitae of Seong-Jo Jeong, Ph.D. Candidate in Sociology.">
+    <meta property="og:description" content="Curriculum Vitae of Seong-Jo Jeong, postdoctoral researcher in Sociology.">
     <meta property="og:url" content="https://jeongsj.github.io/cv.html">
     <meta property="og:type" content="website">
 
     <link rel="canonical" href="https://jeongsj.github.io/cv.html">
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230f6e56'/%3E%3Ctext x='16' y='22' font-family='Helvetica,Arial,sans-serif' font-size='15' font-weight='600' fill='%23fbfaf7' text-anchor='middle'%3ESJ%3C/text%3E%3C/svg%3E">
     <title>CV | Seong-Jo Jeong</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,600;1,400&family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
 
     <style>
         :root {
-            --text-primary: #0f0f0f;
-            --text-body: #222;
-            --text-secondary: #555;
-            --text-muted: #888;
-            --text-subtle: #aaa;
-            --text-faint: #bbb;
+            /* Output-type taxonomy — the site's signature color system */
+            --accent-paper: #0f6e56;
+            --accent-paper-bg: #e1f5ee;
+            --accent-report: #854f0b;
+            --accent-report-bg: #faeeda;
+            --accent-essay: #993c1d;
+            --accent-essay-bg: #faece7;
+            --accent-talk: #3c3489;
+            --accent-talk-bg: #eeedfe;
 
-            --border: #e8e8e5;
-            --border-soft: #ececec;
-            --nav-bg: #fcfcfc;
+            --accent: #0f6e56;
+            --accent-soft: #e4f2ec;
+            --accent-line: rgba(15, 110, 86, 0.35);
+
+            /* Ink scale — all text colors pass WCAG AA on the paper background */
+            --text-primary: #161513;
+            --text-body: #2a2926;
+            --text-secondary: #52504a;
+            --text-muted: #6b6960;
+            --text-kr: #5c5a54;
+
+            --bg: #fbfaf7;
+            --bg-hover: #f3f1ea;
+            --border: #e6e3d8;
+            --border-soft: #edeae1;
+            --nav-bg: rgba(251, 250, 247, 0.88);
 
             --font-sans: 'Inter', 'Noto Sans KR', 'Helvetica Neue', system-ui, -apple-system, sans-serif;
 
@@ -40,12 +57,13 @@
         }
 
         * { box-sizing: border-box; }
+
         html, body { margin: 0; padding: 0; }
 
         body {
             font-family: var(--font-sans);
             color: var(--text-primary);
-            background: #ffffff;
+            background: var(--bg);
             line-height: 1.6;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
@@ -53,14 +71,55 @@
 
         a { color: inherit; }
 
+        ::selection {
+            background: var(--accent-soft);
+            color: var(--text-primary);
+        }
+
+        :focus-visible {
+            outline: 2px solid var(--accent);
+            outline-offset: 3px;
+            border-radius: 2px;
+        }
+
+        .skip-link {
+            position: absolute;
+            left: -9999px;
+            top: 0;
+            background: var(--accent);
+            color: #fff;
+            padding: 8px 14px;
+            font-size: 13px;
+            z-index: 200;
+            border-radius: 0 0 4px 0;
+            text-decoration: none;
+        }
+
+        .skip-link:focus { left: 0; }
+
         /* ========== NAV ========== */
-        nav {
+        nav.site-nav {
             border-bottom: 1px solid var(--border-soft);
             background: var(--nav-bg);
+            backdrop-filter: blur(10px) saturate(1.2);
+            -webkit-backdrop-filter: blur(10px) saturate(1.2);
             position: sticky;
             top: 0;
             z-index: 100;
         }
+
+        /* Signature: the taxonomy spectrum — paper / report / essay / talk */
+        nav.site-nav::before {
+            content: '';
+            display: block;
+            height: 3px;
+            background: linear-gradient(90deg,
+                var(--accent-paper)  0 25%,
+                var(--accent-report) 25% 50%,
+                var(--accent-essay)  50% 75%,
+                var(--accent-talk)   75% 100%);
+        }
+
         .nav-container {
             max-width: var(--content-max);
             margin: 0 auto;
@@ -69,42 +128,50 @@
             justify-content: space-between;
             align-items: center;
         }
+
         .nav-logo {
             font-size: 11px;
             letter-spacing: 0.2em;
             text-transform: uppercase;
             font-weight: 600;
-            color: #111;
+            color: var(--text-primary);
             text-decoration: none;
         }
+
         .nav-links {
             list-style: none;
             display: flex;
-            gap: 22px;
+            gap: 24px;
             margin: 0;
             padding: 0;
         }
+
         .nav-links a {
             font-size: 12px;
-            color: #444;
+            color: var(--text-secondary);
             font-weight: 500;
             text-decoration: none;
             transition: color 0.2s;
         }
+
         .nav-links a:hover,
-        .nav-links a.active {
-            color: #000;
-            border-bottom: 1px solid #000;
-            padding-bottom: 1px;
+        .nav-links a.active,
+        .nav-links a[aria-current="page"] {
+            color: var(--text-primary);
+            text-decoration: underline;
+            text-decoration-color: var(--accent);
+            text-decoration-thickness: 1.5px;
+            text-underline-offset: 5px;
         }
+
         .menu-toggle {
             display: none;
             background: none;
             border: none;
             font-size: 1.4rem;
-            color: #111;
+            color: var(--text-primary);
             cursor: pointer;
-            padding: 0;
+            padding: 2px 4px;
             line-height: 1;
         }
 
@@ -121,28 +188,24 @@
             grid-template-columns: var(--sidebar-w) 1fr;
             gap: var(--gutter);
         }
+
         .section-label {
             font-size: 11px;
             letter-spacing: 0.25em;
             text-transform: uppercase;
             color: var(--text-secondary);
             font-weight: 500;
-            margin-bottom: 8px;
+            margin: 0 0 8px 0;
         }
 
         /* ========== HERO ========== */
         .page-title {
-            font-size: 28px;
-            font-weight: 400;
+            font-size: 27px;
+            font-weight: 600;
             line-height: 1.2;
-            letter-spacing: -0.01em;
-            margin: 0 0 8px 0;
-            color: var(--text-primary);
-        }
-        .page-subtitle {
-            font-size: 13px;
-            color: var(--text-muted);
+            letter-spacing: -0.018em;
             margin: 0 0 28px 0;
+            color: var(--text-primary);
         }
 
         /* ========== DOWNLOAD CARDS ========== */
@@ -158,17 +221,18 @@
             min-width: 220px;
             padding: 18px 22px;
             border: 1px solid var(--border);
-            border-radius: 3px;
+            border-radius: 8px;
             text-decoration: none;
             color: inherit;
-            background: #fff;
-            transition: all 0.15s ease;
+            background: transparent;
+            transition: border-color 0.15s ease, background 0.15s ease, transform 0.15s ease, box-shadow 0.15s ease;
         }
 
         .cv-download:hover {
-            border-color: #333;
+            border-color: var(--accent);
+            background: var(--accent-soft);
             transform: translateY(-1px);
-            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+            box-shadow: 0 2px 8px rgba(15, 110, 86, 0.06);
         }
 
         .cv-download-lang {
@@ -176,14 +240,14 @@
             letter-spacing: 0.22em;
             text-transform: uppercase;
             color: var(--text-muted);
-            font-weight: 500;
+            font-weight: 600;
             margin-bottom: 6px;
         }
 
         .cv-download-label {
-            font-size: 16px;
+            font-size: 15.5px;
             font-weight: 500;
-            color: #111;
+            color: var(--text-primary);
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -197,7 +261,7 @@
         }
 
         .cv-download:hover .arrow {
-            color: #111;
+            color: var(--accent);
             transform: translateY(2px);
         }
 
@@ -206,58 +270,61 @@
             margin-top: 12px;
         }
 
-        .cv-toggle {
-            display: flex;
-            gap: 6px;
-            margin-bottom: 14px;
-        }
-
-        .cv-toggle-btn {
-            font-size: 12px;
-            padding: 6px 16px;
-            border: 1px solid var(--border);
-            background: #fff;
-            color: var(--text-secondary);
-            cursor: pointer;
-            font-family: inherit;
-            border-radius: 3px;
-            transition: all 0.15s;
-            letter-spacing: 0.02em;
-        }
-
-        .cv-toggle-btn:hover {
-            border-color: #888;
-            color: #111;
-        }
-
-        .cv-toggle-btn.active {
-            background: #111;
-            border-color: #111;
-            color: #fff;
-        }
-
         .cv-viewer-label {
             font-size: 11px;
             letter-spacing: 0.2em;
             text-transform: uppercase;
             color: var(--text-muted);
-            font-weight: 500;
+            font-weight: 600;
             margin-bottom: 12px;
+        }
+
+        .cv-toggle {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 14px;
+        }
+
+        .cv-toggle-btn {
+            font-size: 12px;
+            font-weight: 500;
+            padding: 6px 16px;
+            border: 1px solid var(--border);
+            background: transparent;
+            color: var(--text-secondary);
+            cursor: pointer;
+            font-family: inherit;
+            border-radius: 4px;
+            transition: border-color 0.15s, color 0.15s, background 0.15s;
+            letter-spacing: 0.02em;
+        }
+
+        .cv-toggle-btn:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+            background: var(--accent-soft);
+        }
+
+        .cv-toggle-btn.active {
+            background: var(--accent);
+            border-color: var(--accent);
+            color: #fff;
         }
 
         .cv-viewer {
             width: 100%;
             height: 900px;
             border: 1px solid var(--border);
-            background: #f7f7f5;
+            border-radius: 6px;
+            background: var(--bg-hover);
             display: block;
         }
 
-        .cv-viewer-fallback {
-            padding: 40px 20px;
-            text-align: center;
+        .cv-viewer-note {
+            font-size: 12px;
             color: var(--text-muted);
-            font-size: 14px;
+            line-height: 1.6;
+            margin-top: 10px;
         }
 
         /* ========== FOOTER ========== */
@@ -266,21 +333,30 @@
             margin: 0 auto;
             padding: 32px 44px 48px 44px;
             border-top: 1px solid var(--border);
-            font-size: 11px;
-            color: #999;
+            font-size: 11.5px;
+            color: var(--text-muted);
             display: flex;
             justify-content: space-between;
             align-items: center;
             flex-wrap: wrap;
             gap: 12px;
         }
-        footer a { color: #999; text-decoration: none; }
-        footer a:hover { color: #333; }
+
+        footer a { color: var(--text-muted); text-decoration: none; }
+        footer a:hover { color: var(--accent); }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                transition-duration: 0.01ms !important;
+                animation-duration: 0.01ms !important;
+            }
+        }
 
         /* ========== RESPONSIVE ========== */
         @media (max-width: 768px) {
             .nav-container { padding: 12px 20px; position: relative; }
             .menu-toggle { display: block; }
+
             .nav-links {
                 display: none;
                 flex-direction: column;
@@ -288,36 +364,38 @@
                 top: 100%;
                 left: 0;
                 right: 0;
-                background: white;
+                background: var(--bg);
                 border-bottom: 1px solid var(--border-soft);
                 box-shadow: 0 4px 10px rgba(0,0,0,0.04);
                 padding: 8px 0;
                 gap: 0;
                 z-index: 99;
             }
+
             .nav-links.active { display: flex; }
             .nav-links li { width: 100%; text-align: center; }
+
             .nav-links a {
                 display: block;
                 padding: 12px 0;
                 font-size: 13px;
             }
+
             .nav-links a:hover,
-            .nav-links a.active {
-                background: #f7f7f7;
-                border-bottom: none;
+            .nav-links a.active,
+            .nav-links a[aria-current="page"] {
+                background: var(--bg-hover);
+                text-decoration: none;
             }
 
             main { padding: 32px 22px 56px 22px; }
             .section { grid-template-columns: 1fr; gap: 18px; }
 
-            .page-title { font-size: 24px; }
+            .page-title { font-size: 23px; }
 
             .cv-download { flex: 1 1 100%; }
 
-            .cv-viewer {
-                height: 600px;
-            }
+            .cv-viewer { height: 600px; }
 
             footer { padding: 24px 22px 36px 22px; }
         }
@@ -325,29 +403,32 @@
 </head>
 <body>
 
-    <nav>
+    <a href="#main" class="skip-link">Skip to content</a>
+
+    <nav class="site-nav" aria-label="Primary">
         <div class="nav-container">
             <a href="index.html" class="nav-logo">Seong-Jo Jeong</a>
-            <button class="menu-toggle" onclick="toggleMenu()" aria-label="Toggle menu">☰</button>
+
+            <button class="menu-toggle" onclick="toggleMenu()" aria-label="Toggle menu" aria-expanded="false" aria-controls="navLinks">☰</button>
+
             <ul class="nav-links" id="navLinks">
                 <li><a href="index.html">About</a></li>
                 <li><a href="research.html">Research</a></li>
                 <li><a href="publications.html">Publications</a></li>
                 <li><a href="news.html">News</a></li>
-                <li><a href="cv.html" class="active">CV</a></li>
+                <li><a href="cv.html" aria-current="page">CV</a></li>
             </ul>
         </div>
     </nav>
 
-    <main>
+    <main id="main">
 
         <section class="section">
             <div>
-                <div class="section-label">CV</div>
+                <div class="section-label" aria-hidden="true">CV</div>
             </div>
             <div>
                 <h1 class="page-title">Curriculum Vitae</h1>
-
 
                 <!-- ========== DOWNLOAD CARDS ========== -->
                 <div class="cv-downloads">
@@ -355,35 +436,34 @@
                         <div class="cv-download-lang">English</div>
                         <div class="cv-download-label">
                             <span>Download CV (PDF)</span>
-                            <span class="arrow">↓</span>
+                            <span class="arrow" aria-hidden="true">↓</span>
                         </div>
                     </a>
                     <a href="cv_kr.pdf" download class="cv-download">
-                        <div class="cv-download-lang">한국어</div>
-                        <div class="cv-download-label">
+                        <div class="cv-download-lang" lang="ko">한국어</div>
+                        <div class="cv-download-label" lang="ko">
                             <span>CV 다운로드 (PDF)</span>
-                            <span class="arrow">↓</span>
+                            <span class="arrow" aria-hidden="true">↓</span>
                         </div>
                     </a>
                 </div>
 
                 <!-- ========== TOGGLE + EMBEDDED VIEWER ========== -->
                 <div class="cv-viewer-wrap">
-                    <div class="cv-viewer-label">Preview · 미리보기</div>
-                    <div class="cv-toggle" role="tablist">
-                        <button type="button" class="cv-toggle-btn active" data-lang="eng" id="toggleEng" aria-pressed="true">English</button>
-                        <button type="button" class="cv-toggle-btn" data-lang="kr" id="toggleKr" aria-pressed="false">한국어</button>
+                    <div class="cv-viewer-label">Preview · <span lang="ko">미리보기</span></div>
+                    <div class="cv-toggle" role="group" aria-label="Preview language">
+                        <button type="button" class="cv-toggle-btn active" data-lang="eng" aria-pressed="true">English</button>
+                        <button type="button" class="cv-toggle-btn" data-lang="kr" aria-pressed="false" lang="ko">한국어</button>
                     </div>
                     <iframe id="cvViewer"
                             class="cv-viewer"
                             src="cv_eng.pdf"
-                            title="Seong-Jo Jeong CV"
-                            loading="lazy">
-                        <p class="cv-viewer-fallback">
-                            Your browser does not support embedded PDFs.
-                            Please use the download button above.
-                        </p>
-                    </iframe>
+                            title="Seong-Jo Jeong CV (English)"
+                            loading="lazy"></iframe>
+                    <p class="cv-viewer-note">
+                        If the preview does not load on your device, please use the download buttons above.
+                        <span lang="ko">미리보기가 표시되지 않는 기기에서는 위의 다운로드 버튼을 이용해주세요.</span>
+                    </p>
                 </div>
             </div>
         </section>
@@ -391,36 +471,38 @@
     </main>
 
     <footer>
-        <div>© Seong-Jo Jeong · Last updated April 2026</div>
+        <div>© Seong-Jo Jeong · Last updated July 2026</div>
         <div><a href="mailto:demonicsj@gmail.com">demonicsj@gmail.com</a></div>
     </footer>
 
     <script>
         function toggleMenu() {
-            document.getElementById("navLinks").classList.toggle("active");
+            var nav = document.getElementById("navLinks");
+            var btn = document.querySelector(".menu-toggle");
+            var open = nav.classList.toggle("active");
+            btn.setAttribute("aria-expanded", open ? "true" : "false");
         }
 
         // CV language toggle
-        (function() {
-            const viewer = document.getElementById('cvViewer');
-            const buttons = document.querySelectorAll('.cv-toggle-btn');
-            const sources = {
-                eng: 'cv_eng.pdf',
-                kr: 'cv_kr.pdf'
+        (function () {
+            var viewer = document.getElementById('cvViewer');
+            var buttons = document.querySelectorAll('.cv-toggle-btn');
+            var sources = {
+                eng: { src: 'cv_eng.pdf', title: 'Seong-Jo Jeong CV (English)' },
+                kr:  { src: 'cv_kr.pdf',  title: 'Seong-Jo Jeong CV (Korean)' }
             };
 
-            buttons.forEach(btn => {
-                btn.addEventListener('click', function() {
-                    const lang = this.dataset.lang;
-                    // Update active state
-                    buttons.forEach(b => {
+            buttons.forEach(function (btn) {
+                btn.addEventListener('click', function () {
+                    var lang = this.dataset.lang;
+                    buttons.forEach(function (b) {
                         b.classList.remove('active');
                         b.setAttribute('aria-pressed', 'false');
                     });
                     this.classList.add('active');
                     this.setAttribute('aria-pressed', 'true');
-                    // Swap PDF source
-                    viewer.src = sources[lang];
+                    viewer.src = sources[lang].src;
+                    viewer.title = sources[lang].title;
                 });
             });
         })();
